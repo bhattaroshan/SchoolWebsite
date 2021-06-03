@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     position:'relative',
     maxWidth: 345,
     marginTop: '20px',
-    marginLeft: '20px'
+    // marginLeft: '20px'
   },
   media: {
     height: 0,

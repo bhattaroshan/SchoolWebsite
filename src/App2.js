@@ -17,6 +17,8 @@ import { CardMedia } from '@material-ui/core';
 import CustomCarousel from './components/CustomCarousel';
 import FeaturedPost from './components/About';
 
+import Grid from '@material-ui/core/Grid';
+
 function App() {
   const appBarHeight = 120;
   const post = {
@@ -34,7 +36,9 @@ function App() {
       <NavBar height={appBarHeight}/>
       <CustomCarousel/>
       <CustomBody startHeight={appBarHeight}>
-      <div style={{display:'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr)', width:'70%'}}>
+      <Grid container justify='center'>
+      <Grid item md={12} sm={12} lg={10}>
+      <Grid container justify='space-around'>
         <Cards image={outsideClassroom} />
         <Cards image={quiz} />
         <Cards image={award}/>
@@ -49,7 +53,9 @@ function App() {
         <Cards image={fun}/>
         <Cards image={quiz}/>
         <Cards image={balance}/>
-      </div>
+      </Grid>
+      </Grid>
+      </Grid>
       </CustomBody>
     </div>
   );
