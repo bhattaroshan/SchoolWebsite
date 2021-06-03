@@ -2,6 +2,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
 
 import logo from '../../assets/coffee.png';
 
@@ -11,10 +12,9 @@ const NavBar = ({height}) =>{
   return (
     <CustomAppBar height={height}>
       <CustomToolbar height={height}>
-        <CustomIconButton edge='start' color='inherit' aria-label='menu'>
-          {/* <CustomLogo src={logo} height={height}/> */}
           <CustomLogo src='https://www.nu.edu/wp-content/uploads/2018/12/national-univeristy-full-logo1.jpg?fit=1200%2C630' height={height}/>
-        </CustomIconButton>
+          <div style={{flexGrow:1}}/>
+          <Button variant='outlined' color='secondary' style={{marginRight:'100px'}}> About Us </Button>
       </CustomToolbar>
     </CustomAppBar>
   );
@@ -44,6 +44,7 @@ const CustomIconButton = styled(IconButton)`
 
 const CustomToolbar = styled(Toolbar)`
   &&&{
+    display:flex;
     margin-left:270px;
     margin-top:${props=>props.height/4}px;
   }

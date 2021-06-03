@@ -51,7 +51,7 @@ export default function Cards({image,title,subheader}) {
 
 
   return (
-    <Card className={classes.root}>
+    <CustomCard className={classes.root} >
       {/* <CardHeader
         title={title}
         subheader={subheader}
@@ -69,10 +69,21 @@ export default function Cards({image,title,subheader}) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton style={{marginLeft:'auto'}}>
-          <Button variant='outlined' color='secondary'>Read More...</Button>
-        </IconButton>
+        {/* <IconButton style={{marginLeft:'auto'}}> */}
+          <Button variant='outlined' color='secondary' style={{marginLeft:'auto'}}>Read More...</Button>
+        {/* </IconButton> */}
       </CardActions>
-    </Card>
+    </CustomCard>
   );
 }
+
+const CustomCard = styled(Card)`
+&&&{
+  transition: 0.3s;
+}
+&:hover{
+  box-shadow:2px 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+`;

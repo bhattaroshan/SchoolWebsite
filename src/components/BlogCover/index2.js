@@ -5,12 +5,12 @@ import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   mainFeatured: {
-    height: 300,
+    height: 900,
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    // backgroundImage: "url(https://source.unsplash.com/17_tB-oI0ao/6016x4016)",
-    backgroundImage: "url(https://image.freepik.com/free-photo/school-age-children-medical-masks-portrait-school-children_109285-5762.jpg)",
+    // backgroundImage: "url(https://image.freepik.com/free-photo/school-age-children-medical-masks-portrait-school-children_109285-5762.jpg)",
+    backgroundImage: props=>`url(${props.image})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -25,8 +25,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MainFeatured() {
-  const classes = useStyles();
+export default function MainFeatured({image}) {
+
+  const props = {
+    image: image,
+  }
+
+  const classes = useStyles(props);
 
   return (
     <Grid container className={classes.mainFeatured}>

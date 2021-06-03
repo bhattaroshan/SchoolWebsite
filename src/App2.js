@@ -14,16 +14,26 @@ import quiz from './assets/quiz.jpg';
 import './style.css';
 import Cards from './components/Cards';
 import { CardMedia } from '@material-ui/core';
+import CustomCarousel from './components/CustomCarousel';
+import FeaturedPost from './components/About';
 
 function App() {
   const appBarHeight = 120;
-
+  const post = {
+    title: 'About the principal',
+    date: 'Dr. DayaRam Ghimire',
+    description: 'Graduated from Yale University, Dr. Ghimire has 25 years of experience in teaching in both national and international schools. Being the pioneer in the field, Ghimire was awarded for bringing best in students by Internation Teachers Association in 1996.',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Claude_Dauphin%2C_CEO_Trafigura.jpg'
+  }
   return (
     <div>
-      {/* <Cards image={outsideClassroom}/> */}
+      {/* <CustomCarousel/>
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'95vh'}}>
+        <FeaturedPost post={post}/>
+      </div> */}
       <NavBar height={appBarHeight}/>
+      <CustomCarousel/>
       <CustomBody startHeight={appBarHeight}>
-      <BlogCover image={quiz}/>
       <div style={{display:'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr)', width:'70%'}}>
         <Cards image={outsideClassroom} />
         <Cards image={quiz} />
