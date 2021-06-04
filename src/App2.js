@@ -18,6 +18,7 @@ import CustomCarousel from './components/CustomCarousel';
 import FeaturedPost from './components/About';
 
 import Grid from '@material-ui/core/Grid';
+import AppBarResponsive from './components/AppBarResponsive';
 
 function App() {
   const appBarHeight = 120;
@@ -33,29 +34,36 @@ function App() {
       <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'95vh'}}>
         <FeaturedPost post={post}/>
       </div> */}
-      <NavBar height={appBarHeight}/>
-      <CustomCarousel/>
+      {/* <div>
+
+        <Header />
+      </div> */}
+      {/* <NavBar height={appBarHeight} /> */}
+      <AppBarResponsive />
+      <CarouselDiv startHeight={appBarHeight}>
+        <CustomCarousel />
+      </CarouselDiv>
       <CustomBody startHeight={appBarHeight}>
-      <Grid container justify='center'>
-      <Grid item md={12} sm={12} lg={10}>
-      <Grid container justify='space-around'>
-        <Cards image={outsideClassroom} />
-        <Cards image={quiz} />
-        <Cards image={award}/>
-        <Cards image={balance}/>
-        <Cards image={fun}/>
-        <Cards image={quiz}/>
-        <Cards image={balance}/>
-        <Cards image={outsideClassroom}/>
-        <Cards image={quiz} />
-        <Cards image={award}/>
-        <Cards image={balance}/>
-        <Cards image={fun}/>
-        <Cards image={quiz}/>
-        <Cards image={balance}/>
-      </Grid>
-      </Grid>
-      </Grid>
+        <Grid container justify='center'>
+          <Grid item md={12} sm={12} lg={10}>
+            <Grid container justify='space-around'>
+              <Cards image={outsideClassroom} />
+              <Cards image={quiz} />
+              <Cards image={award} />
+              <Cards image={balance} />
+              <Cards image={fun} />
+              <Cards image={quiz} />
+              <Cards image={balance} />
+              <Cards image={outsideClassroom} />
+              <Cards image={quiz} />
+              <Cards image={award} />
+              <Cards image={balance} />
+              <Cards image={fun} />
+              <Cards image={quiz} />
+              <Cards image={balance} />
+            </Grid>
+          </Grid>
+        </Grid>
       </CustomBody>
     </div>
   );
@@ -63,11 +71,20 @@ function App() {
 
 export default App;
 
+
 const CustomBody = styled.div`
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: ${props=>props.startHeight}px;
+  margin-top: ${props => props.startHeight}px;
+`;
+
+const CarouselDiv = styled.div`
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: ${props => props.startHeight}px;
 `;
