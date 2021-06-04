@@ -49,8 +49,8 @@ const StyledMenuItem = withStyles((theme) => ({
 
 const CustomLogo = styled.img`
   height: ${props => props.height}px;
-  display: "flex",
-  justifyContent: "space-between"
+  display: flex;
+  justify-content: "space-between";
   
 `;
 const styleSheet = {
@@ -209,7 +209,9 @@ function AppBarResponsive() {
 
     return (
         <div>
-            {drawerActivate ? createDrawer() : destroyDrawer()}
+            {/* {drawerActivate ? createDrawer() : destroyDrawer()} */}
+            {createDrawer()}
+            {/* <createDrawer/> */}
         </div>
     );
 

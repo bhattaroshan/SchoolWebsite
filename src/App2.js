@@ -18,7 +18,7 @@ import CustomCarousel from './components/CustomCarousel';
 import FeaturedPost from './components/About';
 
 import Grid from '@material-ui/core/Grid';
-import AppBarResponsive from './components/AppBarResponsive';
+import AppBarResponsive from './components/AppBarResponsive/index2';
 
 function App() {
   const appBarHeight = 120;
