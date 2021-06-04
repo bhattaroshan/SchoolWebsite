@@ -1,8 +1,5 @@
-import {useMemo} from 'react';
-import { Typography } from '@material-ui/core'
 import Carousel from 'react-material-ui-carousel'
-import Button from '@material-ui/core/Button';
-import BlogCover from '../../components/BlogCover/index2';
+import BlogCover from '../BlogCover';
 
 const CustomCarousel = () =>{
   return (

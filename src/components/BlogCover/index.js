@@ -1,82 +1,48 @@
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
-import Button from '@material-ui/core/Button';
+const useStyles = makeStyles((theme) => ({
+  mainFeatured: {
+    height: 400,
+    backgroundColor: theme.palette.grey[800],
+    color: theme.palette.common.white,
+    marginBottom: theme.spacing(4),
+    // backgroundImage: "url(https://image.freepik.com/free-photo/school-age-children-medical-masks-portrait-school-children_109285-5762.jpg)",
+    backgroundImage: props=>`url(${props.image})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  },
+  mainFeaturedContent: {
+    position: "relative",
+    padding: theme.spacing(3),
+    [theme.breakpoints.up("md")]: {
+      padding: theme.spacing(6),
+      paddingRight: 0,
+    },
+  },
+}));
 
-import styled from 'styled-components';
+export default function MainFeatured({image}) {
 
-import './style.css';
+  const props = {
+    image: image,
+  }
 
-const BlogCover = ({image}) =>{
+  const classes = useStyles(props);
+
   return (
-    <Cover>
-        <CardImage image={image}/>
-        {/* <p style={{position:'absolute', fontSize:'30px', color:'white', top:'40%', left:'40%', fontFamily:'Lato'}}> About Us</p> */}
-        {/* <p style={{position:'absolute', fontSize:'100px', color:'blue', top:'65%', left:'45%', fontFamily: 'Lato'}}> About Us</p> */}
-      {/* <CoverCard>
-        <CardImage image={image}>
-        </CardImage>
-        <div>
-          <CardTitle> Interschool football competition</CardTitle>
-          <p style={{marginLeft:'10px', marginTop:'10px', fontFamily:'Lato'}}> 
-            Our school  competed with 20 schools nation-wide. They had total of 10 games. Out of all the games..... .......
-          </p>
-          <CustomButton variant='outlined' color='secondary'>Read More...</CustomButton>
-        </div>
-      </CoverCard> */}
-    </Cover>
+    <Grid container className={classes.mainFeatured}>
+      <Grid item md={6} className={classes.mainFeaturedContent}>
+        <Typography component="h1" variant="h5" color="inherit" gutterBottom>
+          School Blogs
+        </Typography>
+        <Typography variant="body1" color="inherit" paragraph>
+          Read about our school, our achievements and our teaching pedagogy
+        </Typography>
+      </Grid>
+    </Grid>
   );
 }
-
-export default BlogCover;
-
-const CustomButton = styled(Button)`
-&&&{
-  position: relative;
-  top: 47%;
-  left: 63%;
-  border-radius: 10px;
-}
-`;
-
-const Cover = styled.div`
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  width:100%;
-  height:400px;
-  background: #f2edd7;
-  box-shadow: 5px 0px 10px #f2edd7;
-  color:  white;
-  text-align: center;
-`;
-
-const CoverCard = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position:relative;
-  width:70%;
-  height:70%;
-  left:50%;
-  top:50%;
-  transform: translate(-50%,-50%);
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
-  background: white;
-  border-radius: 20px;
-`;
-
-const CardImage = styled.img`
-  display:absolute;
-  background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2014/11/12/514442/4070023610e1d8f27d6e0860bf76a5d1.jpg');
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  /* border-top-left-radius: 20px; */
-  /* border-bottom-left-radius: 20px; */
-`;
-
-const CardTitle = styled.p`
-  font-size: 30px;
-  font-weight: 900;
-  margin-left: 10px;
-  font-family: 'Lato', sans-serif;
-`;
