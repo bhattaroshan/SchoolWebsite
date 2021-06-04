@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-import BlogThumbnail from './components/BlogThumbnail.js/index.js';
-import NavBar from './components/NavBar';
-import BlogCover from './components/BlogCover/index2.js';
-
 import outsideClassroom from './assets/outsideClassroom.jpg';
 import fun from './assets/fun.jpg';
 import balance from './assets/balance.jpg';
@@ -13,7 +9,6 @@ import quiz from './assets/quiz.jpg';
 
 import './style.css';
 import Cards from './components/Cards';
-import { CardMedia } from '@material-ui/core';
 import CustomCarousel from './components/CustomCarousel';
 import FeaturedPost from './components/About';
 
