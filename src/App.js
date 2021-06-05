@@ -33,7 +33,7 @@ function App() {
         <Header />
       </div> */}
       {/* <NavBar height={appBarHeight} /> */}
-      <AppBarResponsive />
+      <AppBarResponsive logo='https://www.nu.edu/wp-content/uploads/2018/12/national-univeristy-full-logo1.jpg?fit=1200%2C630' />
       <CarouselDiv startHeight={appBarHeight}>
         <CustomCarousel />
       </CarouselDiv>

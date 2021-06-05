@@ -33,15 +33,6 @@ const CustomAppBar = styled(AppBar)`
 }
 `;
 
-const CustomIconButton = styled(IconButton)`
-&&&{
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-
-}
-`;
-
 const CustomToolbar = styled(Toolbar)`
   &&&{
     display:flex;
