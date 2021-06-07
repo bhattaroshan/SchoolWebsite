@@ -21,12 +21,14 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import HomeIcon from '@material-ui/icons/Home';
 
+import {withRouter} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 const MenuItemOptions = [
   {
     title: 'Home',
     icon: <HomeIcon/>,
-    path: '#'
+    path: '/'
   },
   {
     title: 'Activities',
@@ -65,7 +67,7 @@ const MenuItemOptions = [
   {
     title: 'About',
     icon: <HomeIcon/>,
-    path: '#'
+    path: '/about'
   },
   {
     title: null
@@ -73,13 +75,14 @@ const MenuItemOptions = [
   {
     title: 'Contact Us',
     icon: <HomeIcon/>,
-    path:'#'
+    path:'/contactus'
   }
 
 ];
 
 const AppBarResponsive = ({logo}) => {
-
+    const history = useHistory();
+    
     const [subMenuBoolean,setSubMenuBoolen] = useState(Array(MenuItemOptions.length).fill(false));
 
     const [drawerActivate, setDrawerActivate] = useState(false);
@@ -119,6 +122,8 @@ const AppBarResponsive = ({logo}) => {
     }
     
     const handleDropMenuOpen = (index)=>(e) =>{
+      console.log(MenuItemOptions[index].path);
+      history.push(MenuItemOptions[index].path);
       setSubMenuIndex(index);
       setAnchorEl(e.currentTarget);
     }
@@ -228,7 +233,7 @@ const AppBarResponsive = ({logo}) => {
     );
 }
 
-export default AppBarResponsive;
+export default withRouter(AppBarResponsive);
 
 const CMenuTypography = styled(Typography)`
   &&&{
