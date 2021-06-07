@@ -7,18 +7,20 @@ import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
 import Drawer from '@material-ui/core/Drawer';
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import HomeIcon from '@material-ui/icons/Home';
 import Divider from '@material-ui/core/Divider';
 import Collapse from '@material-ui/core/Collapse';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
+import HomeIcon from '@material-ui/icons/Home';
+
 
 const MenuItemOptions = [
   {
@@ -33,12 +35,12 @@ const MenuItemOptions = [
     submenu: [
       {
         title: 'Football',
-        // icon: <HomeIcon/>,
+        icon: <HomeIcon/>,
         path: '#'
       },
       {
         title: 'Wrestling',
-        // icon: <HomeIcon/>,
+        icon: <HomeIcon/>,
         path: '#'
       }
     ]
@@ -46,7 +48,19 @@ const MenuItemOptions = [
   {
     title: 'Blogs',
     icon: <HomeIcon/>,
-    path: '#'
+    path: '#',
+    submenu:[
+      {
+        title: 'Amazing Blog',
+        icon: <ExpandLess/>,
+        path: '#'
+      },
+      {
+        title: 'This is so amazing',
+        icon: <ExpandMore/>,
+        path: '#'
+      }
+    ]
   },
   {
     title: 'About',
@@ -71,17 +85,10 @@ const AppBarResponsive = ({logo}) => {
     const [drawerActivate, setDrawerActivate] = useState(false);
     const [drawer, setDrawer] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    const [subMenuIndex, setSubMenuIndex] = useState(0);
 
     useEffect(()=>{
-      if(window.innerWidth<=600)
+      if(window.innerWidth<=780)
         setDrawerActivate(true);
       else
         setDrawerActivate(false);
@@ -89,7 +96,7 @@ const AppBarResponsive = ({logo}) => {
 
     useEffect(()=>{
       const handleResize = () =>{
-        if(window.innerWidth <=600){
+        if(window.innerWidth <=780){
           setDrawerActivate(true);
         }
         else{
@@ -110,42 +117,70 @@ const AppBarResponsive = ({logo}) => {
         // setSubMenuBoolen(...subMenuBoolean[index],!subMenuBoolean[index]);
       }
     }
+    
+    const handleDropMenuOpen = (index)=>(e) =>{
+      setSubMenuIndex(index);
+      setAnchorEl(e.currentTarget);
+    }
+
+    const handleDropMenuClose = () =>{
+      setAnchorEl(null);
+    }
 
     return(
       <div>
         <AppBar position='fixed' color='inherit'>
           <Toolbar>
               {drawerActivate && <IconButton onClick={()=>setDrawer(true)}><MenuIcon/></IconButton>}
-                <CustomLogo variant="headline" src={logo} height={100} />
+                <CustomLogo variant="headline" src={logo} height={100} centerLogo={drawerActivate}/>
 
                 <div style={{flex:1}}/>
-                {drawerActivate===false && <div>
-                      {
-                        MenuItemOptions.map((item,index)=>{
-                          return(
-                            <>
-                              {
-                                item.title && 
-                                <CustomMenuButton key={index} id={index}>{item.title.toUpperCase()}</CustomMenuButton>
-                              }
-                            </>
-                          );
-                        })
-                      }
-                </div>}
+                    {drawerActivate===false && <div style={{display:'flex'}}>
+                        {
+                          MenuItemOptions.map((item,index)=>{
+                            return(
+                              <div key={index} id={index}>
+                                {
+                                  item.title && 
+                                  <CustomMenuButton aria-controls='menu' onClick={handleDropMenuOpen(index)}>{item.title.toUpperCase()}</CustomMenuButton>
+                                }
+                              </div>
+                            );
+                          })
+                        }
+                  </div>}
+                
           </Toolbar>
         </AppBar>
+        
+        {
+          MenuItemOptions[subMenuIndex].submenu && 
+          <Menu style={{marginTop:'40px'}} id='menu' onClose={handleDropMenuClose} anchorEl={anchorEl} open={Boolean(anchorEl)}>
+          {
+            MenuItemOptions[subMenuIndex].submenu.map((item,index)=>{
+              return (
+                <div key={index} id={index}>
+                  <MenuItem onClick={handleDropMenuClose}>
+                    {item.icon} 
+                    <Typography style={{marginLeft:'30px'}}>{item.title.toUpperCase()}</Typography>
+                  </MenuItem>
+                </div>
+              );
+            })
+          }
+          </Menu>
+        }
 
         <Drawer open={drawer} onClose={() => {setDrawer(false)}}>
           <List style={{ width: 250}}>
             {
               MenuItemOptions.map((item,index)=>{
                 return (
-                  <>
+                  <div key={index} id={index}>
                   {
                   item.title ?
                     <>
-                        <CListItem button key={index} id={index} onClick={()=>popSubMenu(item.submenu,index)}>
+                        <CListItem button onClick={()=>popSubMenu(item.submenu,index)}>
                           <ListItemIcon>{item.icon}</ListItemIcon>
                           <CListItemText primary={
                             <CMenuTypography>{item.title.toUpperCase()}</CMenuTypography>
@@ -161,14 +196,14 @@ const AppBarResponsive = ({logo}) => {
                                   {
                                     item.submenu.map((subitem,subindex)=>{
                                       return (
-                                        <>
+                                        <div key={index+subindex} id={index+subindex} >
                                           <CListItem button>
                                           <ListItemIcon>{subitem.icon}</ListItemIcon>
                                           <CListItemText primary={
                                             <Typography>{subitem.title.toUpperCase()}</Typography>
                                           }/>
                                           </CListItem>
-                                        </>
+                                        </div>
                                       );
                                     })
                                   }
@@ -182,7 +217,7 @@ const AppBarResponsive = ({logo}) => {
                        <Divider/>
                     </>
                   }
-                  </>
+                  </div>
                 );
               })
             }
@@ -217,14 +252,18 @@ const CListItem = styled(ListItem)`
 
 const CustomLogo = styled.img`
   height: ${props => props.height}px;
-  display: flex;
   justify-content: "space-between";
+  position: relative;
+  ${props=>props.centerLogo && "left:50%;transform:translate(-50%,0);"};
+  /* left: 50%; */
 `;
 
-const CustomMenuButton = styled(Button)`
+const CustomMenuButton = styled(Typography)`
   &&&{
     font-size: 18px;
     font-weight:bold;
+    cursor: pointer;
+    margin:10px;
   }
   &:hover{
     color: red;
