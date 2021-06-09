@@ -7,20 +7,25 @@ import balance from './assets/balance.jpg';
 import steam from './assets/steam.jpg';
 import award from './assets/award.jpg';
 import quiz from './assets/quiz.jpg';
+import logo from './assets/logo.jpg';
+import blog1 from './assets/blog1.jpg';
 
 import Cards from './components/Cards';
 import CustomCarousel from './components/CustomCarousel';
 import About from './components/About';
 import ContactUs from './components/ContactUs';
+import Blogs from './components/Blogs';
 
 import Grid from '@material-ui/core/Grid';
-import AppBarResponsive from './components/AppBarResponsive/index2';
+import AppBar from './components/AppBar';
 
 // import createBrowserHistory from 'history/createBrowserHistory';
 
+const appBarHeight = 120;
+
 function NavTest({appBarHeight}){
   return <>
-      <AppBarResponsive logo='https://www.nu.edu/wp-content/uploads/2018/12/national-univeristy-full-logo1.jpg?fit=1200%2C630' />
+      <AppBar logo={logo} />
         <CarouselDiv startHeight={appBarHeight}>
           <CustomCarousel />
         </CarouselDiv>
@@ -33,7 +38,7 @@ function BlogBody({appBarHeight}){
         <Grid container justify='center'>
           <Grid item md={12} sm={12} lg={10}>
             <Grid container justify='space-around'>
-              <Cards image={outsideClassroom} />
+              <Cards image={blog1} />
               <Cards image={quiz} />
               <Cards image={award} />
               <Cards image={balance} />
@@ -54,10 +59,7 @@ function BlogBody({appBarHeight}){
   </>;
 }
 
-// const history = createBrowserHistory();
-
 function App() {
-  const appBarHeight = 120;
   const post = {
     title: 'About the principal',
     date: 'Dr. DayaRam Ghimire',
@@ -65,11 +67,10 @@ function App() {
     image: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Claude_Dauphin%2C_CEO_Trafigura.jpg'
   }
   return (
-    <Router forceRefresh={true}>
-      <div>
+    <Router>
         <NavTest appBarHeight={appBarHeight}/>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/' >
             <BlogBody appBarHeight={appBarHeight}/>
           </Route>
           <Route path='/about'>
@@ -83,8 +84,10 @@ function App() {
           <Route exact path='/contactus'>
             <ContactUs/>
           </Route>
+          <Route exact path='/blogs'>
+            <Blogs/>
+          </Route>
         </Switch> 
-      </div>
     </Router>
   );
 }
@@ -99,7 +102,7 @@ function App2() {
   }
   return (
     <div>
-      <AppBarResponsive logo='https://www.nu.edu/wp-content/uploads/2018/12/national-univeristy-full-logo1.jpg?fit=1200%2C630' />
+      <AppBar logo='https://www.nu.edu/wp-content/uploads/2018/12/national-univeristy-full-logo1.jpg?fit=1200%2C630' />
       <CarouselDiv startHeight={appBarHeight}>
         <CustomCarousel />
       </CarouselDiv>

@@ -1,4 +1,3 @@
-
 import {useState,useEffect} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -23,6 +22,7 @@ import HomeIcon from '@material-ui/icons/Home';
 
 import {withRouter} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const MenuItemOptions = [
   {
@@ -33,36 +33,23 @@ const MenuItemOptions = [
   {
     title: 'Activities',
     icon: null,
-    path: '#',
     submenu: [
       {
         title: 'Football',
         icon: <HomeIcon/>,
-        path: '#'
+        path: '/blogs'
       },
       {
         title: 'Wrestling',
         icon: <HomeIcon/>,
-        path: '#'
+        path: '/about'
       }
     ]
   },
   {
     title: 'Blogs',
     icon: <HomeIcon/>,
-    path: '#',
-    submenu:[
-      {
-        title: 'Amazing Blog',
-        icon: <ExpandLess/>,
-        path: '#'
-      },
-      {
-        title: 'This is so amazing',
-        icon: <ExpandMore/>,
-        path: '#'
-      }
-    ]
+    path: '/blogs',
   },
   {
     title: 'About',
@@ -112,24 +99,41 @@ const AppBarResponsive = ({logo}) => {
       return ()=>window.removeEventListener('resize',handleResize);
     })
 
-    const popSubMenu = (isPopType,index) =>{
+    const popDrawerMenu = (isPopType,index) =>{
       if(isPopType){
         const clone = [...subMenuBoolean];
         clone[index] = !clone[index];
         setSubMenuBoolen(clone);
-        // setSubMenuBoolen(...subMenuBoolean[index],!subMenuBoolean[index]);
+      }else{ //run some function from here
+        history.push(MenuItemOptions[index].path);
+        setDrawer(false);
       }
     }
     
     const handleDropMenuOpen = (index)=>(e) =>{
-      console.log(MenuItemOptions[index].path);
-      history.push(MenuItemOptions[index].path);
+      if(MenuItemOptions[index].submenu ===undefined){
+        history.push(MenuItemOptions[index].path);
+      }
+      else{
+
+      }
+
       setSubMenuIndex(index);
       setAnchorEl(e.currentTarget);
     }
 
     const handleDropMenuClose = () =>{
       setAnchorEl(null);
+    }
+
+    const handleDropMenuItemClose = (index) =>{
+      history.push(MenuItemOptions[subMenuIndex].submenu[index].path);
+      handleDropMenuClose();
+    }
+
+    const handleDrawerMenuClick = (index,subindex) =>{
+      history.push(MenuItemOptions[index].submenu[subindex].path);
+      setDrawer(false);
     }
 
     return(
@@ -165,7 +169,7 @@ const AppBarResponsive = ({logo}) => {
             MenuItemOptions[subMenuIndex].submenu.map((item,index)=>{
               return (
                 <div key={index} id={index}>
-                  <MenuItem onClick={handleDropMenuClose}>
+                  <MenuItem onClick={()=>handleDropMenuItemClose(index)}>
                     {item.icon} 
                     <Typography style={{marginLeft:'30px'}}>{item.title.toUpperCase()}</Typography>
                   </MenuItem>
@@ -185,7 +189,7 @@ const AppBarResponsive = ({logo}) => {
                   {
                   item.title ?
                     <>
-                        <CListItem button onClick={()=>popSubMenu(item.submenu,index)}>
+                        <CListItem button onClick={()=>popDrawerMenu(item.submenu,index)}>
                           <ListItemIcon>{item.icon}</ListItemIcon>
                           <CListItemText primary={
                             <CMenuTypography>{item.title.toUpperCase()}</CMenuTypography>
@@ -202,7 +206,7 @@ const AppBarResponsive = ({logo}) => {
                                     item.submenu.map((subitem,subindex)=>{
                                       return (
                                         <div key={index+subindex} id={index+subindex} >
-                                          <CListItem button>
+                                          <CListItem button onClick={()=>handleDrawerMenuClick(index,subindex)}>
                                           <ListItemIcon>{subitem.icon}</ListItemIcon>
                                           <CListItemText primary={
                                             <Typography>{subitem.title.toUpperCase()}</Typography>
@@ -233,7 +237,8 @@ const AppBarResponsive = ({logo}) => {
     );
 }
 
-export default withRouter(AppBarResponsive);
+// export default withRouter(AppBarResponsive);
+export default AppBarResponsive;
 
 const CMenuTypography = styled(Typography)`
   &&&{
