@@ -22,7 +22,6 @@ import HomeIcon from '@material-ui/icons/Home';
 
 import {withRouter} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
-import {Link} from 'react-router-dom';
 
 const MenuItemOptions = [
   {
@@ -237,8 +236,8 @@ const AppBarResponsive = ({logo}) => {
     );
 }
 
-// export default withRouter(AppBarResponsive);
-export default AppBarResponsive;
+export default withRouter(AppBarResponsive);
+// export default AppBarResponsive;
 
 const CMenuTypography = styled(Typography)`
   &&&{
