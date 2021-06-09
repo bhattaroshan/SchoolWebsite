@@ -22,6 +22,9 @@ const options = {
     if(attribs.id==='para'){
       return <CBody>{domToReact(children,options)}</CBody>;
     }
+    if(attribs.id==='img'){
+      return <div style={{margin:'20px'}}><CustomCover image={attribs.class}/></div>;
+    }
   }
 };
 
@@ -30,7 +33,9 @@ const blogPost = `
      another is Lorem Ipsum?Lorem is simply <span id='color-red'>dummy text </span> 
      of the printing and typesetting industry. Lorem Ipsum has been the industry's 
      standard dummy text ever since the 1500s, when an unknown printer took a galley 
-     of type and scrambled it to make a type specimen book. It has survived not only 
+     of type and scrambled 
+     <span id='img' class='https://cdn.pixabay.com/photo/2014/11/13/06/12/boy-529067_960_720.jpg'></span>
+     it to make a type specimen book. It has survived not only 
      five centuries, but also the leap into electronic typesetting, remaining essentially 
      unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
      Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
@@ -41,11 +46,18 @@ const blogPost = `
      passage, and going through the cites of the word in classical literature, discovered the undoubtable 
      source.</span> <span id='para'>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus 
      Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise 
-     on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum 
+     on the 
+     <span id='img' class='https://cdn.pixabay.com/photo/2016/08/26/22/45/chain-1623322_960_720.jpg'></span>
+     theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum 
      dolor sit amet.., comes from a line in section 1.10.32.</span> 
      <span id='para'>Here comes another paragraph change</span>
 
 `;
+const CustomCover = ({image}) =>{
+   return <div style={{position:'relative', left:'50%', transform: 'translate(-50%,0)', width:'100%'}}>
+        <BlogCover image={image}/>
+      </div>
+}
 
 const Blogs = () =>{
   return (
@@ -54,10 +66,6 @@ const Blogs = () =>{
 
       <div style={{display:'flex', justifyContent:'center'}}>
         <CTitle>Students working outside</CTitle>
-      </div>
-
-      <div style={{position:'relative', left:'50%', transform: 'translate(-50%,0)', width:'80%'}}>
-        <BlogCover image={blogPic}/>
       </div>
 
       {parse(blogPost,options)}
@@ -82,7 +90,7 @@ const CTitle = styled(Typography)`
 
 const CBody = styled(Typography)` 
   &&&{
-    margin:50px;
+    margin:100px;
     font-size:25px;
     font-family: 'Roboto';
     font-weight: 400;
