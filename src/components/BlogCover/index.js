@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   mainFeatured: {
-    height: 400,
+    height: props=>`${props.height}px`,
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
@@ -25,13 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MainFeatured({image}) {
+export default function MainFeatured({image,height}) {
 
-  const props = {
-    image: image,
-  }
-
-  const classes = useStyles(props);
+  const classes = useStyles({image,height});
 
   return (
     <Grid container className={classes.mainFeatured}>

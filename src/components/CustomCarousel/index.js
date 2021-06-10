@@ -9,10 +9,10 @@ import photo4 from '../../assets/photo4.jpg';
 const CustomCarousel = () =>{
   return (
     <Carousel autoPlay={true} navButtonsAlwaysVisible>
-      <BlogCover image={photo1}/>
-      <BlogCover image={photo2}/>
-      <BlogCover image={photo3}/>
-      <BlogCover image={photo4}/>
+      <BlogCover image={photo1} height={600}/>
+      <BlogCover image={photo2} height={600}/>
+      <BlogCover image={photo3} height={600}/>
+      <BlogCover image={photo4} height={600}/>
     </Carousel>
   );
 }

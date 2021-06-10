@@ -1,8 +1,9 @@
+import {useState, useEffect} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
-import parse, {domToReact} from 'html-react-parser';
+import parse, {domToReact,attributesToProps} from 'html-react-parser';
 
 import blogPic from '../../assets/photo1.jpg';
 import BlogCover from '../BlogCover';
@@ -20,7 +21,7 @@ const options = {
     if(!attribs) return;
 
     if(attribs.id==='para'){
-      return <CBody>{domToReact(children,options)}</CBody>;
+      return <span>{domToReact(children,options)}</span>;
     }
     if(attribs.id==='img'){
       return <div style={{margin:'20px'}}><CustomCover image={attribs.class}/></div>;
@@ -53,24 +54,52 @@ const blogPost = `
      <span id='para'>Here comes another paragraph change</span>
 
 `;
+
 const CustomCover = ({image}) =>{
-   return <div style={{position:'relative', left:'50%', transform: 'translate(-50%,0)', width:'100%'}}>
-        <BlogCover image={image}/>
+   const [windowWidth,setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(()=>{
+    const handleResize = () =>{
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener('load',handleResize);
+    window.addEventListener('resize',handleResize);
+
+    return ()=>{
+      window.removeEventListener('load',handleResize);
+      window.removeEventListener('resize',handleResize);
+    }
+  })
+
+   return <div style={{position:'relative', left:'50%', transform: 'translate(-50%,0)'}}>
+        <BlogCover image={image} height={windowWidth>1080?400:(windowWidth>650?300:200)}/>
       </div>
 }
 
 const Blogs = () =>{
+
+  const [windowWidth,setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(()=>{
+    const handleResize = () =>{
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener('load',handleResize);
+    window.addEventListener('resize',handleResize);
+
+    return ()=>{
+      window.removeEventListener('load',handleResize);
+      window.removeEventListener('resize',handleResize);
+    }
+  })
+
   return (
-    <Grid item xs={12} sm={11} md={10} xl={10}>
-      <CPaper elevation={3}>
-
-      <div style={{display:'flex', justifyContent:'center'}}>
-        <CTitle>Students working outside</CTitle>
+      <CPaper elevation={5}>
+      <div style={{display:'flex'}}>
+        <CTitle>STUDENTS WORKING OUTSIDE</CTitle>
       </div>
-
-      {parse(blogPost,options)}
+        <CBody width={windowWidth}>{parse(blogPost,options)}</CBody>
       </CPaper>
-    </Grid>
   );
 }
 
@@ -78,22 +107,34 @@ export default Blogs;
 
 const CPaper = styled(Paper)`
   &&&{
+    width:90%;
     min-height: 400px;
   }
 `;
 
 const CTitle = styled(Typography)`
   &&&{
-    font-size:50px;
+    margin-top:30px;
+    margin-bottom:30px;
+    font-family: 'Roboto';
+    font-weight: 900;
+    position:relative;
+    text-align: center;
+    font-size:35px;
+    left:50%;
+    transform: translate(-50%,0);
   }
 `;
 
-const CBody = styled(Typography)` 
+const CBody = styled.div` 
   &&&{
-    margin:100px;
-    font-size:25px;
-    font-family: 'Roboto';
-    font-weight: 400;
+    /* margin:5px; */
+    margin-left: ${props=>props.width<650?'20px':(props.width<1080?'50px':'120px')};
+    margin-right: ${props=>props.width<650?'20px':(props.width<1080?'50px':'120px')};
+    font-size:${props=>props.width<650?'16px':(props.width<1080?'18px':'22px')};
     text-align: justify;
+    font-family: 'Roboto';;
+    font-weight: 400;
+    line-height: 1.6;
   }
 `;
