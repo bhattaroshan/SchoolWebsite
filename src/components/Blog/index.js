@@ -94,7 +94,7 @@ const Blogs = () =>{
   })
 
   return (
-      <CPaper elevation={5}>
+      <CPaper width={windowWidth} elevation={5}>
       <div style={{display:'flex'}}>
         <CTitle>STUDENTS WORKING OUTSIDE</CTitle>
       </div>
@@ -107,7 +107,9 @@ export default Blogs;
 
 const CPaper = styled(Paper)`
   &&&{
-    width:90%;
+     /* margin-left: ${props=>props.width<650?'20px':(props.width<1080?'50px':'120px')}; */
+    width: ${props=>props.width<650?'90%':(props.width<1080?'80%':'70%')};
+    /* width:90%; */
     min-height: 400px;
   }
 `;
