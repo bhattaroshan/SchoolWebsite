@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
-import parse, {domToReact,attributesToProps} from 'html-react-parser';
+import parse, {domToReact} from 'html-react-parser';
 
 import blogPic from '../../assets/photo1.jpg';
 import BlogCover from '../BlogCover';
@@ -107,9 +107,7 @@ export default Blogs;
 
 const CPaper = styled(Paper)`
   &&&{
-     /* margin-left: ${props=>props.width<650?'20px':(props.width<1080?'50px':'120px')}; */
     width: ${props=>props.width<650?'90%':(props.width<1080?'80%':'70%')};
-    /* width:90%; */
     min-height: 400px;
   }
 `;

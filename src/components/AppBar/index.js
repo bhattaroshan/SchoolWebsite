@@ -30,16 +30,21 @@ const MenuItemOptions = [
     path: '/'
   },
   {
-    title: 'Activities',
+    title: 'Communities',
     icon: null,
     submenu: [
       {
-        title: 'Football',
+        title: 'Testimonial',
         icon: <HomeIcon/>,
-        path: '/blogs'
+        path: '/football'
       },
       {
-        title: 'Wrestling',
+        title: 'Partners',
+        icon: <HomeIcon/>,
+        path: '/about'
+      },
+      {
+        title: 'Parents',
         icon: <HomeIcon/>,
         path: '/about'
       }

@@ -1,0 +1,31 @@
+
+.testimonial:before{
+  position:absolute;
+  margin-left: -80px;
+  content: open-quote;
+  font-weight:bold;
+  font-size:50px;
+  color:#889c0b;
+}
+
+.testimonial:after{
+  position:absolute;
+  margin-top: 5px;
+  margin-left: -40px;
+  content: close-quote;
+  font-weight:bold;
+  font-size:50px;
+  color:#889c0b;
+}
+
+
+/* .testimonial:after{
+
+
+/* .testimonial:after{
+  position:absolute;
+  content: close-quote;
+  font-weight:bold;
+  font-size:20px;
+  color:#889c0b;
+} */

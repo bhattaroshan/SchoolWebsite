@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import outsideClassroom from './assets/outsideClassroom.jpg';
 import fun from './assets/fun.jpg';
 import balance from './assets/balance.jpg';
-// import steam from './assets/steam.jpg';
 import award from './assets/award.jpg';
 import quiz from './assets/quiz.jpg';
 import logo from './assets/logo.jpg';
@@ -18,6 +17,11 @@ import Blog from './components/Blog';
 
 import Grid from '@material-ui/core/Grid';
 import AppBar from './components/AppBar';
+
+import Testimonial from './components/Testimonial';
+import { Typography } from '@material-ui/core';
+
+import './style.css';
 
 // import createBrowserHistory from 'history/createBrowserHistory';
 
@@ -88,6 +92,33 @@ function App() {
           <div style={{marginTop: '50px', display:'flex', justifyContent:'center'}}>
             <Blog/>
           </div>
+          </Route>
+          <Route exact path='/football'>
+          <div style={{display:'flex', justifyContent:'center',alignItems:'center',
+                      height:'300px', background:'linear-gradient(to bottom,rgb(150,180,150),rgb(180,200,200))', 
+                      marginTop:'100px'}}>
+            <Typography style={{fontSize:'100px', color:'white', fontFamily:'Lato', fontWeight:'900', 
+                                textShadow:'5px 5px rgb(100,100,100)'}}>TESTIMONIALS</Typography>
+          </div>
+          {/* <div style={{display:'flex', margin:'40px', justifyContent:'center'}}> */}
+          <Grid container ls={12} style={{justifyContent:'center'}}>
+            <Testimonial name='Roshan Bhatta'
+                         image= {'https://www.healthshots.com/wp-content/uploads/2020/11/toxic-person-quiz.jpg'} 
+                         post='Teacher'
+                         testimonial='Hello what is going on here are you ready to rock'/>
+            <Testimonial name= 'Rahul Raj Shah' 
+                         image = {'https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg'}
+                         post='Senior Web Developer' 
+                         testimonial='I think this is one of the amazing school I have ever been to.
+            please be part of this school everyone. Even if you have passed out of your school life but was not 
+            part of this school, I would recommend you to retake your classes from this school. Yes, it is this amazing'
+            />
+            <Testimonial name='Shyam Chhettri' 
+                         image={'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'}
+                         post='Marketing Lead'
+                         testimonial='What the fuck. This is the worst school I have ever seen'/>
+          </Grid>
+          {/* </div> */}
           </Route>
         </Switch> 
     </Router>
