@@ -66,6 +66,7 @@ export default function Cards({image,title,subheader}) {
 const CustomCard = styled(Card)`
 &&&{
   transition: 0.3s;
+  padding: 10px;
 }
 &:hover{
   box-shadow:2px 2px 5px rgba(0,0,0,0.2);

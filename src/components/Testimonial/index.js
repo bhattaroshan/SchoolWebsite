@@ -8,16 +8,16 @@ import Avatar1 from '../../assets/avatar1.jpeg';
 
 import './style.css';
 
-const Testimonial = ({image, name, post, testimonial}) =>{
+const Testimonial = ({width, image, name, designation, testimonial}) =>{
 	return (
 		<div>
-      <CPaper elevation={5}>
+      <CPaper elevation={5} width={width}>
         <CAvatar src={image}/>
         <CName>
           {name}
         </CName>
         <CDesignation>
-          {post}
+          {designation}
         </CDesignation>
 
         <CTestimonial className='testimonial'>{testimonial}</CTestimonial>
@@ -36,7 +36,7 @@ const CPaper = styled(Paper)`
     display:flex;
     flex-direction: column;
     align-items: center;
-    width: 400px;
+    width: ${props=>props.width}px;
     min-height:300px;
     background: linear-gradient(to  bottom right, rgb(200,200,200), rgb(255,255,255));
   }
