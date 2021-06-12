@@ -8,7 +8,7 @@ import Avatar1 from '../../assets/avatar1.jpeg';
 
 import './style.css';
 
-const Testimonial = ({width, image, name, designation, testimonial}) =>{
+const Testimonial = ({width, image, name, designation, content}) =>{
 	return (
 		<div>
       <CPaper elevation={5} width={width}>
@@ -20,7 +20,7 @@ const Testimonial = ({width, image, name, designation, testimonial}) =>{
           {designation}
         </CDesignation>
 
-        <CTestimonial className='testimonial'>{testimonial}</CTestimonial>
+        <CTestimonial className='testimonial'>{content}</CTestimonial>
 
       </CPaper>
 		</div>

@@ -41,7 +41,7 @@ const TestimonialPage = ({testimonials}) =>{
                   name = {testimonial.name}
                   image = {testimonial.image}
                   designation = {testimonial.designation}
-                  testimonial = {testimonial.testimonial}/>
+                  content = {testimonial.content}/>
               </div>
             );
           })

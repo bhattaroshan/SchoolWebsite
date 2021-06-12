@@ -81,20 +81,20 @@ function App() {
       name: 'Roshan Bhatta',
       image: 'https://www.healthshots.com/wp-content/uploads/2020/11/toxic-person-quiz.jpg',
       designation: 'Teacher',
-      testimonial: 'Hello what is going on here are you ready to rock' 
+      content: 'Hello what is going on here are you ready to rock' 
     },
     {
       name: 'Rahul Raj Shah',
       image: 'https://www.healthshots.com/wp-content/uploads/2020/11/toxic-person-quiz.jpg',
       designation: 'Web Developer',
-      testimonial: 'I am going to tell you something that is not going to be part of this page' 
+      content: 'I am going to tell you something that is not going to be part of this page' 
     },
     {
       name: 'Shyam Chettri',
       image: 'https://www.healthshots.com/wp-content/uploads/2020/11/toxic-person-quiz.jpg',
       designation: 'Marketing Manger',
       // eslint-disable-next-line no-multi-str
-      testimonial: 'I studied in this school since grade 1. Whatever I am today is all because of this school. \
+      content: 'I studied in this school since grade 1. Whatever I am today is all because of this school. \
                     This school has taught me to become more confident in my life. And today I run my own company \
                     which caters educational needs of hundreds of schools all over Nepal.'
     }
