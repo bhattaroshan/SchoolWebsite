@@ -5,6 +5,9 @@ import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
 import Testimonial from '../../components/Testimonial';
+import {TESTIMONIAL_BANNER_GRADIENT_DIRECTION,
+        TESTIMONIAL_BANNER_START_COLOR,
+        TESTIMONIAL_BANNER_END_COLOR} from '../../constants';
 
 const TestimonialPage = ({testimonials}) =>{
 
@@ -25,38 +28,46 @@ const TestimonialPage = ({testimonials}) =>{
 
   return (
     <div> 
-    <div style={{display:'flex', justifyContent:'center',alignItems:'center',
-                      height:'300px', background:'linear-gradient(to bottom,rgb(150,180,150),rgb(180,200,200))', 
-                      marginTop:'100px'}}>
-    <CTypography width={windowWidth}>TESTIMONIALS</CTypography>
-    </div>
-         
+    <CBanner>
+      <CTypography width={windowWidth}>TESTIMONIALS</CTypography>
+
+       
+
       <Grid container ls={12} style={{justifyContent:'center'}}>
         {
           testimonials.map((testimonial,index)=>{
             return (
-              <div key={index} id={index}>
-                <Testimonial 
-                  width = {windowWidth<650?320:400}
+                <Testimonial key={index} id={index} style={{position:'absolute'}}
+                  width = {windowWidth<650?350:400}
                   name = {testimonial.name}
                   image = {testimonial.image}
                   designation = {testimonial.designation}
                   content = {testimonial.content}/>
-              </div>
             );
           })
         }
 
       </Grid> 
-    </div>
+    </CBanner>
+      </div>
   );
 }
 
 
 export default TestimonialPage;
 
+
+const CBanner = styled.div`
+  margin-top:100px;
+  padding-top:20px;
+  text-align: center;
+  background: linear-gradient(to ${TESTIMONIAL_BANNER_GRADIENT_DIRECTION}, ${TESTIMONIAL_BANNER_START_COLOR}, ${TESTIMONIAL_BANNER_END_COLOR});
+
+`;
+
 const CTypography = styled(Typography)`
   &&&{
+    margin:40px;
     font-size: ${props=>props.width>1280?100:(props.width>900?80:50)}px;
     color: white;
     font-family: 'Lato';

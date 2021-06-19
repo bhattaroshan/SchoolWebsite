@@ -23,6 +23,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import {withRouter} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
 
+import {APPBAR_BG} from '../../constants';
+
 const MenuItemOptions = [
   {
     title: 'Home',
@@ -142,9 +144,9 @@ const AppBarResponsive = ({logo}) => {
 
     return(
       <div>
-        <AppBar position='fixed' color='inherit'>
+        <CAppBar position='fixed'>
           <Toolbar>
-              {drawerActivate && <IconButton onClick={()=>setDrawer(true)}><MenuIcon/></IconButton>}
+              {drawerActivate && <IconButton onClick={()=>setDrawer(true)}><MenuIcon style={{color:'white'}}/></IconButton>}
                 <CustomLogo variant="headline" src={logo} height={100} centerLogo={drawerActivate}/>
 
                 <div style={{flex:1}}/>
@@ -164,7 +166,7 @@ const AppBarResponsive = ({logo}) => {
                   </div>}
                 
           </Toolbar>
-        </AppBar>
+        </CAppBar>
         
         {
           MenuItemOptions[subMenuIndex].submenu && 
@@ -243,6 +245,12 @@ const AppBarResponsive = ({logo}) => {
 
 export default withRouter(AppBarResponsive);
 // export default AppBarResponsive;
+
+const CAppBar = styled(AppBar)`
+  &&&{
+    background: ${APPBAR_BG};
+  }
+`;
 
 const CMenuTypography = styled(Typography)`
   &&&{

@@ -31,14 +31,14 @@ const options = {
 
 const blogPost = `
      <span id='para'>What This is <span style='color:red;'>again this one </span>
-     another is Lorem Ipsum?Lorem is simply <span id='color-red'>dummy text </span> 
+     another is Lorem Ipsum?Lorem is simply <span style='color:red;'>dummy text </span> 
      of the printing and typesetting industry. Lorem Ipsum has been the industry's 
      standard dummy text ever since the 1500s, when an unknown printer took a galley 
      of type and scrambled 
      <span id='img' class='https://cdn.pixabay.com/photo/2014/11/13/06/12/boy-529067_960_720.jpg'></span>
      it to make a type specimen book. It has survived not only 
      five centuries, but also the leap into electronic typesetting, remaining essentially 
-     unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
+     unchanged.</span> <span id='para> It was popularised in the 1960s with the release of Letraset sheets containing 
      Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
      including versions of <a href='https://www.google.com'>Check out here</a> Lorem Ipsum.Where does it come from?Contrary to popular belief, 
      Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature 
@@ -57,6 +57,14 @@ const blogPost = `
 
 const CustomCover = ({image}) =>{
    const [windowWidth,setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(()=>{
+    console.log('I came here')
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  })
 
   useEffect(()=>{
     const handleResize = () =>{
@@ -109,6 +117,7 @@ const CPaper = styled(Paper)`
   &&&{
     width: ${props=>props.width<650?'90%':(props.width<1080?'80%':'70%')};
     min-height: 400px;
+    background:rgb(180,180,180);
   }
 `;
 
@@ -128,7 +137,6 @@ const CTitle = styled(Typography)`
 
 const CBody = styled.div` 
   &&&{
-    /* margin:5px; */
     margin-left: ${props=>props.width<650?'20px':(props.width<1080?'50px':'120px')};
     margin-right: ${props=>props.width<650?'20px':(props.width<1080?'50px':'120px')};
     font-size:${props=>props.width<650?'16px':(props.width<1080?'18px':'22px')};

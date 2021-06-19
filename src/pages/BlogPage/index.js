@@ -11,7 +11,11 @@ const BlogPage = (props) =>{
               props.BlogThumbnailDetails.map((blogThumbnail,index)=>{
                 return (
                   <div key={index} id={index}>
-                    <BlogCards image={blogThumbnail.image}/>
+                    <BlogCards image={blogThumbnail.image} 
+                              title={blogThumbnail.title} 
+                              content={blogThumbnail.content}
+                    />
+
                   </div>
                 );
               })

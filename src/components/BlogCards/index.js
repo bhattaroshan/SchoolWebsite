@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
     position:'relative',
     maxWidth: 345,
     marginTop: '20px',
-    // marginLeft: '20px'
   },
   media: {
     height: 0,
@@ -32,31 +31,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Cards({image,title,subheader}) {
+export default function Cards({image,title,content}) {
   const classes = useStyles();
-
 
   return (
     <CustomCard className={classes.root} >
-      {/* <CardHeader
-        title={title}
-        subheader={subheader}
-      /> */}
       <CardMedia
         className={classes.media}
         image={image}
         title="My friends"
       />
       <CardContent>
-        <Typography variant='body1' style={{fontWeight:'bold'}}>Students exploring environment</Typography>
+        <Typography variant='body1' style={{fontWeight:'bold'}}>{title}</Typography>
         <Typography variant="body2" color="textSecondary" component="p" style={{marginTop:'10px'}}>
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          {content.slice(0,85)} .....
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         {/* <IconButton style={{marginLeft:'auto'}}> */}
-          <Button variant='outlined' color='secondary' style={{marginLeft:'auto'}}>Read More...</Button>
+          <Button variant='outlined' style={{color:'rgb(200,200,200)', marginLeft:'auto'}}>Read More...</Button>
         {/* </IconButton> */}
       </CardActions>
     </CustomCard>
@@ -67,6 +60,9 @@ const CustomCard = styled(Card)`
 &&&{
   transition: 0.3s;
   padding: 10px;
+  width: 400px;
+  height: 350px;
+  background: rgb(100,100,100);
 }
 &:hover{
   box-shadow:2px 2px 5px rgba(0,0,0,0.2);

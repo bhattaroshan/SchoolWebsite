@@ -28,10 +28,12 @@ export default function FeaturedPost(props) {
 
   return (
     <Grid item xs={12} sm={12} md={7} lg={6} >
-      <CardActionArea component="a" href="#">
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
-            <CardContent>
+            <CardContent style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+              <Hidden xsUp={true}>
+                  <CardMedia style={{}}className={classes.cardMedia} image={post.image}/>
+              </Hidden>
               <Typography component="h2" variant="h5" style={{fontWeight:'bold'}}>
                 {post.title}
               </Typography>
@@ -41,16 +43,12 @@ export default function FeaturedPost(props) {
               <Typography variant="subtitle1" paragraph style={{marginTop:'20px'}}>
                 {post.description}
               </Typography>
-              {/* <Typography variant="subtitle1" color="primary">
-                Continue reading...
-              </Typography> */}
             </CardContent>
           </div>
           <Hidden xsDown>
             <CardMedia className={classes.cardMedia} image={post.image} title={post.image} />
           </Hidden>
         </Card>
-      </CardActionArea>
     </Grid>
   );
 }

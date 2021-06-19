@@ -7,6 +7,9 @@ import styled from 'styled-components';
 import Avatar1 from '../../assets/avatar1.jpeg';
 
 import './style.css';
+import {TESTIMONIAL_GRADIENT_DIRECTION, 
+        TESTIMONIAL_START_COLOR,
+        TESTIMONIAL_END_COLOR} from '../../constants';
 
 const Testimonial = ({width, image, name, designation, content}) =>{
 	return (
@@ -38,7 +41,7 @@ const CPaper = styled(Paper)`
     align-items: center;
     width: ${props=>props.width}px;
     min-height:300px;
-    background: linear-gradient(to  bottom right, rgb(200,200,200), rgb(255,255,255));
+    background: linear-gradient(to ${TESTIMONIAL_GRADIENT_DIRECTION}, ${TESTIMONIAL_START_COLOR}, ${TESTIMONIAL_END_COLOR});
   }
 `;
 
