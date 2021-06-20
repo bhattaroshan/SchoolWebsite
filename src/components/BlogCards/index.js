@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -8,6 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import styled from 'styled-components';
+
+import {withRouter} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,8 +34,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Cards({image,title,content}) {
+function Cards({image,title,content,id}) {
+  const history = useHistory();
   const classes = useStyles();
+
+  const handleBlogClick = () =>{
+    history.push(`/${id}`);
+  }
 
   return (
     <CustomCard className={classes.root} >
@@ -42,19 +50,23 @@ export default function Cards({image,title,content}) {
         title="My friends"
       />
       <CardContent>
-        <Typography variant='body1' style={{fontWeight:'bold'}}>{title}</Typography>
-        <Typography variant="body2" color="textSecondary" component="p" style={{marginTop:'10px'}}>
-          {content.slice(0,85)} .....
-        </Typography>
+          <Typography variant='body1' style={{fontWeight:'bold'}}>{title}</Typography>
+          <Typography variant="body2" color="textSecondary" component="p" style={{marginTop:'10px'}}>
+            {content  && content.slice(0,85)} .....
+          </Typography>
+          <CardActions disableSpacing>
+            <Button variant='outlined' 
+                    style={{position:'absolute', right:'3%',bottom:'3%'}}
+                    onClick={()=>handleBlogClick()}>
+                    Read More...
+            </Button>
+        </CardActions>
       </CardContent>
-      <CardActions disableSpacing>
-        {/* <IconButton style={{marginLeft:'auto'}}> */}
-          <Button variant='outlined' style={{color:'rgb(200,200,200)', marginLeft:'auto'}}>Read More...</Button>
-        {/* </IconButton> */}
-      </CardActions>
     </CustomCard>
   );
 }
+
+export default withRouter(Cards);
 
 const CustomCard = styled(Card)`
 &&&{
@@ -62,7 +74,7 @@ const CustomCard = styled(Card)`
   padding: 10px;
   width: 400px;
   height: 350px;
-  background: rgb(100,100,100);
+  background: rgb(168,193,188);
 }
 &:hover{
   box-shadow:2px 2px 5px rgba(0,0,0,0.2);

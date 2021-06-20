@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    // backgroundImage: "url(https://image.freepik.com/free-photo/school-age-children-medical-masks-portrait-school-children_109285-5762.jpg)",
     backgroundImage: props=>`url(${props.image})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",

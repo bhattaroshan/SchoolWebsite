@@ -28,7 +28,7 @@ export default function FeaturedPost(props) {
 
   return (
     <Grid item xs={12} sm={12} md={7} lg={6} >
-        <Card className={classes.card}>
+        <Card className={classes.card} style={{background:'rgb(168,193,188)'}}>
           <div className={classes.cardDetails}>
             <CardContent style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
               <Hidden xsUp={true}>

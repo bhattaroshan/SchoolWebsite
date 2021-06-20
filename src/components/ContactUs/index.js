@@ -46,9 +46,9 @@ const ContactUs = () => {
         </Grid>
       </Grid>
         <div style={{marginTop:'100px',marginBottom:'100px', textAlign:'center'}}>
-          <Typography style={{fontSize:'30px', fontWeight:'bold', color:'white'}}>SEND US A MESSAGE</Typography>
-          <Link color='inherit' href='https://google.com'><FacebookIcon style={{color:'white', marginTop:'50px', marginLeft:'40px', marginRight:'40px', fontSize:'50px'}}/></Link>
-          <Link color='inherit' href='https://google.com'><TwitterIcon style={{color:'white', marginTop:'50px',marginLeft:'40px', marginRight:'40px', fontSize: '50px'}}/></Link>
+          <Typography style={{fontSize:'30px', fontWeight:'bold', color:'black'}}>SEND US A MESSAGE</Typography>
+          <Link color='inherit' href='https://google.com'><FacebookIcon style={{color:'black', marginTop:'50px', marginLeft:'40px', marginRight:'40px', fontSize:'50px'}}/></Link>
+          <Link color='inherit' href='https://google.com'><TwitterIcon style={{color:'black', marginTop:'50px',marginLeft:'40px', marginRight:'40px', fontSize: '50px'}}/></Link>
         </div>
     </div>
   );
@@ -66,13 +66,13 @@ const CContact = styled.div`
 const CTypography = styled(Typography)`
   &&&{
     font-size:25px;
-    color:white;
+    color:black;
   }
 `;
 
 const CSubTypography = styled(Typography)`
   &&&{
-    color:white;
+    color:black;
   }
 `;
 
@@ -80,7 +80,7 @@ const CPhoneInTalkOutlinedIcon = styled(PhoneInTalkOutlinedIcon)`
   &&&{
     margin:30px;
     font-size: 40px;
-    color:white;
+    color:black;
   }
 `;
 
@@ -88,7 +88,7 @@ const CMailOutlineIcon = styled(MailOutlineIcon)`
   &&&{
     margin:30px;
     font-size: 40px;
-    color:white;
+    color:black;
   }
 `;
 
@@ -96,6 +96,6 @@ const CLocationOnOutlinedIcon = styled(LocationOnOutlinedIcon)`
   &&&{
     margin:30px;
     font-size: 40px;
-    color:white;
+    color:black;
   }
 `;

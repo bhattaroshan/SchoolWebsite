@@ -22,6 +22,11 @@ import HomeIcon from '@material-ui/icons/Home';
 
 import {withRouter} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
+import InfoIcon from '@material-ui/icons/Info';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import SportsHandballIcon from '@material-ui/icons/SportsHandball';
+import PeopleIcon from '@material-ui/icons/People';
 
 import {APPBAR_BG} from '../../constants';
 
@@ -36,13 +41,13 @@ const MenuItemOptions = [
     icon: null,
     submenu: [
       {
-        title: 'Testimonial',
-        icon: <HomeIcon/>,
+        title: 'sports',
+        icon: <SportsHandballIcon/>,
         path: '/football'
       },
       {
         title: 'Partners',
-        icon: <HomeIcon/>,
+        icon: <PeopleIcon/>,
         path: '/about'
       },
       {
@@ -54,12 +59,12 @@ const MenuItemOptions = [
   },
   {
     title: 'Blogs',
-    icon: <HomeIcon/>,
+    icon: <LibraryBooksIcon/>,
     path: '/blogs',
   },
   {
     title: 'About',
-    icon: <HomeIcon/>,
+    icon: <InfoIcon/>,
     path: '/about'
   },
   {
@@ -67,7 +72,7 @@ const MenuItemOptions = [
   },
   {
     title: 'Contact Us',
-    icon: <HomeIcon/>,
+    icon: <ContactPhoneIcon/>,
     path:'/contactus'
   }
 
@@ -146,7 +151,7 @@ const AppBarResponsive = ({logo}) => {
       <div>
         <CAppBar position='fixed'>
           <Toolbar>
-              {drawerActivate && <IconButton onClick={()=>setDrawer(true)}><MenuIcon style={{color:'white'}}/></IconButton>}
+              {drawerActivate && <IconButton onClick={()=>setDrawer(true)}><MenuIcon style={{color:'black'}}/></IconButton>}
                 <CustomLogo variant="headline" src={logo} height={100} centerLogo={drawerActivate}/>
 
                 <div style={{flex:1}}/>
@@ -215,7 +220,7 @@ const AppBarResponsive = ({logo}) => {
                                           <CListItem button onClick={()=>handleDrawerMenuClick(index,subindex)}>
                                           <ListItemIcon>{subitem.icon}</ListItemIcon>
                                           <CListItemText primary={
-                                            <Typography>{subitem.title.toUpperCase()}</Typography>
+                                            <Typography style={{fontSize:'15px'}}>{subitem.title.toUpperCase()}</Typography>
                                           }/>
                                           </CListItem>
                                         </div>
@@ -285,7 +290,8 @@ const CustomMenuButton = styled(Typography)`
     font-size: 18px;
     font-weight:bold;
     cursor: pointer;
-    margin:10px;
+    margin:20px;
+    color:black;
   }
   &:hover{
     color: red;

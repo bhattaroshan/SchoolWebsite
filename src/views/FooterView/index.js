@@ -7,9 +7,6 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import HomeIcon from '@material-ui/icons/Home';
 
 import {FOOTER_BG, FOOTER_FACEBOOK_LINK, 
         FOOTER_ONE_LINER, FOOTER_TITLE_TEXT, 
@@ -55,7 +52,7 @@ export default function Footer() {
 const CFooter = styled.div`
   &&&{
     /* height:500px; */
-    margin-top:40px;
+    margin-top:100px;
     display:flex;
     flex-direction:column;
     justify-content:center;

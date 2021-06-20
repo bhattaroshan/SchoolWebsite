@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -99,35 +99,42 @@ function App() {
     description: 'Graduated from Yale University, Dr. Ghimire has 25 years of experience in teaching in both national and international schools. Being the pioneer in the field, Ghimire was awarded for bringing best in students by Internation Teachers Association in 1996.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Claude_Dauphin%2C_CEO_Trafigura.jpg'
   }
-
+  const post2 = {
+    title: 'About the Co-ordinator',
+    date: 'Dr. Bishehwor Rana',
+    description: 'Graduated from Yale University, Dr. Ghimire has 25 years of experience in teaching in both national and international schools. Being the pioneer in the field, Ghimire was awarded for bringing best in students by Internation Teachers Association in 1996.',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Claude_Dauphin%2C_CEO_Trafigura.jpg'
+  }
   const testimonials = [
     {
       name: 'Roshan Bhatta',
-      image: 'https://www.healthshots.com/wp-content/uploads/2020/11/toxic-person-quiz.jpg',
+      image: 'https://jakemiller.net/wp-content/uploads/2018/08/cropped-smile-bitmoji.png',
       designation: 'Teacher',
-      content: 'Hello what is going on here are you ready to rock' 
+      content: 'I have been teaching since last 25 years. I have taught in 5 schools in 5 years. And later when I shifted to this school, I am still hear since last 20 years. This is the best school I have ever been to in terms of my growth and also in terms of education for your child.' 
     },
     {
-      name: 'Roshan Bhatta',
-      image: 'https://www.healthshots.com/wp-content/uploads/2020/11/toxic-person-quiz.jpg',
-      designation: 'Teacher',
-      content: 'Hello what is going on here are you ready to rock' 
+      name: 'Sumita Shrestha',
+      image: 'https://i.dlpng.com/static/png/6505660_preview.png',
+      designation: 'Grade 9 Student',
+      content: 'Hello what is going on here are you ready to rock. I studied in this school since grade 1. \
+                Whatever I am today is all because of this school. \
+                    This school has taught me to become more confident in my life.' 
     },
     {
-      name: 'Roshan Bhatta',
-      image: 'https://www.healthshots.com/wp-content/uploads/2020/11/toxic-person-quiz.jpg',
-      designation: 'Teacher',
-      content: 'Hello what is going on here are you ready to rock' 
+      name: 'Dhan Bd. Rana',
+      image: 'https://i.pinimg.com/originals/8c/ef/f7/8ceff7ef2cf0b10181d5d223c51f30f6.png',
+      designation: 'Grade 7 Student',
+      content: 'मेरो नाम धन बहादुर राणा हो । म यो बिद्यालयमा सानै देखी पढ्एको हो । यस बिद्यालयले मलाई जिवन्मा सफल हुन सिकएको छ । ' 
     },
     {
       name: 'Rahul Raj Shah',
-      image: 'https://www.healthshots.com/wp-content/uploads/2020/11/toxic-person-quiz.jpg',
+      image: 'https://i.dlpng.com/static/png/5259459-my-images-for-k-dub-sap-business-exchange-bitmoji-png-398_398_preview.png',
       designation: 'Web Developer',
       content: 'I am going to tell you something that is not going to be part of this page' 
     },
     {
       name: 'Shyam Chettri',
-      image: 'https://www.healthshots.com/wp-content/uploads/2020/11/toxic-person-quiz.jpg',
+      image: 'https://ericsonn.com/resources/bitmoji.png',
       designation: 'Marketing Manger',
       // eslint-disable-next-line no-multi-str
       content: 'I studied in this school since grade 1. Whatever I am today is all because of this school. \
@@ -136,21 +143,24 @@ function App() {
     }
   ];
 
-  const blog = [];
+  const [blog,setBlog] = useState([]);
+  const tblog = []
 
   useEffect(() => {
     api.get('/').then(res=>{
       // console.log(res.data);
       res.data.forEach(element => {
-        blog.push({
+        tblog.push({
+          id:element._id,
           image:quiz,
           title: element.title,
           content: element.blog 
         })
       });
+      setBlog(...blog,tblog);
     })
-  })
-
+  },[])
+  
   return (
     <Router>
         <GlobalStyle/>
@@ -165,7 +175,7 @@ function App() {
               <About post={post}/>
             </div>
             <div style={{display:'flex', justifyContent:'center', marginTop:'100px'}}>
-              <About post={post}/>
+              <About post={post2}/>
             </div>
           </Route>
           <Route exact path='/contactus'>
@@ -180,6 +190,9 @@ function App() {
             <div style={{marginTop: '50px', display:'flex', justifyContent:'center'}}>
               <Blog/>
             </div>
+          </Route>
+          <Route path='/:id'>
+            <Blog/>
           </Route>
         </Switch> 
       <Footer/>
@@ -208,6 +221,6 @@ const GlobalStyle = createGlobalStyle`
 
   body{
 		${'' /* background: linear-gradient(to bottom, rgb(180,220,180),rgb(255,255,255)); */}
-    background: rgb(25,25,25);
+    background: rgb(255,255,255);
   }
 `;
