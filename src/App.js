@@ -32,6 +32,12 @@ import ScrollToTop from './components/ScrollToTop';
 // import createBrowserHistory from 'history/createBrowserHistory';
 import axios from  'axios';
 
+import mask1 from './assets/mask1.png';
+import mask2 from './assets/mask2.png';
+import mask3 from './assets/mask3.png';
+import mask4 from './assets/mask4.png';
+import mask5 from './assets/mask5.png';
+
 const appBarHeight = 120;
 
 const BlogThumbnailDetails = [
@@ -108,13 +114,13 @@ function App() {
   const testimonials = [
     {
       name: 'Roshan Bhatta',
-      image: 'https://jakemiller.net/wp-content/uploads/2018/08/cropped-smile-bitmoji.png',
+      image: mask5,
       designation: 'Teacher',
       content: 'I have been teaching since last 25 years. I have taught in 5 schools in 5 years. And later when I shifted to this school, I am still hear since last 20 years. This is the best school I have ever been to in terms of my growth and also in terms of education for your child.' 
     },
     {
       name: 'Sumita Shrestha',
-      image: 'https://i.dlpng.com/static/png/6505660_preview.png',
+      image: mask4,
       designation: 'Grade 9 Student',
       content: 'Hello what is going on here are you ready to rock. I studied in this school since grade 1. \
                 Whatever I am today is all because of this school. \
@@ -122,19 +128,19 @@ function App() {
     },
     {
       name: 'Dhan Bd. Rana',
-      image: 'https://i.pinimg.com/originals/8c/ef/f7/8ceff7ef2cf0b10181d5d223c51f30f6.png',
+      image: mask1,
       designation: 'Grade 7 Student',
       content: 'मेरो नाम धन बहादुर राणा हो । म यो बिद्यालयमा सानै देखी पढ्एको हो । यस बिद्यालयले मलाई जिवन्मा सफल हुन सिकएको छ । ' 
     },
     {
       name: 'Rahul Raj Shah',
-      image: 'https://i.dlpng.com/static/png/5259459-my-images-for-k-dub-sap-business-exchange-bitmoji-png-398_398_preview.png',
+      image: mask2,
       designation: 'Web Developer',
       content: 'I am going to tell you something that is not going to be part of this page' 
     },
     {
       name: 'Shyam Chettri',
-      image: 'https://ericsonn.com/resources/bitmoji.png',
+      image: mask3,
       designation: 'Marketing Manger',
       // eslint-disable-next-line no-multi-str
       content: 'I studied in this school since grade 1. Whatever I am today is all because of this school. \
