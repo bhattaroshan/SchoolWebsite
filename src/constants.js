@@ -25,7 +25,7 @@ export const TESTIMONIAL_BANNER_END_COLOR = 'rgb(200,240,200)';
 
 //FOOTER CONSTANTS
 export const FOOTER_TITLE_TEXT_COLOR = 'white';
-export const FOOTER_TITLE_TEXT = 'DHAULAGIRI SCHOOL';
+export const FOOTER_TITLE_TEXT = 'DHAWALAGIRI BOARDING SCHOOL';
 export const FOOTER_TITLE_TEXT_LINK = 'https://nepalschoolwebsite.netlify.app';
 
 export const FOOTER_ONE_LINER = 'Bringing innovation in every step of student\'s life';

@@ -50,7 +50,10 @@ function Cards({image,title,content,id}) {
         title="My friends"
       />
       <CardContent>
-          <Typography variant='body1' style={{fontWeight:'bold'}}>{title}</Typography>
+          <Typography variant='body1' style={{fontWeight:'bold'}}>
+            {title && title.slice(0,50)}
+            {title && title.length>50 && <span> ....</span>}
+          </Typography>
           <Typography variant="body2" color="textSecondary" component="p" style={{marginTop:'10px'}}>
             {content  && content.slice(0,85)} .....
           </Typography>

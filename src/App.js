@@ -31,6 +31,7 @@ import ScrollToTop from './components/ScrollToTop';
 
 // import createBrowserHistory from 'history/createBrowserHistory';
 import axios from  'axios';
+import Faq from './components/Faq';
 
 import mask1 from './assets/mask1.png';
 import mask2 from './assets/mask2.png';
@@ -196,6 +197,9 @@ function App() {
             <div style={{marginTop: '50px', display:'flex', justifyContent:'center'}}>
               <Blog/>
             </div>
+          </Route>
+          <Route exact path='/faq'>
+            <Faq/>
           </Route>
           <Route path='/:id'>
             <Blog/>
