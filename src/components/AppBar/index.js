@@ -51,7 +51,7 @@ const MenuItemOptions = [
         path: '/about'
       },
       {
-        title: 'Parents',
+        title: 'FAQ',
         icon: <HomeIcon/>,
         path: '/faq'
       }

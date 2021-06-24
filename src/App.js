@@ -99,6 +99,26 @@ function NavTest({appBarHeight}){
   </>;
 }
 
+const faqs = [
+  {
+    question: 'Where is your school located?',
+    answer: 'Our school is located to the right side of the junction that separates Pokhara from Baglunj'
+  },
+  {
+    question: 'Do you have extra-curricular activities in your school?',
+    answer: 'We conduct 15 different extra-curricular activities every week. All of these activities happens twice a week. To know more about the details of the activites please see our extra-curricular page.'
+  },
+  {
+    question: 'Can I enroll my child in the middle of the session?',
+    answer: 'It depends. If you child read below grade 5 than we take certain tests to see if your child can attend that grade. If he or she passes the test with 60% marks we can enroll your child even in the middle of the session.'
+  },
+  {
+    question: 'Can my child participate in any activities conducted by the school?',
+    answer: 'Absolutely. If you child is interested and wants to try any activities organized by the school that is open for children, they can participate.'
+  },
+
+];
+
 function App() {
   const post = {
     title: 'About the principal',
@@ -199,7 +219,7 @@ function App() {
             </div>
           </Route>
           <Route exact path='/faq'>
-            <Faq/>
+            <Faq faqs={faqs}/>
           </Route>
           <Route path='/:id'>
             <Blog/>
