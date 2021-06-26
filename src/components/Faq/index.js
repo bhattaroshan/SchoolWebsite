@@ -2,58 +2,100 @@
 import {useState} from 'react';
 import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import styled from 'styled-components';
-import AddIcon from '@material-ui/icons/Add';
+import styled, {css, keyframes} from 'styled-components';
 
 const Faq = (props)=>{
   return (
-    <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+    <Grid container justify='center'>
+    <Grid item lg={6} md={8} sm={10} xs={11} >
       {
-        props.faqs.map((elem)=>{
-          return <FaqTemp question={elem.question} answer={elem.answer}/>
+        props.faqs.map((elem,index)=>{
+          return <FaqTemp key={index} id={index} question={elem.question} answer={elem.answer}/>
         })
       }
-    </div>
+
+    </Grid>
+    </Grid>
   );
 }
 
 const FaqTemp = ({question,answer}) =>{
   const [checked, setChecked] = useState(false);
+  const [startAnimation,setStartAnimation] = useState(0);
 
   const handleOpen = () =>{
-    setChecked((prev)=>!prev);
+    if(startAnimation===0) setStartAnimation(1);
+    setChecked(prev=>!prev);
   }
 
   return (
 
-      <MGrid container lg={6} md={8} sm={10} xs={10}  direction='column' onClick={()=>handleOpen()}>
+      <MGrid container direction='column' onClick={()=>handleOpen()}>
+
         <Grid item>
           <Grid container justify='space-between' wrap='nowrap'>
-            <CTypography>{question}</CTypography>
-            {!checked && <ExpandMoreIcon/>}
-            {checked && <ExpandLessIcon/>}
+              <CTypography>{question}</CTypography>
+              <CustomExpandLessIcon flip={checked?1:0} startanimation={startAnimation?1:0}/>
           </Grid>
-      </Grid>
-      <Grid item>
-          <Collapse in={checked}>
-            <CATypography>{answer}</CATypography>
-          </Collapse>
-      </Grid>
+        </Grid>
+
+        <Grid item>
+            <Collapse in={checked}>
+              <CATypography>{answer}</CATypography>
+            </Collapse>
+       </Grid> 
+
       </MGrid>
 
-      // </div>
-
-    // </div>
   );
 }
 
+
+const rotate0to180 = keyframes`
+  0%{
+    transform: rotate(0deg);
+  }
+
+  100%{
+    transform: rotate(180deg);
+  }
+`;
+
+const rotate180to0 = keyframes`
+  0%{
+    transform: rotate(180deg);
+  }
+  99.5%{
+    transform: rotate(359deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+`;
+
+const CustomExpandLessIcon = styled(ExpandLessIcon)`
+  &&&{
+    animation-name: ${props=>{
+      if(props.startanimation===0) return '';
+      const flip = props.flip;
+      if(flip===1){
+        return css`${rotate0to180}`;
+      }else{
+        return css`${rotate180to0}`;
+      }
+    }};
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: both;
+    /* transition: all 0.2s ease; */
+  }
+`;
+
 const MGrid = styled(Grid)`
   &&&{
-    background:rgb(220,220,250);
+    background:rgb(200,220,200);
     margin:10px;
     padding:10px;
     border-radius: 10px;
@@ -62,20 +104,34 @@ const MGrid = styled(Grid)`
   }
 `;
 
-const CTypography = styled(Typography)`
+const CTypography = styled.div`
   &&&{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; 
     font-size:20px;
     margin-left: 40px;
-    font-weight: bold;
-    color:rgb(0,100,200);
+    font-weight: 500;
+    color:black;
+    font-family: 'Roboto';
   }
 `;
 
-const CATypography = styled(Typography)`
+const CATypography = styled.div`
   &&&{
+     -webkit-touch-callout: none; /* iOS Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+     -ms-user-select: none; /* Internet Explorer/Edge */
+     user-select: none; 
     margin-top:20px;
     font-size:18px;
     margin-left: 40px;
+    font-family: 'Roboto';
+    font-weight:300;
+    margin-right:20px;
   }
 `;
 

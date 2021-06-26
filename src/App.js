@@ -10,7 +10,6 @@ import quiz from './assets/quiz.jpg';
 import logo from './assets/logo.jpg';
 import blog1 from './assets/blog1.jpg';
 
-import Cards from './components/BlogCards';
 import CustomCarousel from './components/CustomCarousel';
 import About from './components/About';
 import ContactUs from './components/ContactUs';
@@ -24,7 +23,6 @@ import {createGlobalStyle} from 'styled-components';
 import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';
 
-import ScrollingView from './views/ScrollingView';
 
 import Footer from './views/FooterView';
 import ScrollToTop from './components/ScrollToTop';
@@ -33,57 +31,21 @@ import ScrollToTop from './components/ScrollToTop';
 import axios from  'axios';
 import Faq from './components/Faq';
 
+import ScrollTab from './components/ScrollTab';
+import FaqPage from './pages/FaqPage';
+
+
 import mask1 from './assets/mask1.png';
 import mask2 from './assets/mask2.png';
 import mask3 from './assets/mask3.png';
 import mask4 from './assets/mask4.png';
 import mask5 from './assets/mask5.png';
 
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import SportsBaseballIcon from '@material-ui/icons/SportsBaseball';
+import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
+
 const appBarHeight = 120;
-
-const BlogThumbnailDetails = [
-  {
-    image: outsideClassroom,
-    title: 'students working with water',
-    content: 'Students exploring how to read and write using water bucket and pumps. Everyone is excited to be outside the class'
-  },
-  {
-    image: fun,
-    title: 'someone is ready for holi',
-    content: '+2 students getting ready to rock during the festival'
-  },
-  {
-    image: balance,
-    title: 'children playing football',
-    content: '+2 students getting ready to rock during the festival'
-  },
-  {
-    image: award,
-    title: 'our students got award',
-    content: '+2 students getting ready to rock during the festival'
-  },
-  {
-    image: quiz,
-    title: 'Students practicing for upcoming test',
-    content: '+2 students getting ready to rock during the festival'
-
-  },
-  {
-    image: blog1,
-    title: 'Students practicing for upcoming test',
-    content: '+2 students getting ready to rock during the festival'
-  },
-  {
-    image: award,
-    title: 'Students practicing for upcoming test',
-    content: '+2 students getting ready to rock during the festival'
-  },
-  {
-    image: quiz,
-    title: 'Students practicing for upcoming test',
-    content: '+2 students getting ready to rock during the festival'
-  }
-];
 
 
 const api = axios.create({
@@ -98,6 +60,60 @@ function NavTest({appBarHeight}){
         </CarouselDiv>
   </>;
 }
+
+const faqs2 = [
+
+  {
+    tab:'Admission',
+    icon: <GroupAddIcon/>,
+    content:[
+      {
+        question: 'Can I enroll my child in the middle of the session?',
+        answer: 'It depends. If you child read below grade 5 than we take certain tests to see if your child can attend that grade. If he or she passes the test with 60% marks we can enroll your child even in the middle of the session.'
+      },
+      {
+        question:'Will my one child get scholarship if I enroll my three children?',
+        answer:'No, you will have to pay fees of all children irrespective of how many children you enroll for the class.'
+      },
+      {
+        question:'How much does a school charge as an admission fee?',
+        answer:'It depends upon the grade. Please call our school to know the details. Our contact number can be obtained from the Contact Us page.'
+      },
+      {
+        question:'Is school enrolling students even during pandemic?',
+        answer:'Yes. We conduct virtual classes to students.'
+      },
+
+    ]
+  },
+
+  {
+    tab: 'Activities',
+    icon: <SportsBaseballIcon/>,
+    content:[
+      {
+        question: 'Do you have extra-curricular activities in your school?',
+        answer: 'We conduct 15 different extra-curricular activities every week. All of these activities happens twice a week. To know more about the details of the activites please see our extra-curricular page.'
+      },
+    ]
+  },
+
+  {
+    tab: 'Facilities',
+    icon: <AirportShuttleIcon/>,
+    content:[
+      {
+        question: 'Do you have transportation facility in your school?',
+        answer: 'Yes, our bus travels in almost all part of pokhara. Please navigate to bus route option to see all available route options in google map.'
+      },
+      {
+        question: 'Do you also take students out for swimming?',
+        answer: 'Our school has three swimming pools. It is compulsory for every children to participate in the activity unless they have any physical condition.'
+      }
+    ]
+  }
+
+];
 
 const faqs = [
   {
@@ -116,7 +132,14 @@ const faqs = [
     question: 'Can my child participate in any activities conducted by the school?',
     answer: 'Absolutely. If you child is interested and wants to try any activities organized by the school that is open for children, they can participate.'
   },
-
+  {
+    question: 'Can I enroll my child in the middle of the session?',
+    answer: 'It depends. If you child read below grade 5 than we take certain tests to see if your child can attend that grade. If he or she passes the test with 60% marks we can enroll your child even in the middle of the session.'
+  },
+  {
+    question: 'Can my child participate in any activities conducted by the school?',
+    answer: 'Absolutely. If you child is interested and wants to try any activities organized by the school that is open for children, they can participate.'
+  },
 ];
 
 function App() {
@@ -219,7 +242,7 @@ function App() {
             </div>
           </Route>
           <Route exact path='/faq'>
-            <Faq faqs={faqs}/>
+            <FaqPage faqs={faqs2}/>
           </Route>
           <Route path='/:id'>
             <Blog/>

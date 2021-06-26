@@ -4,17 +4,15 @@ import BlogCards from '../../components/BlogCards';
 
 import axios from 'axios';
 
-import defBlogPic from '../../assets/blog.png';
 
 const BlogPage = (props) =>{
 
+  //axios is not complete here need to complete to get blog thumbnail from here later
   const [thumnaildata,setThumnailData] = useState([]);
-  const [loaded,setLoaded] = useState(false);
 
   useEffect(()=>{
     const handleLoad = () =>{
       const tempData = [];
-      console.log('I came here');
       axios.get('https://prasar-backend.herokuapp.com/record')
           .then(res=>{
               res.data.forEach(element => {
@@ -23,8 +21,7 @@ const BlogPage = (props) =>{
           })
         
       // setThumnailData(tempData);
-      setLoaded(true);
-      console.log(thumnaildata);
+      // console.log(thumnaildata);
     }
 
     window.addEventListener('load',handleLoad);
@@ -47,11 +44,6 @@ const BlogPage = (props) =>{
                               title={blogThumbnail.title} 
                               content={blogThumbnail.content}
                     />
-                    {/* <BlogCards id={thumnaildata._id}
-                               image={defBlogPic}
-                               title={thumnaildata.title}
-                               content={thumnaildata.blog}
-                    /> */}
                   </div>
                 );
               })
