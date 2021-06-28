@@ -17,13 +17,7 @@ import {FOOTER_BG, FOOTER_FACEBOOK_LINK,
 export default function Footer() {
 
   return (
-      <div>
-            {/* <BottomNavigation>
-            <Typography>Contact Us</Typography>
-            <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-            <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-            <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-          </BottomNavigation> */}
+            
 
         <CFooter> 
             <Typography style={{color:`${FOOTER_TITLE_TEXT_COLOR}`, fontSize:'20px'}}> © 
@@ -45,11 +39,10 @@ export default function Footer() {
               </Link>
             </div>
         </CFooter>
-      </div>
   );
 }
 
-const CFooter = styled.div`
+const CFooter = styled.footer`
   &&&{
     /* height:500px; */
     margin-top:100px;

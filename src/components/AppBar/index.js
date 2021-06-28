@@ -29,6 +29,11 @@ import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 import PeopleIcon from '@material-ui/icons/People';
 
 import {APPBAR_BG} from '../../constants';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+import Paper from '@material-ui/core/Paper';
+
+import { AirlineSeatIndividualSuiteOutlined } from '@material-ui/icons';
 
 const MenuItemOptions = [
   {
@@ -97,7 +102,7 @@ const AppBarResponsive = ({logo}) => {
 
     useEffect(()=>{
       const handleResize = () =>{
-        if(window.innerWidth <=780){
+        if(window.innerWidth <=950){
           setDrawerActivate(true);
         }
         else{
@@ -120,10 +125,13 @@ const AppBarResponsive = ({logo}) => {
         setDrawer(false);
       }
     }
-    
+
+    const [tabHighlighter,setTabHighlighter] = useState(0);
+
     const handleDropMenuOpen = (index)=>(e) =>{
       if(MenuItemOptions[index].submenu ===undefined){
         history.push(MenuItemOptions[index].path);
+        setTabHighlighter(index)
       }
       else{
 
@@ -140,34 +148,51 @@ const AppBarResponsive = ({logo}) => {
     const handleDropMenuItemClose = (index) =>{
       history.push(MenuItemOptions[subMenuIndex].submenu[index].path);
       handleDropMenuClose();
+      setTabHighlighter(subMenuIndex);
     }
 
     const handleDrawerMenuClick = (index,subindex) =>{
-      history.push(MenuItemOptions[index].submenu[subindex].path);
       setDrawer(false);
+      history.push(MenuItemOptions[index].submenu[subindex].path);
     }
 
     return(
       <div>
         <CAppBar position='fixed'>
           <Toolbar>
-              {drawerActivate && <IconButton onClick={()=>setDrawer(true)}><MenuIcon style={{color:'black'}}/></IconButton>}
-                <CustomLogo variant="headline" src={logo} height={100} centerLogo={drawerActivate}/>
+            <CustomLogo variant="headline" src={logo} height={100}/>
+            <div style={{flex:1}}/>
+              {
+                drawerActivate && 
+                <div>
+                  <IconButton onClick={()=>setDrawer(true)}><MenuIcon style={{color:'black'}}/></IconButton>
+                </div>
+              }
 
-                <div style={{flex:1}}/>
                     {drawerActivate===false && <div style={{display:'flex'}}>
+                      <Paper square style={{boxShadow:'none'}}>
+                          <Tabs
+                            value={tabHighlighter}
+                            indicatorColor='primary'
+                            textColor='primary'
+                            aria-label='tabs'
+                            >
                         {
                           MenuItemOptions.map((item,index)=>{
                             return(
                               <div key={index} id={index}>
-                                {
-                                  item.title && 
-                                  <CustomMenuButton aria-controls='menu' onClick={handleDropMenuOpen(index)}>{item.title.toUpperCase()}</CustomMenuButton>
-                                }
+                              {
+                                item.title &&
+                                <Tab label={item.title.toUpperCase()} style={{fontSize:'20px', fontWeight:'bold'}} onClick={handleDropMenuOpen(index)}/>
+                              }
+                                  {/* item.title &&  */}
+                                  {/* <CustomMenuButton aria-controls='menu' onClick={handleDropMenuOpen(index)}>{item.title.toUpperCase()}</CustomMenuButton> */}
                               </div>
                             );
                           })
                         }
+                          </Tabs>
+                          </Paper>
                   </div>}
                 
           </Toolbar>
@@ -175,7 +200,7 @@ const AppBarResponsive = ({logo}) => {
         
         {
           MenuItemOptions[subMenuIndex].submenu && 
-          <Menu style={{marginTop:'40px'}} id='menu' onClose={handleDropMenuClose} anchorEl={anchorEl} open={Boolean(anchorEl)}>
+          <Menu style={{marginTop:'70px'}} id='menu' onClose={handleDropMenuClose} anchorEl={anchorEl} open={Boolean(anchorEl)}>
           {
             MenuItemOptions[subMenuIndex].submenu.map((item,index)=>{
               return (
@@ -191,7 +216,7 @@ const AppBarResponsive = ({logo}) => {
           </Menu>
         }
 
-        <Drawer open={drawer} onClose={() => {setDrawer(false)}}>
+        <Drawer anchor='right' open={drawer} onClose={() => {setDrawer(false)}}>
           <List style={{ width: 250}}>
             {
               MenuItemOptions.map((item,index)=>{
@@ -281,7 +306,7 @@ const CustomLogo = styled.img`
   height: ${props => props.height}px;
   justify-content: "space-between";
   position: relative;
-  ${props=>props.centerLogo && "left:50%;transform:translate(-50%,0);"};
+  /* ${props=>props.centerLogo && "left:50%;transform:translate(-50%,0);"}; */
   /* left: 50%; */
 `;
 

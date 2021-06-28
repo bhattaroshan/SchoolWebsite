@@ -13,6 +13,7 @@ import ThumbUp from '@material-ui/icons/ThumbUp';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SwipableViews from 'react-swipeable-views';
+import { ScatterPlot } from '@material-ui/icons';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,10 +58,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   tabs:{
-    marginTop:'40px',
   },
   tab:{
     marginTop:'40px',
+    marginLeft:'-5%',
   }
 
 }));
@@ -94,7 +95,9 @@ export default function ScrollableTabsButtonForce(props) {
         {
           props.tabs.map((t,index)=>{
             return (
-              <Tab key={index} id={index} label={t.tab} icon={t.icon} {...a11yProps(index)}/>
+              <Tab key={index} id={index} label={t.tab} icon={t.icon} {...a11yProps(index)}
+                style={{fontSize:'16px', margin:'10px'}}
+              />
             );
           })
         }

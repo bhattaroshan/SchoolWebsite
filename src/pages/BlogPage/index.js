@@ -3,12 +3,27 @@ import Grid from '@material-ui/core/Grid';
 import BlogCards from '../../components/BlogCards';
 
 import axios from 'axios';
-
+import BlogCover from '../../components/BlogCover';
+import BlogBanner from '../../assets/BlogBanner.jpg';
 
 const BlogPage = (props) =>{
 
   //axios is not complete here need to complete to get blog thumbnail from here later
   const [thumnaildata,setThumnailData] = useState([]);
+  const [windowWidth,setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(()=>{
+    const handleResize = () =>{
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('load',handleResize);
+    window.addEventListener('resize',handleResize);
+    return ()=>{
+      window.removeEventListener('load',handleResize);
+      window.removeEventListener('resize',handleResize);
+    }
+  })
 
   useEffect(()=>{
     const handleLoad = () =>{
@@ -32,6 +47,13 @@ const BlogPage = (props) =>{
 
   return (
     <div>
+    <div style={{background:'red',opacity:'1', zIndex:'100'}}>
+     <BlogCover 
+        image={BlogBanner} 
+        height={500*(windowWidth/1920)<200?200:500*(windowWidth/1920)}>
+        </BlogCover>
+    </div>
+
       <Grid container justify='center'>
         <Grid item md={12} sm={12} lg={10}>
           <Grid container justify='space-around'>

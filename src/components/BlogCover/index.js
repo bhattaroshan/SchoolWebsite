@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MainFeatured({image,height}) {
+export default function MainFeatured({image,height, title, content}) {
 
   const classes = useStyles({image,height});
 
@@ -32,10 +32,10 @@ export default function MainFeatured({image,height}) {
     <Grid container className={classes.mainFeatured}>
       <Grid item md={6} className={classes.mainFeaturedContent}>
         <Typography component="h1" variant="h5" color="inherit" gutterBottom>
-          School Blogs
+          {title}
         </Typography>
         <Typography variant="body1" color="inherit" paragraph>
-          Read about our school, our achievements and our teaching pedagogy
+          {content}
         </Typography>
       </Grid>
     </Grid>
