@@ -4,8 +4,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
-import Avatar1 from '../../assets/avatar1.jpeg';
-
 import './style.css';
 import {TESTIMONIAL_GRADIENT_DIRECTION, 
         TESTIMONIAL_START_COLOR,
@@ -35,7 +33,10 @@ export default Testimonial;
 
 const CPaper = styled(Paper)`
   &&&{
-    margin:40px;
+    margin-top:40px;
+    margin-bottom:40px;
+    margin-left:20px;
+    margin-right:20px;
     display:flex;
     flex-direction: column;
     align-items: center;

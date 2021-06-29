@@ -2,13 +2,8 @@ import {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import outsideClassroom from './assets/outsideClassroom.jpg';
-import fun from './assets/fun.jpg';
-import balance from './assets/balance.jpg';
-import award from './assets/award.jpg';
 import quiz from './assets/quiz.jpg';
 import logo from './assets/logo.jpg';
-import blog1 from './assets/blog1.jpg';
 
 import CustomCarousel from './components/CustomCarousel';
 import About from './components/About';
@@ -29,9 +24,7 @@ import ScrollToTop from './components/ScrollToTop';
 
 // import createBrowserHistory from 'history/createBrowserHistory';
 import axios from  'axios';
-import Faq from './components/Faq';
 
-import ScrollTab from './components/ScrollTab';
 import FaqPage from './pages/FaqPage';
 
 
@@ -69,7 +62,7 @@ const faqs2 = [
     content:[
       {
         question: 'Can I enroll my child in the middle of the session?',
-        answer: 'It depends. If you child read below grade 5 than we take certain tests to see if your child can attend that grade. If he or she passes the test with 60% marks we can enroll your child even in the middle of the session.'
+        answer: '<b><i style="color:red">It depends.</i></b> If you child read below <b>grade 5</b> than take certain tests to see if your child can attend that grade. If he or she passes the test with <b>60%</b> marks we can enroll your child even in the middle of the session.'
       },
       {
         question:'Will my one child get scholarship if I enroll my three children?',
@@ -139,9 +132,7 @@ function App() {
       name: 'Sumita Shrestha',
       image: mask4,
       designation: 'Grade 9 Student',
-      content: 'Hello what is going on here are you ready to rock. I studied in this school since grade 1. \
-                Whatever I am today is all because of this school. \
-                    This school has taught me to become more confident in my life.' 
+      content: 'Hello what is going on here are you ready to rock. I studied in this school since grade 1. Whatever I am today is all because of this school. This school has taught me to become more confident in my life.' 
     },
     {
       name: 'Dhan Bd. Rana',
@@ -249,5 +240,6 @@ const GlobalStyle = createGlobalStyle`
   body{
 		${'' /* background: linear-gradient(to bottom, rgb(180,220,180),rgb(255,255,255)); */}
     background: rgb(255,255,255);
+    overflow-x:hidden;
   }
 `;

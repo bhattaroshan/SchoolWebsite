@@ -31,9 +31,7 @@ const TestimonialPage = ({testimonials}) =>{
     <CBanner>
       <CTypography width={windowWidth}>TESTIMONIALS</CTypography>
 
-       
-
-      <Grid container ls={12} style={{justifyContent:'center'}}>
+      <Grid container ls={12} style={{justifyContent:'center', overflow:'hidden'}}>
         {
           testimonials.map((testimonial,index)=>{
             return (
@@ -58,6 +56,9 @@ export default TestimonialPage;
 
 
 const CBanner = styled.div`
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top:100px;
   padding-top:20px;
   text-align: center;
@@ -67,8 +68,9 @@ const CBanner = styled.div`
 
 const CTypography = styled(Typography)`
   &&&{
-    margin:40px;
-    font-size: ${props=>props.width>1280?100:(props.width>900?80:50)}px;
+    margin-top:40px;
+    margin-bottom:40px;
+    font-size: ${props=>props.width>1280?100:(props.width>900?80:40)}px;
     color: white;
     font-family: 'Lato';
     font-weight: 900;

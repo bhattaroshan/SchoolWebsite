@@ -1,14 +1,10 @@
 import {useState, useEffect} from 'react';
 import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
-import parse, {domToReact} from 'html-react-parser';
+import {domToReact} from 'html-react-parser';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-import blogPic from '../../assets/photo1.jpg';
-import defBlogImg from '../../assets/blog.png';
 
 import BlogCover from '../BlogCover';
 import axios from 'axios';

@@ -9,7 +9,7 @@ import BlogBanner from '../../assets/BlogBanner.jpg';
 const BlogPage = (props) =>{
 
   //axios is not complete here need to complete to get blog thumbnail from here later
-  const [thumnaildata,setThumnailData] = useState([]);
+  // const [thumnaildata,setThumnailData] = useState([]);
   const [windowWidth,setWindowWidth] = useState(window.innerWidth);
 
   useEffect(()=>{
@@ -47,15 +47,13 @@ const BlogPage = (props) =>{
 
   return (
     <div>
-    <div style={{background:'red',opacity:'1', zIndex:'100'}}>
      <BlogCover 
         image={BlogBanner} 
         height={500*(windowWidth/1920)<200?200:500*(windowWidth/1920)}>
-        </BlogCover>
-    </div>
+     </BlogCover>
 
       <Grid container justify='center'>
-        <Grid item md={12} sm={12} lg={10}>
+        <Grid item md={12} sm={10} lg={10} xs={11}>
           <Grid container justify='space-around'>
             {
               props.BlogThumbnailDetails.map((blogThumbnail,index)=>{

@@ -32,7 +32,7 @@ const FaqPage = (props) =>{
         {
           props.faqs.map((cont,index)=>{
             return (
-              <Faq key={index} id={index} faqs={cont.content}/>
+              <Faq key={index} id={index} faqs={cont.content} length={cont.content.length}/>
             );
           })
         }  

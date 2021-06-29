@@ -32,14 +32,14 @@ import {APPBAR_BG} from '../../constants';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Paper from '@material-ui/core/Paper';
-
-import { AirlineSeatIndividualSuiteOutlined } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
 
 const MenuItemOptions = [
   {
     title: 'Home',
     icon: <HomeIcon/>,
-    path: '/'
+    path: '/',
+    index: 0
   },
   {
     title: 'Communities',
@@ -48,17 +48,20 @@ const MenuItemOptions = [
       {
         title: 'sports',
         icon: <SportsHandballIcon/>,
-        path: '/football'
+        path: '/football',
+        index: 0
       },
       {
         title: 'Partners',
         icon: <PeopleIcon/>,
-        path: '/about'
+        path: '/about',
+        index: 1
       },
       {
         title: 'FAQ',
         icon: <HomeIcon/>,
-        path: '/faq'
+        path: '/faq',
+        index: 2
       }
     ]
   },
@@ -66,11 +69,13 @@ const MenuItemOptions = [
     title: 'Blogs',
     icon: <LibraryBooksIcon/>,
     path: '/blogs',
+    index: 1
   },
   {
     title: 'About',
     icon: <InfoIcon/>,
-    path: '/about'
+    path: '/about',
+    index: 2
   },
   {
     title: null
@@ -78,12 +83,20 @@ const MenuItemOptions = [
   {
     title: 'Contact Us',
     icon: <ContactPhoneIcon/>,
-    path:'/contactus'
+    path:'/contactus',
+    index: 3
   }
 
 ];
 
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1,
+  },
+});
+
 const AppBarResponsive = ({logo}) => {
+    const classes = useStyles();
     const history = useHistory();
     
     const [subMenuBoolean,setSubMenuBoolen] = useState(Array(MenuItemOptions.length).fill(false));
@@ -94,7 +107,7 @@ const AppBarResponsive = ({logo}) => {
     const [subMenuIndex, setSubMenuIndex] = useState(0);
 
     useEffect(()=>{
-      if(window.innerWidth<=780)
+      if(window.innerWidth<=1000)
         setDrawerActivate(true);
       else
         setDrawerActivate(false);
@@ -102,7 +115,7 @@ const AppBarResponsive = ({logo}) => {
 
     useEffect(()=>{
       const handleResize = () =>{
-        if(window.innerWidth <=950){
+        if(window.innerWidth <=1000){
           setDrawerActivate(true);
         }
         else{
@@ -112,7 +125,9 @@ const AppBarResponsive = ({logo}) => {
       }
       window.addEventListener('resize',handleResize);
 
-      return ()=>window.removeEventListener('resize',handleResize);
+      return ()=>{
+        window.removeEventListener('resize',handleResize);
+      }
     })
 
     const popDrawerMenu = (isPopType,index) =>{
@@ -126,19 +141,32 @@ const AppBarResponsive = ({logo}) => {
       }
     }
 
-    const [tabHighlighter,setTabHighlighter] = useState(0);
+    const [tabhighlighter,setTabhighlighter] = useState(0);
 
-    const handleDropMenuOpen = (index)=>(e) =>{
+    const handleDropMenuOpen = (index,subs)=>(e) =>{
       if(MenuItemOptions[index].submenu ===undefined){
+        console.log('i am in');
         history.push(MenuItemOptions[index].path);
-        setTabHighlighter(index)
+        setTabhighlighter(index-subs)
       }
       else{
-
+        setSubMenuIndex(index);
+        setAnchorEl(e.currentTarget);
       }
+    }
 
-      setSubMenuIndex(index);
-      setAnchorEl(e.currentTarget);
+    const handleDropMenuHover = (index,subs) =>(e)=>{
+
+     if(matchMedia('(pointer:fine)').matches){
+        if(MenuItemOptions[index].submenu!==undefined){
+          setSubMenuIndex(index);
+          setAnchorEl(e.currentTarget);
+        }
+     }
+    }
+
+    const handleDropMenuHoverEnd = (index) =>{
+        setAnchorEl(null);
     }
 
     const handleDropMenuClose = () =>{
@@ -148,7 +176,7 @@ const AppBarResponsive = ({logo}) => {
     const handleDropMenuItemClose = (index) =>{
       history.push(MenuItemOptions[subMenuIndex].submenu[index].path);
       handleDropMenuClose();
-      setTabHighlighter(subMenuIndex);
+      setTabhighlighter(subMenuIndex);
     }
 
     const handleDrawerMenuClick = (index,subindex) =>{
@@ -156,58 +184,68 @@ const AppBarResponsive = ({logo}) => {
       history.push(MenuItemOptions[index].submenu[subindex].path);
     }
 
+    var subs = 0;
+
     return(
       <div>
         <CAppBar position='fixed'>
           <Toolbar>
             <CustomLogo variant="headline" src={logo} height={100}/>
+
+            <Typography style={{fontSize:'25px', color:'rgb(50,50,50)', margin:'30px', fontWeight:'bold'}}>
+              DHAWALAGIRI BOARDING SCHOOL
+            </Typography>
             <div style={{flex:1}}/>
               {
                 drawerActivate && 
-                <div>
-                  <IconButton onClick={()=>setDrawer(true)}><MenuIcon style={{color:'black'}}/></IconButton>
+                <div style={{marginRight:'15px'}}>
+                  <IconButton 
+                    onClick={()=>setDrawer(true)}
+                    >
+                    <MenuIcon style={{color:'black', fontSize:'35px'}}/>
+                  </IconButton>
                 </div>
               }
 
-                    {drawerActivate===false && <div style={{display:'flex'}}>
+                    {!drawerActivate && 
                       <Paper square style={{boxShadow:'none'}}>
                           <Tabs
-                            value={tabHighlighter}
-                            indicatorColor='primary'
-                            textColor='primary'
-                            aria-label='tabs'
+                            value={tabhighlighter}
                             >
                         {
                           MenuItemOptions.map((item,index)=>{
-                            return(
-                              <div key={index} id={index}>
-                              {
-                                item.title &&
-                                <Tab label={item.title.toUpperCase()} style={{fontSize:'20px', fontWeight:'bold'}} onClick={handleDropMenuOpen(index)}/>
-                              }
-                                  {/* item.title &&  */}
-                                  {/* <CustomMenuButton aria-controls='menu' onClick={handleDropMenuOpen(index)}>{item.title.toUpperCase()}</CustomMenuButton> */}
-                              </div>
-                            );
+                              if(!item.title) subs++;
+                              return(item.title &&  
+                                  <Tab key={index} id={index} label={item.title.toUpperCase()} 
+                                  style={{fontSize:'20px', fontWeight:'bold'}} 
+                                  onClick={handleDropMenuOpen(index,subs)}
+                                  onMouseOver={handleDropMenuHover(index,subs)}
+                                  // onMouseLeave={handleDropMenuHoverEnd(index)}
+                                  />
+                              );
                           })
                         }
                           </Tabs>
                           </Paper>
-                  </div>}
-                
+                    }
           </Toolbar>
         </CAppBar>
         
         {
           MenuItemOptions[subMenuIndex].submenu && 
-          <Menu style={{marginTop:'70px'}} id='menu' onClose={handleDropMenuClose} anchorEl={anchorEl} open={Boolean(anchorEl)}>
+          <Menu style={{marginTop:'75px'}} id='menu' 
+                onClose={handleDropMenuClose} 
+                anchorEl={anchorEl} 
+                open={Boolean(anchorEl)}
+                MenuListProps={{onMouseLeave:()=>handleDropMenuHoverEnd(subMenuIndex)}}
+                >
           {
             MenuItemOptions[subMenuIndex].submenu.map((item,index)=>{
               return (
                 <div key={index} id={index}>
-                  <MenuItem onClick={()=>handleDropMenuItemClose(index)}>
-                    {item.icon} 
-                    <Typography style={{marginLeft:'30px'}}>{item.title.toUpperCase()}</Typography>
+                  <MenuItem onClick={()=>handleDropMenuItemClose(index)} style={{width:'250px'}}>
+                    <span>{item.icon}</span>
+                    <Typography style={{marginLeft:'40px', fontWeight:'bold'}}>{item.title.toUpperCase()}</Typography>
                   </MenuItem>
                 </div>
               );
@@ -223,7 +261,7 @@ const AppBarResponsive = ({logo}) => {
                 return (
                   <div key={index} id={index}>
                   {
-                  item.title ?
+                  item.title?
                     <>
                         <CListItem button onClick={()=>popDrawerMenu(item.submenu,index)}>
                           <ListItemIcon>{item.icon}</ListItemIcon>
@@ -310,15 +348,17 @@ const CustomLogo = styled.img`
   /* left: 50%; */
 `;
 
-const CustomMenuButton = styled(Typography)`
-  &&&{
-    font-size: 18px;
-    font-weight:bold;
-    cursor: pointer;
-    margin:20px;
-    color:black;
-  }
-  &:hover{
-    color: red;
-  }
-`;
+// const CustomMenuButton = styled(Typography)`
+//   &&&{
+//     font-size: 18px;
+//     font-weight:bold;
+//     cursor: pointer;
+//     margin:20px;
+//     color:black;
+//   }
+//   &:hover{
+//     color: red;
+//   }
+// `;
+// item.title &&  */}
+ //                               {/* <CustomMenuButton aria-controls='menu' onClick={handleDropMenuOpen(index)}>{item.title.toUpperCase()}</CustomMenuButton> */}

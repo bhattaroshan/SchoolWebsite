@@ -1,49 +1,60 @@
 
 import {useState} from 'react';
-import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
 import Grid from '@material-ui/core/Grid';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import styled, {css, keyframes} from 'styled-components';
+import parse from 'html-react-parser';
 
 const Faq = (props)=>{
+  const [checked,setChecked] = useState(Array(props.length).fill(false));
+
+  const handleClick = (index) =>{
+    var tc = Array(props.length).fill(false);
+    tc[index] = !checked[index];
+    setChecked(tc);
+  }
+
   return (
-    <Grid container justify='center'>
-    <Grid item lg={6} md={8} sm={10} xs={11} >
+    <div>
+
       {
         props.faqs.map((elem,index)=>{
-          return <FaqTemp key={index} id={index} question={elem.question} answer={elem.answer}/>
+          return <FaqTemp key={index} id={index} 
+                          question={elem.question} 
+                          answer={elem.answer} 
+                          func={handleClick} 
+                          index={index} 
+                          expand={checked}/>
         })
       }
+    </div>
 
-    </Grid>
-    </Grid>
   );
 }
 
-const FaqTemp = ({question,answer}) =>{
-  const [checked, setChecked] = useState(false);
+const FaqTemp = ({question,answer,func,index,expand}) =>{
   const [startAnimation,setStartAnimation] = useState(0);
 
-  const handleOpen = () =>{
+  const handleOpen = (func,index) =>{
     if(startAnimation===0) setStartAnimation(1);
-    setChecked(prev=>!prev);
+    func(index);
   }
 
   return (
 
-      <MGrid container direction='column' onClick={()=>handleOpen()}>
+      <MGrid container direction='column' onClick={()=>handleOpen(func,index)} style={{paddingRight:'15px'}}>
 
         <Grid item>
           <Grid container justify='space-between' wrap='nowrap'>
               <CTypography>{question}</CTypography>
-              <CustomExpandLessIcon flip={checked?1:0} startanimation={startAnimation?1:0}/>
+                <CustomExpandLessIcon flip={expand[index]?1:0} startanimation={startAnimation?1:0}/>
           </Grid>
         </Grid>
 
         <Grid item>
-            <Collapse in={checked}>
-              <CATypography>{answer}</CATypography>
+            <Collapse in={expand[index]}>
+              <CATypography>{parse(answer)}</CATypography>
             </Collapse>
        </Grid> 
 
@@ -89,19 +100,22 @@ const CustomExpandLessIcon = styled(ExpandLessIcon)`
     animation-duration: 0.3s;
     animation-timing-function: ease-in;
     animation-fill-mode: both;
-    /* transition: all 0.2s ease; */
+    margin-top:8px;
+    margin-left:20px;
   }
 `;
 
 const MGrid = styled(Grid)`
   &&&{
-    background:rgb(200,220,200);
-    margin:10px;
-    padding:10px;
+    background:rgb(168,193,188);
+    margin-top:10px;
+    padding-top:10px;
+    padding-left:10px;
     border-radius: 10px;
     box-shadow: 1px 5px 5px rgba(125,125,125,0.5);
     cursor:pointer;
   }
+ 
 `;
 
 const CTypography = styled.div`
@@ -112,26 +126,30 @@ const CTypography = styled.div`
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; 
     font-size:20px;
-    margin-left: 40px;
+    margin-left: 30px;
     font-weight: 500;
     color:black;
     font-family: 'Roboto';
+    padding-bottom:15px;
+    padding-top:8px;
   }
 `;
 
 const CATypography = styled.div`
   &&&{
-     -webkit-touch-callout: none; /* iOS Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-     -moz-user-select: none; /* Old versions of Firefox */
-     -ms-user-select: none; /* Internet Explorer/Edge */
-     user-select: none; 
+    -webkit-touch-callout: none; /* iOS Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; 
     margin-top:20px;
     font-size:18px;
     margin-left: 40px;
     font-family: 'Roboto';
     font-weight:300;
     margin-right:20px;
+    text-align:justify;
+    padding-bottom:15px;
   }
 `;
 

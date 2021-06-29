@@ -42,7 +42,7 @@ function Cards({image,title,content,id}) {
   }
 
   return (
-    <CustomCard className={classes.root} >
+    <CustomCard>
       <CardMedia
         className={classes.media}
         image={image}
@@ -54,7 +54,7 @@ function Cards({image,title,content,id}) {
             {title && title.length>50 && <span> ....</span>}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p" style={{marginTop:'10px'}}>
-            {content  && content.slice(0,85)} .....
+            {content  && content.slice(0,65)} .....
           </Typography>
           <CardActions disableSpacing>
             <Button variant='outlined' 
@@ -72,11 +72,13 @@ export default withRouter(Cards);
 
 const CustomCard = styled(Card)`
 &&&{
+  position:relative;
   transition: 0.3s;
-  padding: 10px;
   width: 400px;
   height: 350px;
   background: rgb(168,193,188);
+  margin-top:20px;
+  max-width:345px;
 }
 &:hover{
   box-shadow:2px 2px 5px rgba(0,0,0,0.2);

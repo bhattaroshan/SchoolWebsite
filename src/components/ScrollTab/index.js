@@ -3,18 +3,9 @@ import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
-import HelpIcon from '@material-ui/icons/Help';
-import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
-import ThumbDown from '@material-ui/icons/ThumbDown';
-import ThumbUp from '@material-ui/icons/ThumbUp';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SwipableViews from 'react-swipeable-views';
-import { ScatterPlot } from '@material-ui/icons';
-
+import Grid from '@material-ui/core/Grid';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -50,19 +41,9 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display:'flex',
-    flexDirection:'column',
-    alignItems:'center',
-    flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.paper,
   },
-  tabs:{
-  },
-  tab:{
-    marginTop:'40px',
-    marginLeft:'-5%',
-  }
 
 }));
 
@@ -80,17 +61,16 @@ export default function ScrollableTabsButtonForce(props) {
     setValue(index);
   }
 
-  return (
-    <div className={classes.root}>
+  return ( // <Grid container justify='center'>
+    // <Grid item lg={6} md={8} sm={10} xs={11} >
+    <Grid container justify='center' >
+    <Grid item lg={6} md={8} sm={10} xs={11}>
         <Tabs
           value={value}
           onChange={handleChange}
           variant="scrollable"
           scrollButtons="on"
-          indicatorColor="primary"
-          textColor="primary"
-          aria-label="scrollable force tabs example"
-          className={classes.tabs}
+          aria-label="scrollable force tabs"
         >
         {
           props.tabs.map((t,index)=>{
@@ -107,7 +87,6 @@ export default function ScrollableTabsButtonForce(props) {
           axis={theme.direction === 'rtl'?'x-reverse':'x'} 
           index={value}
           onChangeIndex={handleChangeIndex}
-          className={classes.tab}
         >
         {
           props.children.map((child,index)=>{
@@ -120,6 +99,7 @@ export default function ScrollableTabsButtonForce(props) {
         }
         </SwipableViews>
 
-        </div>
+    </Grid>
+    </Grid>
   );
 }

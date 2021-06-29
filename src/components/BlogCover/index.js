@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
   mainFeatured: {
     height: props=>`${props.height}px`,
+    width:props=>`${props.windowWidth}px`,
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
@@ -25,9 +26,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MainFeatured({image,height, title, content}) {
+  const [windowWidth,setWindowWidth] = useState(window.innerWidth);
 
-  const classes = useStyles({image,height});
+  useEffect(()=>{
+    setWindowWidth(window.innerWidth);
+  },[])
 
+ useEffect(()=>{
+    const handleResize = () =>{
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('load',handleResize);
+    window.addEventListener('resize',handleResize);
+    return ()=>{
+      window.removeEventListener('load',handleResize);
+      window.removeEventListener('resize',handleResize);
+    }
+  })
+  const classes = useStyles({image,height,windowWidth});
   return (
     <Grid container className={classes.mainFeatured}>
       <Grid item md={6} className={classes.mainFeaturedContent}>

@@ -1,5 +1,4 @@
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import styled from 'styled-components';
 
 import Link from '@material-ui/core/Link';
@@ -11,11 +10,6 @@ import Grid from '@material-ui/core/Grid';
 
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
-
-const blogPost = `
-<span id='para'>२७ जेठ, काठमाडौं । गण्डकी प्रदेशको प्रदेशसभा बैठकमा मुख्यमन्त्री पृथ्वी सुब्बा गुरुङले सांसदहरुले उठाएको प्रश्नको जवाफ दिँदैछन् । बिहीबार प्रदेशसभामा उनले आफूलाई विश्वासको मत दिन आग्रह गरेका थिए । त्यसपछि विभिन्न दलका सांसदले मुख्यमन्त्री माथि प्रश्न उठाएका थिए । सांसदहरुले धारणा राखेपछि आधा घण्टा स्थगित भएको बैठक सुरु भएको छ र मुख्यमन्त्री गुरुङले जवाफ दिँदैछन्</span>
-
-`;
 
 const ContactUs = () => {
 
@@ -56,12 +50,6 @@ const ContactUs = () => {
 
 export default ContactUs;
 
-const CContact = styled.div`
-  display:flex;
-  justify-content: space-around;
-  margin: 100px;
-  text-align: center;
-`;
 
 const CTypography = styled(Typography)`
   &&&{

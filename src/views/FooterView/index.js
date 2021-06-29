@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import styled from 'styled-components';
@@ -15,11 +15,25 @@ import {FOOTER_BG, FOOTER_FACEBOOK_LINK,
         FOOTER_ONE_LINER_COLOR} from '../../constants';
 
 export default function Footer() {
+  const [windowWidth,setWindowWidth] = useState(window.innerWidth);
 
+  useEffect(()=>{
+    const handleResize = () =>{
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('load',handleResize);
+    window.addEventListener('resize',handleResize);
+    return ()=>{
+      window.removeEventListener('load',handleResize);
+      window.removeEventListener('resize',handleResize);
+    }
+  })
   return (
             
+      <div style={{minHeight:'100%', position:'relative'}}>
 
-        <CFooter> 
+        <CFooter width={windowWidth}> 
             <Typography style={{color:`${FOOTER_TITLE_TEXT_COLOR}`, fontSize:'20px'}}> © 
               <Link color='inherit' href={FOOTER_TITLE_TEXT_LINK}> {FOOTER_TITLE_TEXT}</Link> 
               {' '}{new Date().getFullYear()}
@@ -39,18 +53,21 @@ export default function Footer() {
               </Link>
             </div>
         </CFooter>
+      </div>
   );
 }
 
 const CFooter = styled.footer`
   &&&{
-    /* height:500px; */
-    margin-top:100px;
+    position:relative;
+    left:0;
+    bottom:0;
+    width:${props=>props.width}px;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items: center;
-    min-height: 150px;
+    min-height: 20vh;
     background: ${FOOTER_BG};
   }
 
