@@ -10,6 +10,8 @@ import photo6 from '../../assets/photo6.jpg';
 import photo7 from '../../assets/photo7.jpg';
 import photo8 from '../../assets/photo8.jpg';
 
+import Home from '@material-ui/icons/Home';
+
 const CustomCarousel = () =>{
    const [windowWidth,setWindowWidth] = useState(window.innerWidth);
 
@@ -30,7 +32,15 @@ const CustomCarousel = () =>{
   const minHeight = 400;
 
   return (
-    <Carousel autoPlay={true} navButtonsAlwaysVisible>
+    <Carousel autoPlay={true} 
+              indicatorIconButtonProps={{
+                style:{
+                  position:'relative',
+                  padding: '5px',
+                  bottom:'70px'
+                }
+              }}
+              >
       <BlogCover image={photo1} height={maxHeight*(windowWidth/1920)<minHeight?minHeight:maxHeight*(windowWidth/1920)}/>
       <BlogCover image={photo2} height={maxHeight*(windowWidth/1920)<minHeight?minHeight:maxHeight*(windowWidth/1920)}/>
       <BlogCover image={photo3} height={maxHeight*(windowWidth/1920)<minHeight?minHeight:maxHeight*(windowWidth/1920)}/>

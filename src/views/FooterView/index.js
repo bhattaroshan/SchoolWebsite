@@ -12,7 +12,8 @@ import {FOOTER_BG, FOOTER_FACEBOOK_LINK,
         FOOTER_ONE_LINER, FOOTER_TITLE_TEXT, 
         FOOTER_TITLE_TEXT_LINK, FOOTER_TWITTER_LINK, 
         FOOTER_YOUTUBE_LINK, FOOTER_TITLE_TEXT_COLOR,
-        FOOTER_ONE_LINER_COLOR} from '../../constants';
+        FOOTER_ONE_LINER_COLOR,
+        SUBSIDING_FONT} from '../../constants';
 
 export default function Footer() {
   const [windowWidth,setWindowWidth] = useState(window.innerWidth);
@@ -34,11 +35,16 @@ export default function Footer() {
       <div style={{minHeight:'100%', position:'relative'}}>
 
         <CFooter width={windowWidth}> 
-            <Typography style={{color:`${FOOTER_TITLE_TEXT_COLOR}`, fontSize:'20px'}}> © 
-              <Link color='inherit' href={FOOTER_TITLE_TEXT_LINK}> {FOOTER_TITLE_TEXT}</Link> 
+            <Typography style={{color:`${FOOTER_TITLE_TEXT_COLOR}`, 
+                                fontSize:'20px', 
+                                fontWeight:'700', 
+                                fontFamily:`${SUBSIDING_FONT}`}}> © 
+              <Link color='inherit' href={FOOTER_TITLE_TEXT_LINK}> 
+                {FOOTER_TITLE_TEXT}
+              </Link> 
               {' '}{new Date().getFullYear()}
             </Typography>
-            <Typography style={{color:`${FOOTER_ONE_LINER_COLOR}`}}>
+            <Typography style={{color:`${FOOTER_ONE_LINER_COLOR}`, fontFamily:`${SUBSIDING_FONT}`}}>
               {FOOTER_ONE_LINER}
             </Typography>
             <div>

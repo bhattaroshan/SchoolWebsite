@@ -6,6 +6,8 @@ import axios from 'axios';
 import BlogCover from '../../components/BlogCover';
 import BlogBanner from '../../assets/BlogBanner.jpg';
 
+import ContactUs from '../../components/ContactUs';
+
 const BlogPage = (props) =>{
 
   //axios is not complete here need to complete to get blog thumbnail from here later
@@ -71,6 +73,7 @@ const BlogPage = (props) =>{
           </Grid>
         </Grid>
       </Grid>
+      <ContactUs/>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import styled, {css, keyframes} from 'styled-components';
 import parse from 'html-react-parser';
+import { MAJOR_FONT, MAJOR_FONT_WEIGHT, SUBSIDING_FONT } from '../../constants';
 
 const Faq = (props)=>{
   const [checked,setChecked] = useState(Array(props.length).fill(false));
@@ -43,9 +44,9 @@ const FaqTemp = ({question,answer,func,index,expand}) =>{
 
   return (
 
-      <MGrid container direction='column' onClick={()=>handleOpen(func,index)} style={{paddingRight:'15px'}}>
+      <MGrid container direction='column'  style={{paddingRight:'15px'}}>
 
-        <Grid item>
+        <Grid item onClick={()=>handleOpen(func,index)}>
           <Grid container justify='space-between' wrap='nowrap'>
               <CTypography>{question}</CTypography>
                 <CustomExpandLessIcon flip={expand[index]?1:0} startanimation={startAnimation?1:0}/>
@@ -54,9 +55,9 @@ const FaqTemp = ({question,answer,func,index,expand}) =>{
 
         <Grid item>
             <Collapse in={expand[index]}>
-              <CATypography>{parse(answer)}</CATypography>
+                <CATypography>{parse(answer)}</CATypography>
             </Collapse>
-       </Grid> 
+          </Grid>
 
       </MGrid>
 
@@ -126,10 +127,10 @@ const CTypography = styled.div`
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; 
     font-size:20px;
-    margin-left: 30px;
-    font-weight: 500;
+    margin-left: 50px;
+    font-weight: 700;
     color:black;
-    font-family: 'Roboto';
+    font-family: ${SUBSIDING_FONT};
     padding-bottom:15px;
     padding-top:8px;
   }
@@ -145,8 +146,8 @@ const CATypography = styled.div`
     margin-top:20px;
     font-size:18px;
     margin-left: 40px;
-    font-family: 'Roboto';
-    font-weight:300;
+    font-family: ${SUBSIDING_FONT};
+    font-weight:500;
     margin-right:20px;
     text-align:justify;
     padding-bottom:15px;

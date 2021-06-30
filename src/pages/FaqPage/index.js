@@ -1,8 +1,12 @@
 import {useEffect,useState} from 'react';
 
+import Typography from '@material-ui/core/Typography';
+
 import Faq from '../../components/Faq';
 import ScrollTab from '../../components/ScrollTab';
 import BlogCover from '../../components/BlogCover';
+import ContactUs from '../../components/ContactUs';
+import {MAJOR_FONT} from '../../constants';
 
 import FaqBanner from '../../assets/FaqBanner.jpeg';
 
@@ -37,6 +41,10 @@ const FaqPage = (props) =>{
           })
         }  
       </ScrollTab>
+      <div style={{display:'flex', justifyContent:'center', marginTop:'100px', marginBottom:'100px'}}>
+        <Typography style={{fontFamily:`${MAJOR_FONT}`,fontSize:'50px'}}>Didn't find answers for your queries?</Typography>
+      </div>
+      <ContactUs/>
     </div>
   );
 }

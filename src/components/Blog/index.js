@@ -9,6 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import BlogCover from '../BlogCover';
 import axios from 'axios';
 
+import {MAJOR_FONT, MAJOR_FONT_WEIGHT, SUBSIDING_FONT} from '../../constants';
 
 
 const options = {
@@ -90,7 +91,9 @@ const Blogs = () =>{
            <div>
              <CTitle>{content.title}</CTitle>
                <CBody width={windowWidth}>
-                 <p style={{marginBottom:'50px'}}>{content.blog}</p>
+                 <p style={{marginBottom:'50px', fontFamily:`${SUBSIDING_FONT}`}}>
+                  {content.blog}
+                 </p>
                </CBody>
            </div>
            :<div style={{display:'flex', justifyContent:'center', marginTop:'80px'}}>
@@ -126,8 +129,8 @@ const CTitle = styled(Typography)`
   &&&{
     margin-top:30px;
     margin-bottom:30px;
-    font-family: 'Roboto';
-    font-weight: 900;
+    font-family: ${SUBSIDING_FONT};
+    font-weight: 700;
     position:relative;
     text-align: center;
     font-size:35px;
@@ -142,8 +145,8 @@ const CBody = styled.div`
     margin-right: ${props=>props.width<650?'20px':(props.width<1080?'50px':'120px')};
     font-size:${props=>props.width<650?'16px':(props.width<1080?'18px':'22px')};
     text-align: justify;
-    font-family: 'Roboto';;
-    font-weight: 400;
+    font-family: ${MAJOR_FONT};
+    font-weight: ${MAJOR_FONT_WEIGHT};
     line-height: 1.6;
   }
 `;

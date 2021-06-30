@@ -7,7 +7,8 @@ import styled from 'styled-components';
 import './style.css';
 import {TESTIMONIAL_GRADIENT_DIRECTION, 
         TESTIMONIAL_START_COLOR,
-        TESTIMONIAL_END_COLOR} from '../../constants';
+        TESTIMONIAL_END_COLOR,
+        SUBSIDING_FONT} from '../../constants';
 
 const Testimonial = ({width, image, name, designation, content}) =>{
 	return (
@@ -61,8 +62,8 @@ const CTestimonial = styled(Typography)`
     margin-top:20px;
     margin-bottom:40px;
     text-align: justify;
-    font-family: 'Lato';
-    font-weight: 300;
+    font-family: ${SUBSIDING_FONT};
+    font-weight: 500;
     text-indent: 50px;
     line-height: 30px;
   }
@@ -70,7 +71,7 @@ const CTestimonial = styled(Typography)`
 
 const CName = styled(Typography)`
   &&&{
-    font-family: 'Lato';
+    font-family: ${SUBSIDING_FONT};
     font-weight: 700;
     font-size:25px;
   }
@@ -82,7 +83,7 @@ const CDesignation = styled(Typography)`
     font-size:14px;
     margin-bottom: 20px;
     margin-top: 5px;
-    font-family: 'Lato';
+    font-family: ${SUBSIDING_FONT};
   }
 `;
 

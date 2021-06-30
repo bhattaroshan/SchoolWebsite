@@ -28,18 +28,16 @@ import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 import PeopleIcon from '@material-ui/icons/People';
 
-import {APPBAR_BG} from '../../constants';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+import {MAJOR_FONT, APPBAR_BG, MAJOR_FONT_WEIGHT} from '../../constants';
 
 const MenuItemOptions = [
   {
     title: 'Home',
     icon: <HomeIcon/>,
     path: '/',
-    index: 0
   },
   {
     title: 'Communities',
@@ -49,19 +47,16 @@ const MenuItemOptions = [
         title: 'sports',
         icon: <SportsHandballIcon/>,
         path: '/football',
-        index: 0
       },
       {
         title: 'Partners',
         icon: <PeopleIcon/>,
         path: '/about',
-        index: 1
       },
       {
         title: 'FAQ',
         icon: <HomeIcon/>,
         path: '/faq',
-        index: 2
       }
     ]
   },
@@ -69,13 +64,11 @@ const MenuItemOptions = [
     title: 'Blogs',
     icon: <LibraryBooksIcon/>,
     path: '/blogs',
-    index: 1
   },
   {
     title: 'About',
     icon: <InfoIcon/>,
     path: '/about',
-    index: 2
   },
   {
     title: null
@@ -84,19 +77,12 @@ const MenuItemOptions = [
     title: 'Contact Us',
     icon: <ContactPhoneIcon/>,
     path:'/contactus',
-    index: 3
   }
 
 ];
 
-const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-  },
-});
 
 const AppBarResponsive = ({logo}) => {
-    const classes = useStyles();
     const history = useHistory();
     
     const [subMenuBoolean,setSubMenuBoolen] = useState(Array(MenuItemOptions.length).fill(false));
@@ -122,6 +108,7 @@ const AppBarResponsive = ({logo}) => {
           setDrawerActivate(false);
           setDrawer(false);
         }
+        setAnchorEl(null);
       }
       window.addEventListener('resize',handleResize);
 
@@ -192,13 +179,25 @@ const AppBarResponsive = ({logo}) => {
           <Toolbar>
             <CustomLogo variant="headline" src={logo} height={100}/>
 
-            <Typography style={{fontSize:'25px', color:'rgb(50,50,50)', margin:'30px', fontWeight:'bold'}}>
-              DHAWALAGIRI BOARDING SCHOOL
+            <Typography style={{fontSize:'20px', 
+                                color:'rgb(50,50,50)', 
+                                // margin:'30px', 
+                                marginLeft:'20px',
+                                fontWeight:'bold',
+                                fontFamily:`${MAJOR_FONT}`,
+                                textAlign:'left',
+                                lineHeight:'25px'
+                                }}>
+                                
+              DHAWALAGIRI <br/> 
+              <span style={{fontSize:'14px', fontWeight:200}}>
+                HEMJA
+              </span>
             </Typography>
             <div style={{flex:1}}/>
               {
                 drawerActivate && 
-                <div style={{marginRight:'15px'}}>
+                <div >
                   <IconButton 
                     onClick={()=>setDrawer(true)}
                     >
@@ -216,8 +215,9 @@ const AppBarResponsive = ({logo}) => {
                           MenuItemOptions.map((item,index)=>{
                               if(!item.title) subs++;
                               return(item.title &&  
-                                  <Tab key={index} id={index} label={item.title.toUpperCase()} 
-                                  style={{fontSize:'20px', fontWeight:'bold'}} 
+                                  <Tab key={index} id={index} 
+                                       label={item.title.toUpperCase()} 
+                                        style={{fontSize:'20px', fontWeight:'bold',fontFamily:`${MAJOR_FONT}`}} 
                                   onClick={handleDropMenuOpen(index,subs)}
                                   onMouseOver={handleDropMenuHover(index,subs)}
                                   // onMouseLeave={handleDropMenuHoverEnd(index)}
@@ -243,9 +243,12 @@ const AppBarResponsive = ({logo}) => {
             MenuItemOptions[subMenuIndex].submenu.map((item,index)=>{
               return (
                 <div key={index} id={index}>
-                  <MenuItem onClick={()=>handleDropMenuItemClose(index)} style={{width:'250px'}}>
+                  <MenuItem onClick={()=>handleDropMenuItemClose(index)} 
+                            style={{width:'250px'}}>
                     <span>{item.icon}</span>
-                    <Typography style={{marginLeft:'40px', fontWeight:'bold'}}>{item.title.toUpperCase()}</Typography>
+                    <Typography style={{marginLeft:'40px', fontWeight:'bold', fontFamily:`${MAJOR_FONT}`}}>
+                      {item.title.toUpperCase()}
+                    </Typography>
                   </MenuItem>
                 </div>
               );
@@ -283,7 +286,9 @@ const AppBarResponsive = ({logo}) => {
                                           <CListItem button onClick={()=>handleDrawerMenuClick(index,subindex)}>
                                           <ListItemIcon>{subitem.icon}</ListItemIcon>
                                           <CListItemText primary={
-                                            <Typography style={{fontSize:'15px'}}>{subitem.title.toUpperCase()}</Typography>
+                                            <Typography style={{fontSize:'15px',fontWeight:'300', fontFamily:`${MAJOR_FONT}`}}>
+                                              {subitem.title.toUpperCase()}
+                                            </Typography>
                                           }/>
                                           </CListItem>
                                         </div>
@@ -322,7 +327,8 @@ const CAppBar = styled(AppBar)`
 
 const CMenuTypography = styled(Typography)`
   &&&{
-    font-weight:bold;
+    font-family:${MAJOR_FONT};
+    font-weight:700;
   }
 `;
 
@@ -344,21 +350,4 @@ const CustomLogo = styled.img`
   height: ${props => props.height}px;
   justify-content: "space-between";
   position: relative;
-  /* ${props=>props.centerLogo && "left:50%;transform:translate(-50%,0);"}; */
-  /* left: 50%; */
 `;
-
-// const CustomMenuButton = styled(Typography)`
-//   &&&{
-//     font-size: 18px;
-//     font-weight:bold;
-//     cursor: pointer;
-//     margin:20px;
-//     color:black;
-//   }
-//   &:hover{
-//     color: red;
-//   }
-// `;
-// item.title &&  */}
- //                               {/* <CustomMenuButton aria-controls='menu' onClick={handleDropMenuOpen(index)}>{item.title.toUpperCase()}</CustomMenuButton> */}

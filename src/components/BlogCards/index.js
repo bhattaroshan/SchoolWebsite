@@ -10,6 +10,7 @@ import styled from 'styled-components';
 
 import {withRouter} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
+import {SUBSIDING_FONT} from '../../constants';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,16 +50,18 @@ function Cards({image,title,content,id}) {
         title="My friends"
       />
       <CardContent>
-          <Typography variant='body1' style={{fontWeight:'bold'}}>
+          <Typography variant='body1' 
+                      style={{fontWeight:'700', fontFamily: `${SUBSIDING_FONT}`}}>
             {title && title.slice(0,50)}
             {title && title.length>50 && <span> ....</span>}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p" style={{marginTop:'10px'}}>
+          <Typography variant="body2" color="textSecondary" component="p" 
+                      style={{marginTop:'10px', fontFamily:`${SUBSIDING_FONT}`}}>
             {content  && content.slice(0,65)} .....
           </Typography>
           <CardActions disableSpacing>
             <Button variant='outlined' 
-                    style={{position:'absolute', right:'3%',bottom:'3%'}}
+                    style={{position:'absolute', right:'3%',bottom:'3%', fontFamily:`${SUBSIDING_FONT}`}}
                     onClick={()=>handleBlogClick()}>
                     Read More...
             </Button>

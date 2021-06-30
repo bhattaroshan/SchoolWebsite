@@ -1,7 +1,8 @@
 
 //FONTS
-export const MAJOR_FONT = 'Helvetica';
-export const SUBSIDING_FONT = 'null';
+export const MAJOR_FONT = 'Merriweather';
+export const MAJOR_FONT_WEIGHT = '500';
+export const SUBSIDING_FONT = 'Open Sans';
 
 //APPBAR
 export const APPBAR_BG = 'white'
