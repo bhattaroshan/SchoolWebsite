@@ -25,8 +25,10 @@ import {useHistory} from 'react-router-dom';
 import InfoIcon from '@material-ui/icons/Info';
 import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
-import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 import PeopleIcon from '@material-ui/icons/People';
+import TimelineIcon from '@material-ui/icons/Timeline';
+import WorkIcon from '@material-ui/icons/Work';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
@@ -41,12 +43,33 @@ const MenuItemOptions = [
     path: '/',
   },
   {
+    title: 'Academics',
+    submenu:[
+      {
+        title: 'Mission',
+        path: '/mission'
+      },
+      {
+        title: 'Vision',
+        path: '/vision'
+      },
+      {
+        title: 'Pedagogy',
+        path: '/pedagogy'
+      },
+      {
+        title: 'Schedule a meet',
+        path: '/schedule-a-meet'
+      }
+    ]
+  },
+  {
     title: 'Communities',
     icon: null,
     submenu: [
       {
         title: 'Faculty and Staff',
-        icon: <SportsHandballIcon/>,
+        icon: <WorkIcon/>,
         path: '/football',
       },
       {
@@ -55,10 +78,11 @@ const MenuItemOptions = [
         path: '/about',
       },
       {
-        title: 'FAQ',
-        icon: <HomeIcon/>,
-        path: '/faq',
-      }
+        title: 'Alumini',
+        path: '/alumini',
+        icon: <EmojiPeopleIcon/>
+      },
+     
     ]
   },
   {
@@ -77,18 +101,26 @@ const MenuItemOptions = [
     ]
   },
   {
-    title: 'About',
+    title: 'About Us',
     icon: <InfoIcon/>,
-    path: '/about',
+    // path: '/about',
+    submenu:[
+      {
+        title: 'History',
+        icon: <TimelineIcon/>
+      },
+      {
+        title: 'Contact Us',
+        icon: <ContactPhoneIcon/>,
+        path: '/contactus',
+      },
+       {
+        title: 'FAQ',
+        icon: <HomeIcon/>,
+        path: '/faq',
+      }
+    ]
   },
-  {
-    title: null
-  },
-  {
-    title: 'Contact Us',
-    icon: <ContactPhoneIcon/>,
-    path:'/contactus',
-  }
 
 ];
 
@@ -240,7 +272,7 @@ const AppBarResponsive = ({logo}) => {
                                         style={{fontSize:'20px', fontWeight:'bold',fontFamily:`${MAJOR_FONT}`}} 
                                   onClick={handleDropMenuOpen(index,subs)}
                                   onMouseOver={handleDropMenuHover(index,subs)}
-                                  // onMouseLeave={handleDropMenuHoverEnd(index)}
+                                  // onMouseLeave={()=>handleDropMenuHoverEnd(subMenuIndex)}
                                   />
                               );
                           })
@@ -303,13 +335,15 @@ const AppBarResponsive = ({logo}) => {
                                     item.submenu.map((subitem,subindex)=>{
                                       return (
                                         <div key={index+subindex} id={index+subindex} >
+                                          { subindex!==0 && <Divider/>}
                                           <CListItem button onClick={()=>handleDrawerMenuClick(index,subindex)}>
                                           <ListItemIcon>{subitem.icon}</ListItemIcon>
                                           <CListItemText primary={
                                             <Typography style={{fontSize:'15px',fontWeight:'300', fontFamily:`${MAJOR_FONT}`}}>
                                               {subitem.title.toUpperCase()}
                                             </Typography>
-                                          }/>
+                                          }
+                                          />
                                           </CListItem>
                                         </div>
                                       );
