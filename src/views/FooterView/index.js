@@ -1,4 +1,3 @@
-import React,{useEffect,useState} from 'react';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import styled from 'styled-components';
@@ -7,6 +6,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
+import WindowDimension from '../../components/WindowDimension';
 
 import {FOOTER_BG, FOOTER_FACEBOOK_LINK, 
         FOOTER_ONE_LINER, FOOTER_TITLE_TEXT, 
@@ -16,25 +16,13 @@ import {FOOTER_BG, FOOTER_FACEBOOK_LINK,
         SUBSIDING_FONT} from '../../constants';
 
 export default function Footer() {
-  const [windowWidth,setWindowWidth] = useState(window.innerWidth);
+  const screen = WindowDimension();
 
-  useEffect(()=>{
-    const handleResize = () =>{
-      setWindowWidth(window.innerWidth);
-    }
-
-    window.addEventListener('load',handleResize);
-    window.addEventListener('resize',handleResize);
-    return ()=>{
-      window.removeEventListener('load',handleResize);
-      window.removeEventListener('resize',handleResize);
-    }
-  })
   return (
             
       <div style={{minHeight:'100%', position:'relative'}}>
 
-        <CFooter width={windowWidth}> 
+        <CFooter width={screen.width}> 
             <Typography style={{color:`${FOOTER_TITLE_TEXT_COLOR}`, 
                                 fontSize:'20px', 
                                 fontWeight:'700', 

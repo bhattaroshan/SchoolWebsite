@@ -1,5 +1,4 @@
 
-import {useEffect,useState} from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
@@ -9,35 +8,23 @@ import {TESTIMONIAL_BANNER_GRADIENT_DIRECTION,
         TESTIMONIAL_BANNER_START_COLOR,
         TESTIMONIAL_BANNER_END_COLOR,
         MAJOR_FONT} from '../../constants';
+import WindowDimension from '../../components/WindowDimension';
 
 const TestimonialPage = ({testimonials}) =>{
 
-   const [windowWidth,setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(()=>{
-    const handleResize = () =>{
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('load',handleResize);
-    window.addEventListener('resize',handleResize);
-
-    return ()=>{
-      window.removeEventListener('load',handleResize);
-      window.removeEventListener('resize',handleResize);
-    }
-  })
+  const screen = WindowDimension();
 
   return (
     <div> 
     <CBanner>
-      <CTypography width={windowWidth}>TESTIMONIALS</CTypography>
+      <CTypography width={screen.width}>TESTIMONIALS</CTypography>
 
       <Grid container ls={12} style={{justifyContent:'center', overflow:'hidden'}}>
         {
           testimonials.map((testimonial,index)=>{
             return (
                 <Testimonial key={index} id={index} style={{position:'absolute'}}
-                  width = {windowWidth<650?350:400}
+                  width = {screen.width<650?350:400}
                   name = {testimonial.name}
                   image = {testimonial.image}
                   designation = {testimonial.designation}

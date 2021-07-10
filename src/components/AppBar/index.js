@@ -31,7 +31,8 @@ import PeopleIcon from '@material-ui/icons/People';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Paper from '@material-ui/core/Paper';
-import {MAJOR_FONT, APPBAR_BG, MAJOR_FONT_WEIGHT} from '../../constants';
+import {MAJOR_FONT, APPBAR_BG, SUBSIDING_FONT} from '../../constants';
+import { makeStyles } from '@material-ui/core';
 
 const MenuItemOptions = [
   {
@@ -44,12 +45,12 @@ const MenuItemOptions = [
     icon: null,
     submenu: [
       {
-        title: 'sports',
+        title: 'Faculty and Staff',
         icon: <SportsHandballIcon/>,
         path: '/football',
       },
       {
-        title: 'Partners',
+        title: 'Students and Families',
         icon: <PeopleIcon/>,
         path: '/about',
       },
@@ -63,7 +64,17 @@ const MenuItemOptions = [
   {
     title: 'Blogs',
     icon: <LibraryBooksIcon/>,
-    path: '/blogs',
+    // path: '/blogs',
+    submenu:[
+      {
+        title: 'Type 1',
+        path: '/blogs'
+      },
+      {
+        title:'Type 2',
+        path: '/blogs2'
+      }
+    ]
   },
   {
     title: 'About',
@@ -81,9 +92,19 @@ const MenuItemOptions = [
 
 ];
 
+const useStyles = makeStyles({
+  paper:{
+    background:"rgb(168,193,188)",
+  },
+  subpaper:{
+    background: "rgb(188,213,208)",
+    paddingLeft: '50px'
+  }
+})
 
 const AppBarResponsive = ({logo}) => {
     const history = useHistory();
+    const classes = useStyles();
     
     const [subMenuBoolean,setSubMenuBoolen] = useState(Array(MenuItemOptions.length).fill(false));
 
@@ -132,7 +153,6 @@ const AppBarResponsive = ({logo}) => {
 
     const handleDropMenuOpen = (index,subs)=>(e) =>{
       if(MenuItemOptions[index].submenu ===undefined){
-        console.log('i am in');
         history.push(MenuItemOptions[index].path);
         setTabhighlighter(index-subs)
       }
@@ -244,9 +264,9 @@ const AppBarResponsive = ({logo}) => {
               return (
                 <div key={index} id={index}>
                   <MenuItem onClick={()=>handleDropMenuItemClose(index)} 
-                            style={{width:'250px'}}>
+                            style={{minWidth:'250px'}}>
                     <span>{item.icon}</span>
-                    <Typography style={{marginLeft:'40px', fontWeight:'bold', fontFamily:`${MAJOR_FONT}`}}>
+                    <Typography style={{marginLeft:'40px', fontFamily:`${SUBSIDING_FONT}`}}>
                       {item.title.toUpperCase()}
                     </Typography>
                   </MenuItem>
@@ -257,7 +277,7 @@ const AppBarResponsive = ({logo}) => {
           </Menu>
         }
 
-        <Drawer anchor='right' open={drawer} onClose={() => {setDrawer(false)}}>
+        <Drawer classes={{paper: classes.paper}} anchor='right' open={drawer} onClose={() => {setDrawer(false)}}>
           <List style={{ width: 250}}>
             {
               MenuItemOptions.map((item,index)=>{
@@ -278,7 +298,7 @@ const AppBarResponsive = ({logo}) => {
                           <>
                             <Collapse in={subMenuBoolean[index]} timeout='auto' unmountOnExit>
                               <Divider/>
-                              <List>
+                              <List className={classes.subpaper}>
                                   {
                                     item.submenu.map((subitem,subindex)=>{
                                       return (

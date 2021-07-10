@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import Grid from '@material-ui/core/Grid';
-import BlogCards from '../../components/BlogCards';
+import BlogCards from '../../components/BlogCards2';
 
 import axios from 'axios';
 import CoverPhoto from '../../components/CoverPhoto';

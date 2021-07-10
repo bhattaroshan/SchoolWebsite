@@ -1,7 +1,7 @@
-import React,{useEffect, useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import WindowDimension from "../WindowDimension";
 
 const useStyles = makeStyles((theme) => ({
   mainFeatured: {
@@ -26,25 +26,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MainFeatured({image,height, title, content}) {
-  const [windowWidth,setWindowWidth] = useState(window.innerWidth);
 
-  useEffect(()=>{
-    setWindowWidth(window.innerWidth);
-  },[])
-
- useEffect(()=>{
-    const handleResize = () =>{
-      setWindowWidth(window.innerWidth);
-    }
-
-    window.addEventListener('load',handleResize);
-    window.addEventListener('resize',handleResize);
-    return ()=>{
-      window.removeEventListener('load',handleResize);
-      window.removeEventListener('resize',handleResize);
-    }
-  })
-  const classes = useStyles({image,height,windowWidth});
+  const screen = WindowDimension();
+  const t = screen.width;
+  const classes = useStyles({image,height,t});
   return (
     <Grid container className={classes.mainFeatured}>
       <Grid item md={6} className={classes.mainFeaturedContent}>

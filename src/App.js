@@ -17,7 +17,8 @@ import {createGlobalStyle} from 'styled-components';
 
 import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';
-
+import BlogPage2 from './pages/BlogPage2';
+import AriticlePage from './pages/ArticlePage';
 
 import Footer from './views/FooterView';
 import ScrollToTop from './components/ScrollToTop';
@@ -37,6 +38,13 @@ import mask5 from './assets/mask5.png';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import SportsBaseballIcon from '@material-ui/icons/SportsBaseball';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
+import LocalDiningIcon from '@material-ui/icons/LocalDining';
+import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
+import BookIcon from '@material-ui/icons/Book';
+
+import {MAJOR_FONT, SUBSIDING_FONT} from './constants';
+import { Avatar } from '@material-ui/core';
+import FaqSchedule from './views/FaqSchedule';
 
 const appBarHeight = 120;
 
@@ -57,16 +65,40 @@ function NavTest({appBarHeight}){
 const faqs2 = [
 
   {
-    tab:'Admission',
-    icon: <GroupAddIcon/>,
+    tab:'Education',
+    icon: <BookIcon/>,
     content:[
+      {
+        question: 'What is unique about your school?',
+        answer:
+            <>
+              <p>
+                Our curriculum brings <b>science</b>, <b>maths</b>,<b>arts</b>,<b>humanities</b> and  
+                <b> langugage arts</b> to students. We believe that all disciplines are interrelated and that is what
+                our students have to deal in their professional life. <br/> Our curriculum engages students' head and 
+                hand in such a way that they start to develop a love for learning and enough confident to learn anything 
+                on their own.
+              </p>
+            </>
+      },
+      {
+        question:'What is the teachers to students ratio?',
+      answer: <>
+              <FaqSchedule/>
+               </>
+              
+      },
+      {
+        question:'What is the average class size?',
+        answer: 'We have maximum of 20 students upto grade 5. And we have 28 students at max above grade 5.'
+      },
       {
         question: 'Can I enroll my child in the middle of the session?',
         answer: '<b><i style="color:red">It depends.</i></b> If you child read below <b>grade 5</b> than take certain tests to see if your child can attend that grade. If he or she passes the test with <b>60%</b> marks we can enroll your child even in the middle of the session.'
       },
       {
         question:'Will my one child get scholarship if I enroll my three children?',
-        answer:'No, you will have to pay fees of all children irrespective of how many children you enroll for the class.'
+        answer:'No, you will have to pay fees of all children irrespective of how many children you enroll for the class.<ul><li style="marginLeft:40px;">1. <span style="fontSize:30px">&#x2713 </span>Take your child to the classroom</li><li style="marginLeft:40px;">2. Take your child again to the classroom</li></ul>'
       },
       {
         question:'How much does a school charge as an admission fee?',
@@ -81,8 +113,8 @@ const faqs2 = [
   },
 
   {
-    tab: 'Activities',
-    icon: <SportsBaseballIcon/>,
+    tab: 'Admission',
+    icon: <GroupAddIcon/>,
     content:[
       {
         question: 'Do you have extra-curricular activities in your school?',
@@ -92,7 +124,21 @@ const faqs2 = [
   },
 
   {
-    tab: 'Facilities',
+    tab: 'Activities',
+    icon: <SportsBaseballIcon/>,
+    content:[
+      {
+        question: 'Do you have transportation facility in your school?',
+        answer: 'Yes, our bus travels in almost all part of pokhara. Please navigate to bus route option to see all available route options in google map.'
+      },
+      {
+        question: 'Do you also take students out for swimming?',
+        answer: 'Our school has three swimming pools. It is compulsory for every children to participate in the activity unless they have any physical condition.'
+      }
+    ]
+  },
+  {
+    tab: 'Transportation',
     icon: <AirportShuttleIcon/>,
     content:[
       {
@@ -105,7 +151,34 @@ const faqs2 = [
       }
     ]
   },
-
+  {
+    tab: 'Food',
+    icon: <LocalDiningIcon/>,
+    content:[
+      {
+        question: 'Do you have transportation facility in your school?',
+        answer: 'Yes, our bus travels in almost all part of pokhara. Please navigate to bus route option to see all available route options in google map.'
+      },
+      {
+        question: 'Do you also take students out for swimming?',
+        answer: 'Our school has three swimming pools. It is compulsory for every children to participate in the activity unless they have any physical condition.'
+      }
+    ]
+  },
+  {
+    tab: 'Facilities',
+    icon: <WbIncandescentIcon/>,
+    content:[
+      {
+        question: 'Do you have transportation facility in your school?',
+        answer: 'Yes, our bus travels in almost all part of pokhara. Please navigate to bus route option to see all available route options in google map.'
+      },
+      {
+        question: 'Do you also take students out for swimming?',
+        answer: 'Our school has three swimming pools. It is compulsory for every children to participate in the activity unless they have any physical condition.'
+      }
+    ]
+  },
 ];
 
 function App() {
@@ -197,10 +270,15 @@ function App() {
             <ContactUs/>
             {/* <ScrollingView/> */}
           </Route>
+           <Route exact path='/blogs2'>
+            {/* <BlogPage BlogThumbnailDetails={BlogThumbnailDetails}/> */}
+            <BlogPage2 BlogThumbnailDetails={blog}/>
+          </Route>
           <Route exact path='/blogs'>
             {/* <BlogPage BlogThumbnailDetails={BlogThumbnailDetails}/> */}
             <BlogPage BlogThumbnailDetails={blog}/>
-          </Route>
+          </Route> 
+         
           <Route exact path='/football'>
             <div style={{marginTop: '50px', display:'flex', justifyContent:'center'}}>
               <Blog/>
@@ -210,7 +288,7 @@ function App() {
             <FaqPage faqs={faqs2}/>
           </Route>
           <Route path='/:id'>
-            <Blog/>
+            <AriticlePage/>
           </Route>
         </Switch> 
       <Footer/>

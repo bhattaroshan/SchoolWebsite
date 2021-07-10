@@ -1,11 +1,10 @@
-
 import {useState} from 'react';
 import Collapse from '@material-ui/core/Collapse';
 import Grid from '@material-ui/core/Grid';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled, {css, keyframes} from 'styled-components';
 import parse from 'html-react-parser';
-import { MAJOR_FONT, MAJOR_FONT_WEIGHT, SUBSIDING_FONT } from '../../constants';
+import {SUBSIDING_FONT } from '../../constants';
 
 const Faq = (props)=>{
   const [checked,setChecked] = useState(Array(props.length).fill(false));
@@ -18,7 +17,6 @@ const Faq = (props)=>{
 
   return (
     <div>
-
       {
         props.faqs.map((elem,index)=>{
           return <FaqTemp key={index} id={index} 
@@ -26,15 +24,16 @@ const Faq = (props)=>{
                           answer={elem.answer} 
                           func={handleClick} 
                           index={index} 
-                          expand={checked}/>
+                          expand={checked}
+                          />
         })
       }
     </div>
-
   );
 }
 
 const FaqTemp = ({question,answer,func,index,expand}) =>{
+  const [hover,setHover] = useState(false);
   const [startAnimation,setStartAnimation] = useState(0);
 
   const handleOpen = (func,index) =>{
@@ -42,25 +41,42 @@ const FaqTemp = ({question,answer,func,index,expand}) =>{
     func(index);
   }
 
+  const handleOver = () =>{
+    if(!hover){
+      setHover(true);
+    }
+  }
+
+  const handleLeave = () =>{
+    if(hover){
+      setHover(false);
+    }
+  }
   return (
+    <>
+      <MGrid container direction='column'  
+              style={{paddingRight:'15px'}} 
+              highlighted={expand[index]?1:0} 
+              hover = {hover?1:0}
+              onClick={()=>handleOpen(func,index)}
+              onMouseOver={handleOver} 
+              onMouseLeave={handleLeave}
+              >
 
-      <MGrid container direction='column'  style={{paddingRight:'15px'}}>
-
-        <Grid item onClick={()=>handleOpen(func,index)}>
-          <Grid container justify='space-between' wrap='nowrap'>
-              <CTypography>{question}</CTypography>
-                <CustomExpandLessIcon flip={expand[index]?1:0} startanimation={startAnimation?1:0}/>
+        <Grid item >
+          <Grid container  wrap='nowrap'>
+              <CustomExpandMoreIcon flip={expand[index]?1:0} startanimation={startAnimation?1:0}/>
+            <CTypography highlighted={expand[index]?1:0}>{question}</CTypography>
           </Grid>
         </Grid>
 
-        <Grid item>
-            <Collapse in={expand[index]}>
-                <CATypography>{parse(answer)}</CATypography>
-            </Collapse>
-          </Grid>
-
       </MGrid>
-
+      <Grid item>
+          <Collapse in={expand[index]}>
+              <CATypography>{answer}</CATypography>
+          </Collapse>
+      </Grid>
+    </>
   );
 }
 
@@ -79,7 +95,7 @@ const rotate180to0 = keyframes`
   0%{
     transform: rotate(180deg);
   }
-  99.5%{
+  99%{
     transform: rotate(359deg);
   }
   100%{
@@ -87,10 +103,11 @@ const rotate180to0 = keyframes`
   }
 `;
 
-const CustomExpandLessIcon = styled(ExpandLessIcon)`
+const CustomExpandMoreIcon = styled(ExpandMoreIcon)`
   &&&{
+    color:${props=>props.flip===1?"white":"rgb(0,120,50)"};
     animation-name: ${props=>{
-      if(props.startanimation===0) return '';
+      if(props.startanimation===0) return;
       const flip = props.flip;
       if(flip===1){
         return css`${rotate0to180}`;
@@ -98,25 +115,42 @@ const CustomExpandLessIcon = styled(ExpandLessIcon)`
         return css`${rotate180to0}`;
       }
     }};
+   
     animation-duration: 0.3s;
     animation-timing-function: ease-in;
     animation-fill-mode: both;
     margin-top:8px;
-    margin-left:20px;
+    margin-left:10px;
+    transition: background 1s ease-in;
   }
 `;
 
 const MGrid = styled(Grid)`
   &&&{
-    background:rgb(168,193,188);
+
+    background: ${props=>{
+      const highlighted = props.highlighted;
+      const hover = props.hover;
+      if(hover===1 && highlighted===0){
+        return `rgb(188,213,208)`;
+      }else{
+      if(highlighted===0)
+        return "rgb(168,193,188)";
+      else
+        return "rgb(0,150,80)";
+      }
+    }};
+
     margin-top:10px;
     padding-top:10px;
     padding-left:10px;
-    border-radius: 10px;
+    border-radius: 4px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
     box-shadow: 1px 5px 5px rgba(125,125,125,0.5);
     cursor:pointer;
+    transition: background 0.3s ease-in-out;
   }
- 
 `;
 
 const CTypography = styled.div`
@@ -126,10 +160,10 @@ const CTypography = styled.div`
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; 
-    font-size:20px;
-    margin-left: 50px;
+    font-size:18px;
+    margin-left: 10px;
     font-weight: 700;
-    color:black;
+    color:${props=>props.highlighted===0?'black':'white'};
     font-family: ${SUBSIDING_FONT};
     padding-bottom:15px;
     padding-top:8px;
@@ -145,12 +179,13 @@ const CATypography = styled.div`
     user-select: none; 
     margin-top:20px;
     font-size:18px;
-    margin-left: 40px;
+    margin-left: 35px;
     font-family: ${SUBSIDING_FONT};
     font-weight:500;
-    margin-right:20px;
+    margin-right:25px;
     text-align:justify;
     padding-bottom:15px;
+    line-height: 35px;
   }
 `;
 

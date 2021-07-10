@@ -1,42 +1,25 @@
 
-import {useEffect,useState} from 'react';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
-import Testimonial from '../../components/Testimonial';
 import {TESTIMONIAL_BANNER_GRADIENT_DIRECTION,
         TESTIMONIAL_BANNER_START_COLOR,
         TESTIMONIAL_BANNER_END_COLOR,
         MAJOR_FONT} from '../../constants';
+import WindowDimension from '../../components/WindowDimension';
 
 const WelcomeView = ({testimonials}) =>{
 
-   const [windowWidth,setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(()=>{
-    const handleResize = () =>{
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('load',handleResize);
-    window.addEventListener('resize',handleResize);
-
-    return ()=>{
-      window.removeEventListener('load',handleResize);
-      window.removeEventListener('resize',handleResize);
-    }
-  })
+  const screen = WindowDimension();
 
   return (
     <div> 
     <CBanner>
-      <CTypography width={windowWidth}>WELCOME</CTypography>
-      <C2Typography width={windowWidth}>TO</C2Typography>
-      <C3Typography width={windowWidth}>DHAWALAGIRI</C3Typography>
-
-      <Grid container ls={12} style={{justifyContent:'center', overflow:'hidden'}}>
-       
-      </Grid> 
+      <CTypography width={screen.width}>WELCOME</CTypography>
+      <C2Typography width={screen.width}>TO</C2Typography>
+      <C3Typography width={screen.width}>DHAWALAGIRI</C3Typography>
+      {/* <Grid container ls={12} style={{justifyContent:'center', overflow:'hidden'}}>
+      </Grid>  */}
     </CBanner>
       </div>
   );
