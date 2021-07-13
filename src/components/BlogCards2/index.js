@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import ShareIcon from '@material-ui/icons/Share';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
@@ -5,7 +6,27 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import './styles.scss';
 import { Avatar } from '@material-ui/core';
 
+import parser from 'html-react-parser';
+
+
+
 function Cards({image,title,content,id}) {
+
+  const getOnlyString = (c, trimLength) =>{
+    let res = "";
+    let stacks = 0;
+    let index = 0;
+    while(c[index]){
+      if(c[index]==='<') stacks++;
+      else if(c[index]==='>') stacks--;
+      if(stacks===0 && c[index]!=='>'){
+        res += c[index];
+      }
+      index++;
+    }
+    return res;
+  }
+  
 
   return (
     <div>
@@ -25,7 +46,8 @@ function Cards({image,title,content,id}) {
             {title && title.length>35 && <span> ....</span>} 
       </h3>
 			<p className="post-desc">
-        {content  && content.slice(0,65)} .....
+        {getOnlyString(content).slice(0,65)} .....
+        {/* {content  &&  content.slice(0,65)} ..... */}
       </p>
 		</div>
     <div className="author-container">

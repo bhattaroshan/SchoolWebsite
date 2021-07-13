@@ -88,7 +88,6 @@ const MenuItemOptions = [
   {
     title: 'Blogs',
     icon: <LibraryBooksIcon/>,
-    // path: '/blogs',
     submenu:[
       {
         title: 'Type 1',
@@ -114,7 +113,7 @@ const MenuItemOptions = [
         icon: <ContactPhoneIcon/>,
         path: '/contactus',
       },
-       {
+      {
         title: 'FAQ',
         icon: <HomeIcon/>,
         path: '/faq',
@@ -278,7 +277,7 @@ const AppBarResponsive = ({logo}) => {
                           })
                         }
                           </Tabs>
-                          </Paper>
+                        </Paper>
                     }
           </Toolbar>
         </CAppBar>
