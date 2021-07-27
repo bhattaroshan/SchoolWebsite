@@ -19,6 +19,7 @@ function Cards({image,title,content,id}) {
     while(c[index]){
       if(c[index]==='<') stacks++;
       else if(c[index]==='>') stacks--;
+
       if(stacks===0 && c[index]!=='>'){
         res += c[index];
       }
