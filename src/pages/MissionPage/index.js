@@ -10,7 +10,7 @@ const MissionPage = () =>{
     const windowSize = WindowDimension();
 
     return (
-        <div style={{marginTop:'50px', paddingBottom:'180px', marginLeft: '100px'}}>
+        <div style={{paddingTop:'50px', paddingBottom:'180px', marginLeft: '100px'}}>
             <BackColor width={windowSize.width} height={windowSize.height}>
                 <Picture image={pic}>
                     <CDivision>
