@@ -45,6 +45,7 @@ import BookIcon from '@material-ui/icons/Book';
 import {MAJOR_FONT, SUBSIDING_FONT} from './constants';
 import { Avatar } from '@material-ui/core';
 import FaqSchedule from './views/FaqSchedule';
+import MissionPage from './pages/MissionPage';
 
 const appBarHeight = 120;
 
@@ -276,7 +277,9 @@ function App() {
           {/* <Route exact path='/blogs'>
             <BlogPage BlogThumbnailDetails={blog}/>
           </Route>  */}
-         
+          <Route exact path='/mission' >
+            <MissionPage/>
+          </Route>
           <Route exact path='/football'>
             <div style={{marginTop: '50px', display:'flex', justifyContent:'center'}}>
               <Blog/>

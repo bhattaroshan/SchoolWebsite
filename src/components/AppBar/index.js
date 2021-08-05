@@ -259,7 +259,7 @@ const AppBarResponsive = ({logo}) => {
                                        label={item.title.toUpperCase()} 
                                         style={{fontSize:'20px', fontWeight:'bold',fontFamily:`${MAJOR_FONT}`}} 
                                   onClick={handleDropMenuOpen(index,subs)}
-                                  onMouseOver={handleDropMenuHover(index,subs)}
+                                  // onMouseOver={handleDropMenuHover(index,subs)}
                                   // onMouseLeave={()=>handleDropMenuHoverEnd(subMenuIndex)}
                                   />
                               );
@@ -277,7 +277,7 @@ const AppBarResponsive = ({logo}) => {
                 onClose={handleDropMenuClose} 
                 anchorEl={anchorEl} 
                 open={Boolean(anchorEl)}
-                MenuListProps={{onMouseLeave:()=>handleDropMenuHoverEnd(subMenuIndex)}}
+                // MenuListProps={{onMouseLeave:()=>handleDropMenuHoverEnd(subMenuIndex)}}
                 >
           {
             MenuItemOptions[subMenuIndex].submenu.map((item,index)=>{
