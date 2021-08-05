@@ -7,10 +7,16 @@ import './styles.scss';
 import { Avatar } from '@material-ui/core';
 
 import parser from 'html-react-parser';
-
+import {useHistory} from 'react-router-dom';
 
 
 function Cards({image,title,content,id}) {
+
+  const history = useHistory();
+
+  const handleBlogClick = () =>{
+    history.push(`/${id}`);
+  }
 
   const getOnlyString = (c, trimLength) =>{
     let res = "";
@@ -31,9 +37,9 @@ function Cards({image,title,content,id}) {
 
   return (
     <div>
-      <div className="blogcard">
+      <div className="blogcard" onClick={handleBlogClick} style={{cursor:'pointer'}}>
           <img src={image} alt='' className="img-container"/>
-          <span className="share-btn"><i className="fa"><ShareIcon style={{fontSize:'30px'}}/></i></span>
+          {/* <span className="share-btn"><i className="fa"><ShareIcon style={{fontSize:'25px'}}/></i></span> */}
           <div className="post-text">
 			<div className="post-meta">
 				<span className="post-category">Primary Teacher</span>

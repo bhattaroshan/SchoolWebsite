@@ -270,14 +270,12 @@ function App() {
             <ContactUs/>
             {/* <ScrollingView/> */}
           </Route>
-           <Route exact path='/blogs2'>
-            {/* <BlogPage BlogThumbnailDetails={BlogThumbnailDetails}/> */}
+           <Route exact path='/blogs'>
             <BlogPage2 BlogThumbnailDetails={blog}/>
           </Route>
-          <Route exact path='/blogs'>
-            {/* <BlogPage BlogThumbnailDetails={BlogThumbnailDetails}/> */}
+          {/* <Route exact path='/blogs'>
             <BlogPage BlogThumbnailDetails={blog}/>
-          </Route> 
+          </Route>  */}
          
           <Route exact path='/football'>
             <div style={{marginTop: '50px', display:'flex', justifyContent:'center'}}>

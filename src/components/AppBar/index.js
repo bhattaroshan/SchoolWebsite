@@ -87,22 +87,11 @@ const MenuItemOptions = [
   },
   {
     title: 'Blogs',
-    icon: <LibraryBooksIcon/>,
-    submenu:[
-      {
-        title: 'Type 1',
-        path: '/blogs'
-      },
-      {
-        title:'Type 2',
-        path: '/blogs2'
-      }
-    ]
+    path: '/blogs'
   },
   {
     title: 'About Us',
     icon: <InfoIcon/>,
-    // path: '/about',
     submenu:[
       {
         title: 'History',
