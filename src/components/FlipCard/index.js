@@ -2,6 +2,7 @@
 import Avatar from '@material-ui/core/Avatar';
 
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -15,10 +16,6 @@ import Principal from '../../assets/principal.jpg';
 const FlipCard = ({name,designation,image}) =>{
     const [flip,setFlip] = useState(false);
 
-    const handleClick = () =>{
-       setFlip(prev=>!prev);
-    }
-
     return (
         <div>
             <div className='cardholder'>
@@ -26,7 +23,7 @@ const FlipCard = ({name,designation,image}) =>{
                     <div className='front-face'>
                             <div className='cover'>
                                 <div className='arrowkey'>
-                                    <KeyboardArrowRightIcon onClick={handleClick} />
+                                    <KeyboardArrowRightIcon onClick={()=>setFlip(prev=>!prev)} />
                                 </div>
                             </div>
                             <div className='content'>
@@ -43,12 +40,13 @@ const FlipCard = ({name,designation,image}) =>{
 
                     <div className='back-face'>
                         <div className='arrowkey'>
-                            <KeyboardArrowRightIcon onClick={handleClick} />
+                            <KeyboardArrowLeftIcon onClick={()=>setFlip(prev=>!prev)} />
                         </div>
-                        <div className='footer'>
-                            <FacebookIcon className='spacing'/>
-                            <TwitterIcon className='spacing'/>
-                            <YouTubeIcon className='spacing'/>
+                        <p>Hey My name is Roshan. I came here as <a href='google.com'>google</a> an English Teacher but later started teaching Mathematics as well.</p>
+                        <div className='back-footer'>
+                            <a href=''><FacebookIcon className='icon-footer'/></a>
+                            <a href=''><TwitterIcon className='icon-footer'/></a>
+                            <a href=''><YouTubeIcon className='icon-footer'/></a>
                         </div>
                     </div>
                 </Cdiv>
