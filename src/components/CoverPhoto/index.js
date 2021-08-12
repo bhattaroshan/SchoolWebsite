@@ -32,8 +32,12 @@ export default function MainFeatured({image,height, title, content}) {
   const classes = useStyles({image,height,t});
   return (
     <Grid container className={classes.mainFeatured}>
-      <Grid item md={6} className={classes.mainFeaturedContent}>
-        <Typography component="h1" variant="h5" color="inherit" gutterBottom>
+      <Grid item lg={12} md={12} sm={12} xs={12} className={classes.mainFeaturedContent}
+        style={{textAlign:'center', justifyContent:'center', top:'20%'}}
+      > 
+        <Typography component="h1" variant="h5" color="inherit" gutterBottom
+          style={{fontSize:'40px', fontWeight:'bold', fontFamily:'Open Sans'}} 
+        >
           {title}
         </Typography>
         <Typography variant="body1" color="inherit" paragraph>

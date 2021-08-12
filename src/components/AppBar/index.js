@@ -70,7 +70,7 @@ const MenuItemOptions = [
       {
         title: 'Faculty and Staff',
         icon: <WorkIcon/>,
-        path: '/football',
+        path: '/faculty',
       },
       {
         title: 'Students and Families',

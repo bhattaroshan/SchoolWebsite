@@ -17,8 +17,8 @@ import {createGlobalStyle} from 'styled-components';
 
 import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';
-import BlogPage2 from './pages/BlogPage2';
 import AriticlePage from './pages/ArticlePage';
+import Faculty from './pages/Faculty';
 
 import Footer from './views/FooterView';
 import ScrollToTop from './components/ScrollToTop';
@@ -272,7 +272,7 @@ function App() {
             {/* <ScrollingView/> */}
           </Route>
            <Route exact path='/blogs'>
-            <BlogPage2 BlogThumbnailDetails={blog}/>
+            <BlogPage BlogThumbnailDetails={blog}/>
           </Route>
           {/* <Route exact path='/blogs'>
             <BlogPage BlogThumbnailDetails={blog}/>
@@ -280,10 +280,8 @@ function App() {
           <Route exact path='/mission' >
             <MissionPage/>
           </Route>
-          <Route exact path='/football'>
-            <div style={{marginTop: '50px', display:'flex', justifyContent:'center'}}>
-              <Blog/>
-            </div>
+          <Route exact path='/faculty'>
+            <Faculty/>
           </Route>
           <Route exact path='/faq'>
             <FaqPage faqs={faqs2}/>

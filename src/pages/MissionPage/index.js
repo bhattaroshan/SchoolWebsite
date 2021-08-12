@@ -1,20 +1,22 @@
 
+import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
 import WindowDimension from '../../components/WindowDimension';
+import CoverPhoto from '../../components/CoverPhoto';
 
 import pic from '../../assets/principal.jpg';
 import { MAJOR_FONT } from '../../constants';
 
-const MissionPage = () =>{
-
+const MissionPhoto = () =>{
     const windowSize = WindowDimension();
-
+    const maxHeight = 600;
+    const minHeight = 400;
     return (
-        <div style={{paddingTop:'50px', paddingBottom:'180px', marginLeft: '100px'}}>
+        <div>
             <BackColor width={windowSize.width} height={windowSize.height}>
                 <Picture image={pic}>
-                    <CDivision>
-                        <CLabel>
+                        <CDivision>
+                            <CLabel>
                             DayaChand Regmi<br/>Principal, Dhawalagiri
                         </CLabel>
                     </CDivision>
@@ -24,14 +26,40 @@ const MissionPage = () =>{
     );
 }
 
+const MissionText = () =>{
+    return (
+        <div>
+            <CMissionTitle>
+                Our Mission
+            </CMissionTitle>
+        </div>
+    );
+}
+
+const MissionPage = () =>{
+
+
+    return (
+        <Grid container spacing={2}>
+            <Grid item lg={12}>
+                <Grid column>
+                    <MissionPhoto/>
+                    <MissionText/>
+                </Grid>
+            </Grid>
+        </Grid>
+    );
+}
+
 export default MissionPage;
+
 
 const BackColor = styled.div`
     position:relative;
     width: ${props=>(35*props.width/100)}px;
     height: ${props=>(50*props.height/100)}px;
-    min-width: 350px;
-    min-height: 300px;
+    /* min-width: 350px; */
+    /* min-height: 300px; */
     background-color: rgb(168,193,188);
     box-shadow: 10px 10px 10px 5px rgba(0,0,0,0.3);
 `;
@@ -66,4 +94,8 @@ const CLabel = styled.p`
     color:white;
     line-height: 40px;
     padding-left:30px;
+`;
+
+const CMissionTitle = styled.p`
+
 `;
