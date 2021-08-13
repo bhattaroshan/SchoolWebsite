@@ -7,7 +7,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 
-import styled from 'styled-components';
+import styled, {css, keyframes} from 'styled-components';
 import {useState} from 'react';
 import './styles.scss';
 
@@ -17,8 +17,9 @@ import 'aos/dist/aos.css';
 import Principal from '../../assets/principal.jpg';
 import { IconButton } from '@material-ui/core';
 
-const FlipCard = ({name,designation,image,description}) =>{
+const FlipCard = ({name,designation,image,description,background}) =>{
     const [flip,setFlip] = useState(false);
+    const [pumpArrow,setPumpArrow] = useState(false);
 
   useEffect(()=>{
     aos.init({duration:2000});
@@ -28,11 +29,13 @@ const FlipCard = ({name,designation,image,description}) =>{
         <div data-aos="fade-up">
             <div className='cardholder'>
                 <Cdiv className='card' flip={flip}>
-                    <div className='front-face'>
+                    <div flip={flip} className='front-face' onMouseEnter={()=>setPumpArrow(true)}
+                                                onMouseLeave={()=>setPumpArrow(false)}>
                             <div className='cover'>
-                                <div className='arrowkey'>
-                                    <KeyboardArrowRightIcon onClick={()=>setFlip(prev=>!prev)} />
-                                </div>
+                                <CFrontArrowdiv flip={flip} pumpArrow={pumpArrow} className='arrowkey'>
+                                    <KeyboardArrowRightIcon onClick={()=>setFlip(true)} />
+                                </CFrontArrowdiv>
+                                {background && <img src={background}/>}
                             </div>
                             <div className='content'>
                                 <div className='avatar'> 
@@ -46,9 +49,9 @@ const FlipCard = ({name,designation,image,description}) =>{
 
                         </div>
 
-                    <div className='back-face'>
+                    <div flip={flip} className='back-face'>
                         <div className='arrowkey'>
-                            <KeyboardArrowLeftIcon onClick={()=>setFlip(prev=>!prev)} />
+                            <KeyboardArrowLeftIcon onClick={()=>setFlip(false)} />
                         </div>
                         <div className='paragraph'>
                             <p>{description}</p>
@@ -72,3 +75,34 @@ export default FlipCard;
 const Cdiv = styled.div`
     transform: ${props=>props.flip?"rotateY(180deg)":""};
 `;
+
+const PumpArrow = keyframes`
+  0%{
+    transform: scale(2);
+  }
+  33%{
+    transform: scale(1);
+  }
+  66%{
+    transform: scale(2);
+  }
+
+  100%{
+    transform: scale(1);
+  }
+`;
+
+const CFrontArrowdiv = styled.div`
+    animation-name: ${props=>{
+        if(props.pumpArrow!==false && props.flip===false)
+            return css`${PumpArrow}`;
+        else
+            return '';
+
+    }};
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: both;
+    cursor: ${props=>props.flip?"default":"pointer"};
+`; 
+

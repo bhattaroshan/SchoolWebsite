@@ -10,6 +10,7 @@ import ECAInCharge from '../../assets/ECAInCharge.jpg';
 import DanceTeacher from '../../assets/DanceTeacher.jpg';
 import FinanceTeacher from '../../assets/FinanceTeacher.jpg';
 import ComputerTeacher from '../../assets/ComputerTeacher.jpg';
+import Scene1 from '../../assets/scene1.jpeg';
 
 import aos from 'aos';
 import 'aos/dist/aos.css';
@@ -19,7 +20,8 @@ const facultyDetails = [
         name: 'Roshan Bhatta',
         designation: 'JUNIOR SCIENCE TEACHER',
         image: PrincipalPhoto,
-        description: 'Roshan completed his bachelors in 2012. He started his teaching career as a STEAM teacher. He has taught over 40 schools with more than 10 years of experience. At Dhawalagiri, he focuses on making science hands-on to students.'
+        description: 'Roshan completed his bachelors in 2012. He started his teaching career as a STEAM teacher. He has taught over 40 schools with more than 10 years of experience. At Dhawalagiri, he focuses on making science hands-on to students.',
+        background: Scene1
     },
     {
         name: 'Sunita Giri',
@@ -68,6 +70,7 @@ const Faculty = () =>{
                                                   designation={detail.designation}
                                                   image={detail.image}
                                                   description={detail.description}
+                                                  background={detail.background}
                                                   />
                                     );
                                 })
