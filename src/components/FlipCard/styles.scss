@@ -1,4 +1,5 @@
 
+
 .cardholder{
     position: relative;
     width: 20em;
@@ -86,7 +87,6 @@
 
     .name{
         margin-top:100px;
-        // font-family: 'Open Sans';
         font-family: 'Merriweather';
         font-size: 22px;
         font-weight: 700;
@@ -94,7 +94,7 @@
     }
 
     .designation{
-        margin-top:40px;
+        margin-top:25px;
         font-family: 'Open Sans';
         font-size: 16px;
         font-weight: 100;
@@ -102,17 +102,18 @@
     }
 
     .separator{
-        margin-top:30px;
-        width: 60px;
+        margin-top:20px;
+        width: 80px;
         height: 2px;
         background: green;
+        opacity: 0.3;
     }
+
 }
 
 .back-face{
     display:flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -123,7 +124,6 @@
 
     .arrowkey{
         position:absolute;
-        top:0%;
         right:0%;
         margin:10px;
         color:rgb(240,240,240);
@@ -134,27 +134,62 @@
         }
     }
 
-    p{
-        text-align: center;
+    .paragraph{
+        position: absolute;
+        top: 13%;
+        width:90%;
+        height:70%;
+        background: rgba(240,240,240,0.3);
         font-family: 'Open Sans';
-        margin: 40px;
-        
+        border-radius: 0.5rem;
+        // box-shadow: 2px 0px 2px 2px rgba(0,0,0,0.1);
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p{
+            margin:15px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
     }
-    .back-footer{
+
+    .social-media{
+        $logo-width:35px;
+        $logo-height:35px;
         position:absolute;
-        bottom:10%;
-        color: rgb(240,240,240);
+        margin-bottom: 20px;
+        bottom:0%;
 
         a{
-            padding-left: 10px;
-            padding-right: 10px;
-            color: rgb(240,240,240);
+            margin-left:20px;
+            margin-right:20px;
 
-            .icon-footer{
-                width: 35px;
-                height: 35px;
+            .media-icon-youtube{
+                width: $logo-width;
+                height: $logo-width;
+                color:rgb(240, 240, 240);
                 &:hover{
-                    color:rgb(0, 174, 255);
+                    color:red;
+                }
+            }
+
+            .media-icon-facebook{
+                width: $logo-width;
+                height: $logo-height;
+                color:rgb(240, 240, 240);
+                &:hover{
+                    color:darkblue;
+                }
+            }
+
+            .media-icon-twitter{
+                width: $logo-width;
+                height: $logo-height;
+                color:rgb(240, 240, 240);
+                &:hover{
+                    color:skyblue;
                 }
             }
         }

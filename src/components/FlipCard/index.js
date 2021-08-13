@@ -1,4 +1,4 @@
-
+import {useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
@@ -11,13 +11,21 @@ import styled from 'styled-components';
 import {useState} from 'react';
 import './styles.scss';
 
-import Principal from '../../assets/principal.jpg';
+import aos from 'aos';
+import 'aos/dist/aos.css';
 
-const FlipCard = ({name,designation,image}) =>{
+import Principal from '../../assets/principal.jpg';
+import { IconButton } from '@material-ui/core';
+
+const FlipCard = ({name,designation,image,description}) =>{
     const [flip,setFlip] = useState(false);
 
+  useEffect(()=>{
+    aos.init({duration:2000});
+  },[])
+
     return (
-        <div>
+        <div data-aos="fade-up">
             <div className='cardholder'>
                 <Cdiv className='card' flip={flip}>
                     <div className='front-face'>
@@ -42,12 +50,16 @@ const FlipCard = ({name,designation,image}) =>{
                         <div className='arrowkey'>
                             <KeyboardArrowLeftIcon onClick={()=>setFlip(prev=>!prev)} />
                         </div>
-                        <p>Hey My name is Roshan. I came here as <a href='google.com'>google</a> an English Teacher but later started teaching Mathematics as well.</p>
-                        <div className='back-footer'>
-                            <a href=''><FacebookIcon className='icon-footer'/></a>
-                            <a href=''><TwitterIcon className='icon-footer'/></a>
-                            <a href=''><YouTubeIcon className='icon-footer'/></a>
+                        <div className='paragraph'>
+                            <p>{description}</p>
                         </div>
+                        <div className='social-media'>
+                            <a href='https://facebook.com'><FacebookIcon className='media-icon-facebook'/></a>
+                            <a href='https://youtube.com'><YouTubeIcon className='media-icon-youtube'/></a>
+                            <a href='https://twitter.com'><TwitterIcon className='media-icon-twitter'/></a>
+                        </div>
+                        {/* <p>Hello everyone</p> */}
+
                     </div>
                 </Cdiv>
             </div>
