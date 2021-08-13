@@ -47,6 +47,9 @@ import { Avatar } from '@material-ui/core';
 import FaqSchedule from './views/FaqSchedule';
 import MissionPage from './pages/MissionPage';
 
+// import aos from 'aos';
+// import 'aos/dist/aos.css';
+
 const appBarHeight = 120;
 
 
@@ -233,6 +236,10 @@ function App() {
 
   const [blog,setBlog] = useState([]);
   const tblog = []
+
+  // useEffect(()=>{
+  //   aos.init({duration:2000});
+  // },[])
 
   useEffect(() => {
     api.get('/').then(res=>{

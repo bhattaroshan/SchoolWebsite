@@ -10,16 +10,11 @@ import {TESTIMONIAL_GRADIENT_DIRECTION,
         TESTIMONIAL_END_COLOR,
         SUBSIDING_FONT} from '../../constants';
 
-import aos from 'aos';
-import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 
 const Testimonial = ({width, image, name, designation, content}) =>{
-  useEffect(()=>{
-    aos.init({duration:2000});
-  },[])
 	return (
-		<div data-aos="fade-up">
+		<div>
       <CPaper elevation={5} width={width}>
         <CAvatar src={image}/>
         <CName>

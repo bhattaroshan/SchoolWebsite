@@ -11,8 +11,6 @@ import styled, {css, keyframes} from 'styled-components';
 import {useState} from 'react';
 import './styles.scss';
 
-import aos from 'aos';
-import 'aos/dist/aos.css';
 
 import Principal from '../../assets/principal.jpg';
 import { IconButton } from '@material-ui/core';
@@ -21,18 +19,19 @@ const FlipCard = ({name,designation,image,description,background}) =>{
     const [flip,setFlip] = useState(false);
     const [pumpArrow,setPumpArrow] = useState(false);
 
-  useEffect(()=>{
-    aos.init({duration:2000});
-  },[])
-
     return (
-        <div data-aos="fade-up">
+        <div>
             <div className='cardholder'>
                 <Cdiv className='card' flip={flip}>
-                    <div flip={flip} className='front-face' onMouseEnter={()=>setPumpArrow(true)}
-                                                onMouseLeave={()=>setPumpArrow(false)}>
+                    <div flip={flip} className='front-face' 
+                                                onMouseEnter={()=>setPumpArrow(true)}
+                                                onTouchStartCapture={()=>setPumpArrow(true)}
+                                                onTouchEndCapture={()=>setPumpArrow(false)}
+                                                onMouseLeave={()=>setPumpArrow(false)}
+                                                >
                             <div className='cover'>
-                                <CFrontArrowdiv flip={flip} pumpArrow={pumpArrow} className='arrowkey'>
+                                <CFrontArrowdiv flip={flip} pumpArrow={pumpArrow} 
+                                            className='arrowkey'>
                                     <KeyboardArrowRightIcon onClick={()=>setFlip(true)} />
                                 </CFrontArrowdiv>
                                 {background && <img src={background}/>}
@@ -94,8 +93,9 @@ const PumpArrow = keyframes`
 
 const CFrontArrowdiv = styled.div`
     animation-name: ${props=>{
-        if(props.pumpArrow!==false && props.flip===false)
+        if((props.pumpArrow!==false && props.flip===false)){
             return css`${PumpArrow}`;
+        }
         else
             return '';
 
@@ -105,4 +105,3 @@ const CFrontArrowdiv = styled.div`
     animation-fill-mode: both;
     cursor: ${props=>props.flip?"default":"pointer"};
 `; 
-
