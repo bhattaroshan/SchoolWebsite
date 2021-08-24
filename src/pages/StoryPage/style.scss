@@ -21,7 +21,7 @@
                 font-size: 20px;
                 font-weight: bold;
                 cursor:pointer;
-                padding-bottom: 10px;
+                padding-bottom: 5px;
                 -webkit-touch-callout: none; /* iOS Safari */
                 -webkit-user-select: none; /* Safari */
                 -khtml-user-select: none; /* Konqueror HTML */
@@ -30,9 +30,6 @@
                 user-select: none; /* Non-prefixed version, currently
                                                     supported by Chrome, Edge, Opera and Firefox */
                 
-                &:nth-child(10){
-                    border-bottom: 3px solid black;
-                }
             }
 
         }
