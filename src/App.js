@@ -27,7 +27,7 @@ import ScrollToTop from './components/ScrollToTop';
 import axios from  'axios';
 
 import FaqPage from './pages/FaqPage';
-
+import StoryPage from './pages/StoryPage';
 
 import mask1 from './assets/mask1.png';
 import mask2 from './assets/mask2.png';
@@ -289,6 +289,9 @@ function App() {
           </Route>
           <Route exact path='/faculty'>
             <Faculty/>
+          </Route>
+          <Route exact path='/ourstory'>
+            <StoryPage />
           </Route>
           <Route exact path='/faq'>
             <FaqPage faqs={faqs2}/>

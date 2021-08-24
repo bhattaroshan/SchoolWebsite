@@ -17,23 +17,17 @@ import { IconButton } from '@material-ui/core';
 
 const FlipCard = ({name,designation,image,description,background}) =>{
     const [flip,setFlip] = useState(false);
-    const [pumpArrow,setPumpArrow] = useState(false);
 
     return (
         <div>
             <div className='cardholder'>
-                <Cdiv className='card' flip={flip}>
-                    <div flip={flip} className='front-face' 
-                                                onMouseEnter={()=>setPumpArrow(true)}
-                                                onTouchStartCapture={()=>setPumpArrow(true)}
-                                                onTouchEndCapture={()=>setPumpArrow(false)}
-                                                onMouseLeave={()=>setPumpArrow(false)}
-                                                >
+                <Cdiv className='card' flip={flip} onClick={()=>setFlip(true)} onMouseLeave={()=>setFlip(false)}>
+                    <div flip={flip} className='front-face'>
                             <div className='cover'>
-                                <CFrontArrowdiv flip={flip} pumpArrow={pumpArrow} 
+                                {/* <CFrontArrowdiv flip={flip} pumpArrow={pumpArrow} 
                                             className='arrowkey'>
                                     <KeyboardArrowRightIcon onClick={()=>setFlip(true)} />
-                                </CFrontArrowdiv>
+                                </CFrontArrowdiv> */}
                                 {background && <img src={background}/>}
                             </div>
                             <div className='content'>
@@ -49,9 +43,9 @@ const FlipCard = ({name,designation,image,description,background}) =>{
                         </div>
 
                     <div flip={flip} className='back-face'>
-                        <div className='arrowkey'>
+                        {/* <div className='arrowkey'>
                             <KeyboardArrowLeftIcon onClick={()=>setFlip(false)} />
-                        </div>
+                        </div> */}
                         <div className='paragraph'>
                             <p>{description}</p>
                         </div>
@@ -60,8 +54,6 @@ const FlipCard = ({name,designation,image,description,background}) =>{
                             <a href='https://youtube.com'><YouTubeIcon className='media-icon-youtube'/></a>
                             <a href='https://twitter.com'><TwitterIcon className='media-icon-twitter'/></a>
                         </div>
-                        {/* <p>Hello everyone</p> */}
-
                     </div>
                 </Cdiv>
             </div>
@@ -92,7 +84,7 @@ const PumpArrow = keyframes`
 `;
 
 const CFrontArrowdiv = styled.div`
-    animation-name: ${props=>{
+    /* animation-name: ${props=>{
         if((props.pumpArrow!==false && props.flip===false)){
             return css`${PumpArrow}`;
         }
@@ -103,5 +95,5 @@ const CFrontArrowdiv = styled.div`
     animation-duration: 0.4s;
     animation-timing-function: ease-in;
     animation-fill-mode: both;
-    cursor: ${props=>props.flip?"default":"pointer"};
+    cursor: ${props=>props.flip?"default":"pointer"}; */
 `; 

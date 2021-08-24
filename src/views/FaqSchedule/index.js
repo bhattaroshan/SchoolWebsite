@@ -31,7 +31,7 @@ export default function CustomizedTimeline() {
       <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
-            9:30 am
+            2001
           </Typography>
         </TimelineOppositeContent>
         <TimelineSeparator>
@@ -43,16 +43,16 @@ export default function CustomizedTimeline() {
         <TimelineContent>
           <Paper elevation={3} className={classes.paper}>
             <Typography variant="h6" component="h1">
-              Eat
+              Established
             </Typography>
-            <Typography>Because you need strength</Typography>
+            <Typography>We wanted the change necessary in education system</Typography>
           </Paper>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
-            10:00 am
+            2004
           </Typography>
         </TimelineOppositeContent>
         <TimelineSeparator>
@@ -64,13 +64,18 @@ export default function CustomizedTimeline() {
         <TimelineContent>
           <Paper elevation={3} className={classes.paper}>
             <Typography variant="h6" component="h1">
-              Code
+              First Batch
             </Typography>
-            <Typography>Because it&apos;s awesome!</Typography>
+            <Typography>45 students from class 10 passed SLC examination with 100% distinction</Typography>
           </Paper>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
+        <TimelineOppositeContent>
+          <Typography variant="body2" color="textSecondary">
+            2010
+          </Typography>
+        </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot color="primary" variant="outlined">
             <HotelIcon />

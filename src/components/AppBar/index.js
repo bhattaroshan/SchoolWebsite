@@ -94,8 +94,9 @@ const MenuItemOptions = [
     icon: <InfoIcon/>,
     submenu:[
       {
-        title: 'History',
-        icon: <TimelineIcon/>
+        title: 'Our Story',
+        icon: <TimelineIcon/>,
+        path: '/ourstory'
       },
       {
         title: 'Contact Us',

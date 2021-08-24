@@ -1,0 +1,50 @@
+
+.story-container{
+    font-family: 'Open Sans';
+    .story-timeline{
+        position: relative;
+        display:flex;
+        max-width: 70%;
+        padding-top:10px;
+        padding-bottom: 20px;
+        left:50%;
+        transform: translate(-50%,0);
+        overflow: hidden;
+        // background: red;
+        .story-timeline-container{
+            position:relative;
+            cursor:move;
+            cursor:grab;
+            span{
+                text-decoration: none;
+                margin:20px;
+                font-size: 20px;
+                font-weight: bold;
+                cursor:pointer;
+                padding-bottom: 10px;
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Old versions of Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                                    supported by Chrome, Edge, Opera and Firefox */
+                
+                &:nth-child(10){
+                    border-bottom: 3px solid black;
+                }
+            }
+
+        }
+    }
+    .story-content{
+        display:flex;
+        justify-content: center;
+        img{
+            width:70%; 
+            max-height: 300px;
+            min-height: 100px;
+            object-fit: cover;
+        }
+    }
+}
