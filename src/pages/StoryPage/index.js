@@ -9,23 +9,24 @@ import './style.scss';
 import im1 from '../../assets/photo1.jpg';
 import im2 from '../../assets/photo2.jpg';
 import im3 from '../../assets/photo5.jpg';
+import { Translate } from '@material-ui/icons';
 
 const timelinemap = [
-    {year:'1990'},
-    {year:'1994'},
-    {year:'1996'},
-    {year:'1998'},
-    {year:'2000'},
-    {year:'2001'},
-    {year:'2004'},
-    {year:'2006'},
-    {year:'2008'},
-    {year:'2010'},
-    {year:'2011'},
-    {year:'2012'},
-    {year:'2013'},
-    {year:'2014'},
-    {year:'2015'},
+    {year:1990,image:im1,title:'My title',content:'My content'},
+    {year:1994,image:im2,title:'My title',content:'My content'},
+    {year:1996,image:im3,title:'My title',content:'My content'},
+    {year:1998,image:im1,title:'My title',content:'My content'},
+    {year:2000,image:im2,title:'My title',content:'My content'},
+    {year:2001,image:im3,title:'My title',content:'My content'},
+    {year:2004,image:im1,title:'My title',content:'My content'},
+    {year:2006,image:im2,title:'My title',content:'My content'},
+    {year:2008,image:im3,title:'My title',content:'My content'},
+    {year:2010,image:im1,title:'My title',content:'My content'},
+    {year:2011,image:im2,title:'My title',content:'My content'},
+    {year:2012,image:im3,title:'My title',content:'My content'},
+    {year:2013,image:im1,title:'My title',content:'My content'},
+    {year:2014,image:im2,title:'My title',content:'My content'},
+    {year:2015,image:im3,title:'My title',content:'My content'},
 ]
 
 const story = [
@@ -66,6 +67,7 @@ const story = [
 const StoryPage = () =>{
     const divRef = useRef();
     const yearRef = useRef();
+    const storyRef = useRef();
     const [position,setPosition] = useState({x:0,y:0});
     const [moveToOrigin,setMoveToOrigin] = useState(false);
 
@@ -73,6 +75,8 @@ const StoryPage = () =>{
 
     const handleYearClick = (index) =>{
         setHighlightYear(index+1);
+        storyRef.current.style.transform=`translate(${-index*100}%,0)`;
+        // storyRef.current.style.transform=`translate(${-index*1080}px,0)`;
     }
 
     const handleStop = ()=>{
@@ -83,8 +87,6 @@ const StoryPage = () =>{
         if(yearLeft>divLeft || yearRight<divRight){
             setMoveToOrigin(true);
         }
-
-        
     }
 
 
@@ -120,8 +122,9 @@ const StoryPage = () =>{
                     <Sdiv className='story-timeline-container' ref={yearRef} moveToOrigin={moveToOrigin}>
                             {
                                 timelinemap.map((elem,index)=>{
-                                    return <Sspan key={index} id={index} highlight={hightlightYear}
-                                            onClick={()=>handleYearClick(index)}  
+                                    return <Sspan href='#' key={index} id={index} highlight={hightlightYear}
+                                            onClick={()=>handleYearClick(index)} 
+                                            onTouchStart={()=>handleYearClick(index)} 
                                            >
                                                 {elem.year}
                                         </Sspan>
@@ -132,7 +135,17 @@ const StoryPage = () =>{
                 </Draggable>
             </div>
             <div className='story-content'>
-                <img src={im1}/>
+                    <p>{timelinemap[hightlightYear-1].year}</p>
+                    <div className='story-content-details' ref={storyRef}>
+                            {
+                                timelinemap.map((elem,index)=>{
+                                    return <> 
+                                                <img src={elem.image} />
+                                           </>
+                                           
+                                })
+                            }
+                    </div>
             </div>
         </div>
     );
