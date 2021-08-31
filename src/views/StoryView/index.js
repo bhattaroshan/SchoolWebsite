@@ -44,7 +44,7 @@ const StoryView = () =>{
     const [moveToOrigin,setMoveToOrigin] = useState(false);
     const [imgWidth,setImageWidth] = useState((70*dimensions.width)/100);
     const [hightlightYear,setHighlightYear] = useState(1);
-    const [enableContentTransition,setEnableContentTransition] = useState(false);
+    const [enableContentTransition,setEnableContentTransition] = useState(true);
 
     const handleYearClick = (index) =>{
         setHighlightYear(index+1);
