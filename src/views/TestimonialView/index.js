@@ -49,7 +49,8 @@ const CBanner = styled.div`
   /* margin-top:-58px; */
   justify-content: center;
   text-align: center;
-  background: linear-gradient(to ${TESTIMONIAL_BANNER_GRADIENT_DIRECTION}, ${TESTIMONIAL_BANNER_START_COLOR}, ${TESTIMONIAL_BANNER_END_COLOR});
+  /* background: linear-gradient(to ${TESTIMONIAL_BANNER_GRADIENT_DIRECTION}, ${TESTIMONIAL_BANNER_START_COLOR}, ${TESTIMONIAL_BANNER_END_COLOR}); */
+  background:white;
 `;
 
 const CTypography = styled(Typography)`
@@ -57,7 +58,7 @@ const CTypography = styled(Typography)`
     margin-top:40px;
     margin-bottom:40px;
     font-size: ${props=>props.width>1280?100:(props.width>900?80:40)}px;
-    color: white;
+    color: rgb(100,100,100);
     font-family: ${MAJOR_FONT};
     font-weight: 900;
     text-shadow: 3px 3px 3px rgb(100,100,100);

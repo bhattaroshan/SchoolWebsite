@@ -18,7 +18,7 @@ const CustomCarousel = () =>{
   const minHeight = 400;
 
   return (
-    <Carousel autoPlay={true} animation={'fade'} interval={1000}
+    <Carousel autoPlay={true} animation={'fade'} interval={3000}
               indicatorIconButtonProps={{
                 style:{
                   position:'relative',

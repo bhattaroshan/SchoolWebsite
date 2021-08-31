@@ -1,0 +1,36 @@
+
+.welcome-school{
+    display:flex;
+    padding-bottom:10px;
+    padding-top:10px;
+    padding-left:20px;
+    padding-right:20px;
+    font-family: 'Open Sans';
+    background:rgb(220,240,220);
+    height:600px;
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+    img{
+        width:50%;
+        object-fit: cover;
+    }
+    .welcome-content{
+        padding: 50px;
+        text-align: left;
+        .welcome-title{
+            font-size:20px;
+            color:rgb(100,100,100);
+        }
+        .welcome-school-name{
+            font-size:30px;
+            font-weight:bold;
+        }
+        .welcome-details{
+            font-weight:100;
+            font-size:18px;
+            padding-top:30px;
+            line-height: 30px;
+        }
+    }
+}

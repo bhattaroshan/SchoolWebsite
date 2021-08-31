@@ -8,6 +8,9 @@ import {TESTIMONIAL_BANNER_GRADIENT_DIRECTION,
         MAJOR_FONT} from '../../constants';
 import WindowDimension from '../../components/WindowDimension';
 
+import im1 from '../../assets/photo8.jpg';
+import './style.scss';
+
 const WelcomeView = ({testimonials}) =>{
 
   const screen = WindowDimension();
@@ -15,11 +18,22 @@ const WelcomeView = ({testimonials}) =>{
   return (
     <div> 
     <CBanner>
-      <CTypography width={screen.width}>WELCOME</CTypography>
-      <C2Typography width={screen.width}>TO</C2Typography>
-      <C3Typography width={screen.width}>DHAWALAGIRI</C3Typography>
-      {/* <Grid container ls={12} style={{justifyContent:'center', overflow:'hidden'}}>
-      </Grid>  */}
+      <div className='welcome-school'>
+        <img src={im1}/>
+        <div className='welcome-content'>
+          <p className='welcome-title'>Welcome to</p>
+          <p className='welcome-school-name'>Dhawalagiri School</p>
+          <p className='welcome-details'>
+          Dhawalagiri is a multicultural community in the foothills of the Himalayas that inspires in each student a passion for learning, the confidence and competence to pursue their dreams, and the commitment to serve as a compassionate global citizen and leader, who is a steward of the environment.
+          </p>
+        </div>
+        {/* <img src={im1}/>
+        <div className='welcome-content'>
+          <p className='welcome-title'>Welcome to </p>
+          <p className='welcome-school-name'>Dhawalagiri</p>
+          <p className='welcome-detail'>We welcome you with full heart at Dhawalagiri. This is again another test writing. Let me see what happens when I write a way long message here</p>
+        </div> */}
+      </div>
     </CBanner>
       </div>
   );
@@ -36,8 +50,10 @@ const CBanner = styled.div`
   justify-content: center;
   text-align: center;
   /* background: linear-gradient(to ${TESTIMONIAL_BANNER_GRADIENT_DIRECTION}, ${TESTIMONIAL_BANNER_START_COLOR}, ${TESTIMONIAL_BANNER_END_COLOR}); */
-  background: 'white';
+  /* background: 'white'; */
+  /* background: linear-gradient(to ${TESTIMONIAL_BANNER_GRADIENT_DIRECTION}, ${TESTIMONIAL_BANNER_START_COLOR}, ${TESTIMONIAL_BANNER_END_COLOR}); */
   margin-bottom:50px;
+  margin-top:50px;
 `;
 
 const CTypography = styled(Typography)`
