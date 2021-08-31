@@ -54,8 +54,7 @@ const StoryView = () =>{
         contentRef.current.style.transform=`translate(${-index*rect.width}px,0)`;
     }
 
-    useEffect(()=>{
-        
+    const handleContentPosition = () =>{
         const handleResize = () =>{
             const rect = imgRef.current.getBoundingClientRect();
             setImageWidth(rect.width);
@@ -68,6 +67,14 @@ const StoryView = () =>{
         return ()=>{
         window.removeEventListener('resize',handleResize);
         }
+    }
+
+    useEffect(()=>{
+        handleContentPosition();
+    },[])
+
+    useEffect(()=>{
+       handleContentPosition(); 
     })
     
     const handleStop = ()=>{
