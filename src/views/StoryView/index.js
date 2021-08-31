@@ -1,10 +1,11 @@
 
-import {useRef,useState} from 'react';
+import {useRef,useState,useEffect} from 'react';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Draggable from 'react-draggable';
 import styled from 'styled-components';
 
+import WindowDimension from '../../components/WindowDimension';
 import './style.scss';
 
 import im1 from '../../assets/photo1.jpg';
@@ -33,22 +34,42 @@ const timelinemap = [
 
 
 const StoryView = () =>{
+    const dimensions = WindowDimension();
     const divRef = useRef();
     const yearRef = useRef();
     const storyRef = useRef();
+    const imgRef = useRef();
     const contentRef = useRef();
     const [position,setPosition] = useState({x:0,y:0});
     const [moveToOrigin,setMoveToOrigin] = useState(false);
-
+    const [imgWidth,setImageWidth] = useState((70*dimensions.width)/100);
     const [hightlightYear,setHighlightYear] = useState(1);
+    const [enableContentTransition,setEnableContentTransition] = useState(false);
 
     const handleYearClick = (index) =>{
         setHighlightYear(index+1);
+        setEnableContentTransition(true);
         storyRef.current.style.transform=`translate(${-index*100}%,0)`;
-        contentRef.current.style.transform=`translate(${-index*100}%,0)`;
-        // storyRef.current.style.transform=`translate(${-index*1080}px,0)`;
+        const rect = imgRef.current.getBoundingClientRect();
+        contentRef.current.style.transform=`translate(${-index*rect.width}px,0)`;
     }
 
+    useEffect(()=>{
+        
+        const handleResize = () =>{
+            const rect = imgRef.current.getBoundingClientRect();
+            setImageWidth(rect.width);
+            setEnableContentTransition(false);
+            contentRef.current.style.transform=`translate(${-(hightlightYear-1)*rect.width}px,0)`;
+        }
+
+        window.addEventListener('resize',handleResize);
+
+        return ()=>{
+        window.removeEventListener('resize',handleResize);
+        }
+    })
+    
     const handleStop = ()=>{
         const divLeft = divRef.current.getBoundingClientRect().left;
         const divRight = divRef.current.getBoundingClientRect().right;
@@ -110,26 +131,25 @@ const StoryView = () =>{
                             {
                                 timelinemap.map((elem,index)=>{
                                     return <> 
-                                                <img src={elem.image} />
+                                                <img src={elem.image} ref={imgRef}/>
                                            </>
-                                           
                                 })
                             }
                     </div>
             </div>
             <div className='story-text'>
-                <div className='story-content-content' ref={contentRef}>
+                <SCCdiv className='story-content-content' ref={contentRef} transition={enableContentTransition}>
                         {
                             timelinemap.map((elem,index)=>{
                                 return <>
-                                    <div>
+                                    <SCdiv mywidth={imgWidth}>
                                         <p>{elem.title}</p>
                                         <span>{elem.content}</span>
-                                    </div>
+                                    </SCdiv>
                                     </>;
                             })
                         }
-                </div>
+                </SCCdiv>
             </div>
         </div>
     );
@@ -145,4 +165,13 @@ const Sspan = styled.span`
     &:nth-child(${props=>props.highlight}){
         border-bottom: 3px solid black;
     }
+`;
+
+const SCdiv = styled.div`
+    width: ${(props=>props.mywidth)}px;
+    /* min-width: 100%; */
+`;
+
+const SCCdiv = styled.div`
+    transition: ${props=>props.transition?'all 0.8s ease':'none'};
 `;
