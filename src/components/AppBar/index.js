@@ -36,6 +36,8 @@ import Paper from '@material-ui/core/Paper';
 import {MAJOR_FONT, APPBAR_BG, SUBSIDING_FONT} from '../../constants';
 import { makeStyles } from '@material-ui/core';
 
+import './style.scss';
+
 const MenuItemOptions = [
   {
     title: 'Home',
@@ -222,16 +224,15 @@ const AppBarResponsive = ({logo}) => {
 
             <Typography style={{fontSize:'20px', 
                                 color:'rgb(50,50,50)', 
-                                // margin:'30px', 
                                 marginLeft:'20px',
                                 fontWeight:'bold',
-                                fontFamily:`${MAJOR_FONT}`,
+                                fontFamily:`Open Sans`,
                                 textAlign:'left',
                                 lineHeight:'25px'
                                 }}>
                                 
               DHAWALAGIRI <br/> 
-              <span style={{fontSize:'14px', fontWeight:200}}>
+              <span style={{fontSize:'14px', fontWeight:700, fontFamily:'Open Sans'}}>
                 HEMJA
               </span>
             </Typography>
@@ -248,26 +249,36 @@ const AppBarResponsive = ({logo}) => {
               }
 
                     {!drawerActivate && 
-                      <Paper square style={{boxShadow:'none'}}>
-                          <Tabs
-                            value={tabhighlighter}
-                            >
+                      // <Paper square style={{boxShadow:'none'}}>
+                      //     <Tabs
+                      //       value={tabhighlighter}
+                      //       >
+                      //   {
+                      //     MenuItemOptions.map((item,index)=>{
+                      //         if(!item.title) subs++;
+                      //         return(item.title &&  
+                      //             <Tab key={index} id={index} 
+                      //                  label={item.title} 
+                      //                   style={{fontSize:'20px', fontWeight:'bold',fontFamily:'Open Sans'}} 
+                      //             onClick={handleDropMenuOpen(index,subs)}
+                      //             />
+                      //         );
+                      //     })
+                      //   }
+                      //     </Tabs>
+                      //   </Paper>
+                      <div className='appbar-menu'>
                         {
                           MenuItemOptions.map((item,index)=>{
-                              if(!item.title) subs++;
-                              return(item.title &&  
-                                  <Tab key={index} id={index} 
-                                       label={item.title.toUpperCase()} 
-                                        style={{fontSize:'20px', fontWeight:'bold',fontFamily:`${MAJOR_FONT}`}} 
-                                  onClick={handleDropMenuOpen(index,subs)}
-                                  // onMouseOver={handleDropMenuHover(index,subs)}
-                                  // onMouseLeave={()=>handleDropMenuHoverEnd(subMenuIndex)}
-                                  />
-                              );
-                          })
-                        }
-                          </Tabs>
-                        </Paper>
+                            console.log(item.title);
+                            if(!item.title) subs++;
+                            return (item.title && <span key={index} id={index}
+                                                  onClick={handleDropMenuOpen(index,subs)}>
+                                                    {item.title}
+                                                  </span>);
+                        })
+                      }
+                      </div>
                     }
           </Toolbar>
         </CAppBar>
@@ -287,8 +298,8 @@ const AppBarResponsive = ({logo}) => {
                   <MenuItem onClick={()=>handleDropMenuItemClose(index)} 
                             style={{minWidth:'250px'}}>
                     <span>{item.icon}</span>
-                    <Typography style={{marginLeft:'40px', fontFamily:`${SUBSIDING_FONT}`}}>
-                      {item.title.toUpperCase()}
+                    <Typography style={{marginLeft:'40px', fontFamily:'Open Sans'}}>
+                      {item.title}
                     </Typography>
                   </MenuItem>
                 </div>
@@ -310,7 +321,7 @@ const AppBarResponsive = ({logo}) => {
                         <CListItem button onClick={()=>popDrawerMenu(item.submenu,index)}>
                           <ListItemIcon>{item.icon}</ListItemIcon>
                           <CListItemText primary={
-                            <CMenuTypography>{item.title.toUpperCase()}</CMenuTypography>
+                            <CMenuTypography>{item.title}</CMenuTypography>
                           }/>
                           {item.submenu && (subMenuBoolean[index] ? <ExpandLess/> : <ExpandMore/>)}
                         </CListItem>
@@ -328,8 +339,8 @@ const AppBarResponsive = ({logo}) => {
                                           <CListItem button onClick={()=>handleDrawerMenuClick(index,subindex)}>
                                           <ListItemIcon>{subitem.icon}</ListItemIcon>
                                           <CListItemText primary={
-                                            <Typography style={{fontSize:'15px',fontWeight:'300', fontFamily:`${MAJOR_FONT}`}}>
-                                              {subitem.title.toUpperCase()}
+                                            <Typography style={{fontSize:'15px',fontWeight:'300', fontFamily:'Open Sans'}}>
+                                              {subitem.title}
                                             </Typography>
                                           }
                                           />
@@ -370,7 +381,7 @@ const CAppBar = styled(AppBar)`
 
 const CMenuTypography = styled(Typography)`
   &&&{
-    font-family:${MAJOR_FONT};
+    font-family:'Open Sans';
     font-weight:700;
   }
 `;

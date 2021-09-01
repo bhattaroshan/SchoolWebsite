@@ -1,14 +1,16 @@
 
 .welcome-school{
     display:flex;
+    justify-content: center;
+    align-items: center;
     padding-bottom:10px;
     padding-top:10px;
     padding-left:20px;
     padding-right:20px;
     font-family: 'Open Sans';
-    background:rgb(220,240,220);
-    height:600px;
-    width:90%;
+    background:white;
+    height:500px;
+    width:80%;
     margin-left:auto;
     margin-right:auto;
     img{

@@ -326,7 +326,7 @@ const GlobalStyle = createGlobalStyle`
 
   body{
 		${'' /* background: linear-gradient(to bottom, rgb(180,220,180),rgb(255,255,255)); */}
-    background: rgb(255,255,255);
+    background:white;
     overflow-x:hidden;
   }
 `;

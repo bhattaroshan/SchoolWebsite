@@ -45,7 +45,8 @@ const CPaper = styled(Paper)`
     align-items: center;
     width: ${props=>props.width}px;
     min-height:300px;
-    background: linear-gradient(to ${TESTIMONIAL_GRADIENT_DIRECTION}, ${TESTIMONIAL_START_COLOR}, ${TESTIMONIAL_END_COLOR});
+    /* background: linear-gradient(to ${TESTIMONIAL_GRADIENT_DIRECTION}, ${TESTIMONIAL_START_COLOR}, ${TESTIMONIAL_END_COLOR}); */
+    background:white;
   }
 `;
 
@@ -65,7 +66,7 @@ const CTestimonial = styled(Typography)`
     margin-bottom:40px;
     text-align: justify;
     font-family: ${SUBSIDING_FONT};
-    font-weight: 500;
+    font-weight: 300;
     text-indent: 50px;
     line-height: 30px;
   }
@@ -74,8 +75,8 @@ const CTestimonial = styled(Typography)`
 const CName = styled(Typography)`
   &&&{
     font-family: ${SUBSIDING_FONT};
-    font-weight: 700;
-    font-size:25px;
+    font-weight: 500;
+    font-size:20px;
   }
 `;
 

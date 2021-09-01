@@ -21,7 +21,7 @@ const FlipCard = ({name,designation,image,description,background}) =>{
     return (
         <div>
             <div className='cardholder'>
-                <Cdiv className='card' flip={flip} onClick={()=>setFlip(true)} onMouseLeave={()=>setFlip(false)}>
+                <Cdiv className='card' flip={flip} onMouseOver={()=>setFlip(true)} onMouseLeave={()=>setFlip(false)}>
                     <div flip={flip} className='front-face'>
                             <div className='cover'>
                                 {/* <CFrontArrowdiv flip={flip} pumpArrow={pumpArrow} 

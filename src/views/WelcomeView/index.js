@@ -27,12 +27,6 @@ const WelcomeView = ({testimonials}) =>{
           Dhawalagiri is a multicultural community in the foothills of the Himalayas that inspires in each student a passion for learning, the confidence and competence to pursue their dreams, and the commitment to serve as a compassionate global citizen and leader, who is a steward of the environment.
           </p>
         </div>
-        {/* <img src={im1}/>
-        <div className='welcome-content'>
-          <p className='welcome-title'>Welcome to </p>
-          <p className='welcome-school-name'>Dhawalagiri</p>
-          <p className='welcome-detail'>We welcome you with full heart at Dhawalagiri. This is again another test writing. Let me see what happens when I write a way long message here</p>
-        </div> */}
       </div>
     </CBanner>
       </div>

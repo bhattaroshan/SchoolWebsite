@@ -56,10 +56,12 @@ const StoryView = () =>{
 
     const handleContentPosition = () =>{
         const handleResize = () =>{
-            const rect = imgRef.current.getBoundingClientRect();
-            setImageWidth(rect.width);
-            setEnableContentTransition(false);
-            contentRef.current.style.transform=`translate(${-(hightlightYear-1)*rect.width}px,0)`;
+            if(imgRef.current){
+                const rect = imgRef.current.getBoundingClientRect();
+                setImageWidth(rect.width);
+                setEnableContentTransition(false);
+                contentRef.current.style.transform=`translate(${-(hightlightYear-1)*rect.width}px,0)`;
+            }
         }
 
         window.addEventListener('resize',handleResize);
