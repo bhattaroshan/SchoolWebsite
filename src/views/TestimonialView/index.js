@@ -92,7 +92,10 @@ const CTypography = styled(Typography)`
 
 const C2Typography = styled(Typography)`
   &&&{
-    font-weight:500;
+    font-size: ${props=>props.width>1280?18:(props.width>900?16:12)}px;
+    font-weight:300;
     margin-bottom:40px;
+    margin-left:20px;
+    margin-right:20px;
   }
 `;
