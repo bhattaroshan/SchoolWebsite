@@ -8,6 +8,8 @@ import {TESTIMONIAL_BANNER_GRADIENT_DIRECTION,
         MAJOR_FONT} from '../../constants';
 import WindowDimension from '../../components/WindowDimension';
 
+import Grid from '@material-ui/core/Grid';
+
 import im1 from '../../assets/photo8.jpg';
 import './style.scss';
 
@@ -19,14 +21,21 @@ const WelcomeView = ({testimonials}) =>{
     <div> 
     <CBanner>
       <div className='welcome-school'>
-        <img src={im1}/>
-        <div className='welcome-content'>
-          <p className='welcome-title'>Welcome to</p>
-          <p className='welcome-school-name'>Dhawalagiri School</p>
-          <p className='welcome-details'>
-          Dhawalagiri is a multicultural community in the foothills of the Himalayas that inspires in each student a passion for learning, the confidence and competence to pursue their dreams, and the commitment to serve as a compassionate global citizen and leader, who is a steward of the environment.
-          </p>
-        </div>
+        <Grid container justify='center' justifyContent='center' alignItems='center'>
+          <Grid item lg={6} md={6} sm={10} xs={12} justifyContent='center'>
+            <img src={im1}/>
+            </Grid>
+            <Grid item lg={6} md={6} sm={10} xs={12} justifyContent='center'>
+            <div className='welcome-content'>
+              <p className='welcome-title'>Welcome to</p>
+              <p className='welcome-school-name'>Dhawalagiri School</p>
+              <p className='welcome-details'>
+              Dhawalagiri is a multicultural community in the foothills of the Himalayas that inspires in each student a passion for learning, the confidence and competence to pursue their dreams, and the commitment to serve as a compassionate global citizen and leader, who is a steward of the environment.
+              </p>
+            </div>
+
+          </Grid>
+        </Grid>
       </div>
     </CBanner>
       </div>
