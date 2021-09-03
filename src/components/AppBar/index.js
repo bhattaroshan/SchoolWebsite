@@ -222,7 +222,7 @@ const AppBarResponsive = ({logo}) => {
           <Toolbar>
             <CustomLogo variant="headline" src={logo} height={100}/>
 
-            <Typography style={{fontSize:'20px', 
+            <Typography style={{fontSize:'18px', 
                                 color:'rgb(50,50,50)', 
                                 marginLeft:'20px',
                                 fontWeight:'bold',
@@ -232,7 +232,7 @@ const AppBarResponsive = ({logo}) => {
                                 }}>
                                 
               DHAWALAGIRI <br/> 
-              <span style={{fontSize:'14px', fontWeight:700, fontFamily:'Open Sans'}}>
+              <span style={{fontSize:'14px', fontWeight:500, fontFamily:'Open Sans'}}>
                 HEMJA
               </span>
             </Typography>
@@ -401,7 +401,8 @@ const CListItem = styled(ListItem)`
 `;
 
 const CustomLogo = styled.img`
-  height: ${props => props.height}px;
+  margin: 10px 0;
+  height: ${props => props.height-20}px;
   justify-content: "space-between";
   position: relative;
 `;

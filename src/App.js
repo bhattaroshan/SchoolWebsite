@@ -324,8 +324,7 @@ const GlobalStyle = createGlobalStyle`
     padding:0;
   }
 
-  body{
-		${'' /* background: linear-gradient(to bottom, rgb(180,220,180),rgb(255,255,255)); */}
+  html,body{
     background:white;
     overflow-x:hidden;
   }

@@ -13,30 +13,34 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 
 const ContactUs = () => {
 
+  {/* <Grid container justify='space-around' style={{textAlign:'center'}}> */}
   return (
     <div>
-      <Grid container justify='center'>
-        <Grid item xs={12} sm={6} lg={12}>
-          <Grid container justify='space-around' style={{textAlign:'center'}}>
-            <div style={{padding:'30px'}}>
+      <Grid container justifyContent='center' alignContent='center'>
+        <Grid item xs={12} sm={12} lg={4} md={4} justifyContent='center'>
+            <div style={{dispaly:'flex',textAlign:'center', padding:'30px'}}>
                 <CPhoneInTalkOutlinedIcon/>
                 <CTypography>Phone</CTypography>
                 <CSubTypography>Connect directly with School at the provided number </CSubTypography>
                 <CSubTypography>+01-44003267</CSubTypography>
               </div>
-              <div style={{padding:'30px'}}>
+          </Grid>
+          <Grid item xs={12} sm={12} lg={4} md={4}>
+              <div style={{dispaly:'flex',textAlign:'center', padding:'30px'}}>
                 <CMailOutlineIcon/>
                 <CTypography>Email</CTypography>
                 <CSubTypography>We are eager to hear from you about your queries </CSubTypography>
                 <CSubTypography>info@dhaulagiri.com</CSubTypography>
               </div>
-              <div style={{padding:'30px'}}>
+          </Grid>
+          <Grid item xs={12} sm={12} lg={4} md={4}>
+              <div style={{dispaly:'flex',textAlign:'center', padding:'30px'}}>
                 <CLocationOnOutlinedIcon/>
                 <CTypography>Location</CTypography>
                 <CSubTypography>Dhaulagiri Secondary School</CSubTypography>
                 <CSubTypography>Hemja, Pokhara</CSubTypography>
               </div>
-          </Grid>
+          {/* </Grid> */}
         </Grid>
       </Grid>
         <div style={{marginTop:'100px',marginBottom:'100px', textAlign:'center'}}>
