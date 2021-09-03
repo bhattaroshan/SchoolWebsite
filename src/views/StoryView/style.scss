@@ -62,9 +62,10 @@
             display:flex;
             transition: all 1s ease;
                 img{
-                    width:100%;
+                    max-width: 100%;
+                    min-width:100%;
                     object-fit: cover;
-                    background-size:cover;
+                    // background-size:cover;
                 }
                 
         }
@@ -81,7 +82,6 @@
         .story-content-content{
             display:flex;
             position:relative;
-            // transition: all 0.8s ease;
             div{
                 p{
                     font-weight: bold;
