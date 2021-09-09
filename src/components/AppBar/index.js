@@ -270,7 +270,7 @@ const AppBarResponsive = ({logo}) => {
                       <div className='appbar-menu'>
                         {
                           MenuItemOptions.map((item,index)=>{
-                            console.log(item.title);
+                            // console.log(item.title);
                             if(!item.title) subs++;
                             return (item.title && <span key={index} id={index}
                                                   onClick={handleDropMenuOpen(index,subs)}>

@@ -9,6 +9,8 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 
 import styled, {css, keyframes} from 'styled-components';
 import {useState} from 'react';
+import Button from '@material-ui/core/Button';
+
 import './styles.scss';
 
 
@@ -21,7 +23,7 @@ const FlipCard = ({name,designation,image,description,background}) =>{
     return (
         <div>
             <div className='cardholder'>
-                <Cdiv className='card' flip={flip?1:0} onMouseOver={()=>setFlip(true)} onMouseLeave={()=>setFlip(false)}>
+                <Cdiv className='card' flip={flip?1:0} onMouseLeave={()=>setFlip(false)}>
                     <div className='front-face'>
                             <div className='cover'>
                                 {/* <CFrontArrowdiv flip={flip} pumpArrow={pumpArrow} 
@@ -37,6 +39,7 @@ const FlipCard = ({name,designation,image,description,background}) =>{
                                 <p className='name'>{name}</p>
                                 <p className='designation'>{designation}</p>
                                 <div className='separator'/>
+                                <CButton variant='contained' onClick={()=>setFlip(true)}>details</CButton>
                             </div>
 
                         </div>
@@ -61,6 +64,12 @@ const FlipCard = ({name,designation,image,description,background}) =>{
 }
 
 export default FlipCard;
+
+const CButton = styled(Button)`
+    &&&{
+        background:rgba(168,193,188,0.7);
+    }
+`;
 
 const Cdiv = styled.div`
     transform: ${props=>props.flip===1?"rotateY(180deg)":""};

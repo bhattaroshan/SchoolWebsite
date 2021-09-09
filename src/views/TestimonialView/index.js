@@ -83,17 +83,15 @@ const CTypography = styled(Typography)`
     margin-top:40px;
     margin-bottom:10px;
     font-size: ${props=>props.width>1280?50:(props.width>900?80:20)}px;
-    
     font-family: 'Open Sans';
     font-weight: 700;
-    /* text-shadow: 3px 3px 3px rgb(100,100,100); */
   }
 `;
 
 const C2Typography = styled(Typography)`
   &&&{
-    font-size: ${props=>props.width>1280?18:(props.width>900?16:12)}px;
-    font-weight:300;
+    font-size: ${props=>props.width>1280?20:(props.width>900?18:16)}px;
+    font-weight:100;
     margin-bottom:40px;
     margin-left:20px;
     margin-right:20px;
