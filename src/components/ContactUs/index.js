@@ -16,8 +16,8 @@ const ContactUs = () => {
   {/* <Grid container justify='space-around' style={{textAlign:'center'}}> */}
   return (
     <div>
-      <Grid container justifyContent='center' alignContent='center'>
-        <Grid item xs={12} sm={12} lg={4} md={4} justifyContent='center'>
+      <Grid container alignContent='center'>
+        <Grid item xs={12} sm={12} lg={4} md={4}>
             <div style={{dispaly:'flex',textAlign:'center', padding:'30px'}}>
                 <CPhoneInTalkOutlinedIcon/>
                 <CTypography>Phone</CTypography>

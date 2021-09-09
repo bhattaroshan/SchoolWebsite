@@ -21,11 +21,11 @@ const WelcomeView = ({testimonials}) =>{
     <div> 
     <CBanner>
       <div className='welcome-school'>
-        <Grid container justify='center' justifyContent='center' alignItems='center'>
-          <Grid item lg={6} md={6} sm={12} xs={12} justifyContent='center'>
+        <Grid container justify='center' alignItems='center'>
+          <Grid item lg={6} md={6} sm={12} xs={12}>
             <img src={im1}/>
             </Grid>
-            <Grid item lg={6} md={6} sm={12} xs={12} justifyContent='center'>
+            <Grid item lg={6} md={6} sm={12} xs={12}>
             <div className='welcome-content'>
               <p className='welcome-title'>Welcome to</p>
               <p className='welcome-school-name'>Dhawalagiri School</p>

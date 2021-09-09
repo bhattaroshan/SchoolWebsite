@@ -35,6 +35,10 @@ import mask3 from './assets/mask3.png';
 import mask4 from './assets/mask4.png';
 import mask5 from './assets/mask5.png';
 
+import im1 from './assets/photo1.jpg';
+import im2 from './assets/photo2.jpg';
+import im3 from './assets/photo3.jpg';
+
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import SportsBaseballIcon from '@material-ui/icons/SportsBaseball';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
@@ -46,6 +50,7 @@ import {MAJOR_FONT, SUBSIDING_FONT} from './constants';
 import { Avatar } from '@material-ui/core';
 import FaqSchedule from './views/FaqSchedule';
 import MissionPage from './pages/MissionPage';
+import Cover from './components/Cover';
 
 // import aos from 'aos';
 // import 'aos/dist/aos.css';
@@ -185,6 +190,17 @@ const faqs2 = [
   },
 ];
 
+const coverimage = [
+{
+  image: im1,
+  title: 'A future maker'
+},
+{
+  image: im2,
+  title: 'An advocate of clean environment'
+},
+];
+
 function App() {
   const post = {
     title: 'About the principal',
@@ -263,7 +279,8 @@ function App() {
         <NavTest appBarHeight={appBarHeight}/>
         <Switch>
           <Route exact path='/' >
-            <CustomCarousel/>
+            {/* <CustomCarousel/> */}
+            <Cover data={coverimage}/>
             <HomePage testimonials={testimonials}/>
           </Route>
           <Route path='/about'>

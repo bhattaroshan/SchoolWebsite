@@ -139,9 +139,7 @@ const StoryView = () =>{
                     <div className='story-content-details' ref={storyRef}>
                             {
                                 timelinemap.map((elem,index)=>{
-                                    return <> 
-                                                <img src={elem.image} ref={imgRef}/>
-                                           </>
+                                    return <img src={elem.image} ref={imgRef} key={index} id={index}/>
                                 })
                             }
                     </div>
@@ -150,12 +148,10 @@ const StoryView = () =>{
                 <SCCdiv className='story-content-content' ref={contentRef} transition={enableContentTransition}>
                         {
                             timelinemap.map((elem,index)=>{
-                                return <>
-                                    <SCdiv mywidth={imgWidth}>
+                                return <SCdiv mywidth={imgWidth} key={index} id={index}>
                                         <p>{elem.title}</p>
                                         <span>{elem.content}</span>
-                                    </SCdiv>
-                                    </>;
+                                      </SCdiv>
                             })
                         }
                 </SCCdiv>

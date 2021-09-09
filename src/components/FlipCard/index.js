@@ -21,8 +21,8 @@ const FlipCard = ({name,designation,image,description,background}) =>{
     return (
         <div>
             <div className='cardholder'>
-                <Cdiv className='card' flip={flip} onMouseOver={()=>setFlip(true)} onMouseLeave={()=>setFlip(false)}>
-                    <div flip={flip} className='front-face'>
+                <Cdiv className='card' flip={flip?1:0} onMouseOver={()=>setFlip(true)} onMouseLeave={()=>setFlip(false)}>
+                    <div className='front-face'>
                             <div className='cover'>
                                 {/* <CFrontArrowdiv flip={flip} pumpArrow={pumpArrow} 
                                             className='arrowkey'>
@@ -32,7 +32,6 @@ const FlipCard = ({name,designation,image,description,background}) =>{
                             </div>
                             <div className='content'>
                                 <div className='avatar'> 
-                                    <div classname='circle'/>
                                     <img src={image}/> 
                                 </div>
                                 <p className='name'>{name}</p>
@@ -42,7 +41,7 @@ const FlipCard = ({name,designation,image,description,background}) =>{
 
                         </div>
 
-                    <div flip={flip} className='back-face'>
+                    <div className='back-face'>
                         {/* <div className='arrowkey'>
                             <KeyboardArrowLeftIcon onClick={()=>setFlip(false)} />
                         </div> */}
@@ -64,7 +63,7 @@ const FlipCard = ({name,designation,image,description,background}) =>{
 export default FlipCard;
 
 const Cdiv = styled.div`
-    transform: ${props=>props.flip?"rotateY(180deg)":""};
+    transform: ${props=>props.flip===1?"rotateY(180deg)":""};
 `;
 
 const PumpArrow = keyframes`
