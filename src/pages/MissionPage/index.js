@@ -7,6 +7,8 @@ import CoverPhoto from '../../components/CoverPhoto';
 import pic from '../../assets/principal.jpg';
 import { MAJOR_FONT } from '../../constants';
 
+import './style.scss';
+
 const MissionPhoto = () =>{
     const windowSize = WindowDimension();
     const maxHeight = 600;
@@ -37,17 +39,28 @@ const MissionText = () =>{
 }
 
 const MissionPage = () =>{
-
-
     return (
-        <Grid container spacing={2}>
-            <Grid item lg={12}>
-                <Grid column>
-                    <MissionPhoto/>
-                    <MissionText/>
+        <div className='mission-container'>
+            <Grid container spacing={2} style={{marginBottom:'100px'}} justify='center'>
+                <Grid item lg={6} md={6} sm={9} xs={9} >
+                    <div className='mission-image'>
+                        {/* <div className='mission-bg'/> */}
+                        <img src={pic}/>
+                        <div className='mission-label'>
+                            <p>principal</p>
+                        </div>
+                    </div>
+                </Grid>
+                <Grid item lg={6} md={6} sm={9} xs={9}>
+                    <div className='mission-content-container'>
+                        <p className='mission-title'>Our Mission</p>
+                        <p className='mission-content'>
+                            Our schools' mission is to make our students better human beings. We want all our students to feel others and at the same time have enough confidence to do what they want to do in their life.
+                        </p>
+                    </div>
                 </Grid>
             </Grid>
-        </Grid>
+        </div>
     );
 }
 
@@ -68,10 +81,11 @@ const Picture = styled.div`
     position:absolute;
     top:12%;
     left:10%;
-    width: 100%;
-    height: 120%;
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
     background-size:cover;
-    background-image: url(${props=>props.image});
+    /* background-image: url(${props=>props.image}); */
     box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.2);
 `;
 

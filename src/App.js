@@ -302,6 +302,7 @@ function App() {
             <BlogPage BlogThumbnailDetails={blog}/>
           </Route>  */}
           <Route exact path='/mission' >
+            <Cover data={coverimage}/>
             <MissionPage/>
           </Route>
           <Route exact path='/faculty'>
@@ -344,5 +345,6 @@ const GlobalStyle = createGlobalStyle`
   html,body{
     background:white;
     overflow-x:hidden;
+    font-family: 'Open Sans';
   }
 `;

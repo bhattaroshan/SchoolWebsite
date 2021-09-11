@@ -21,7 +21,7 @@ const WelcomeView = ({testimonials}) =>{
     <div> 
     <CBanner>
       <div className='welcome-school'>
-        <Grid container justify='center' alignItems='center'>
+        <Grid container alignItems='center'>
           <Grid item lg={6} md={6} sm={12} xs={12}>
             <img src={im1}/>
             </Grid>
@@ -47,10 +47,10 @@ export default WelcomeView;
 
 
 const CBanner = styled.div`
-  display:flex;
-  flex-direction: column;
-  margin-top:-58px;
-  justify-content: center;
+  /* display:flex; */
+  /* flex-direction: column; */
+  /* margin-top:-58px; */
+  /* justify-content: center; */
   text-align: center;
   /* background: linear-gradient(to ${TESTIMONIAL_BANNER_GRADIENT_DIRECTION}, ${TESTIMONIAL_BANNER_START_COLOR}, ${TESTIMONIAL_BANNER_END_COLOR}); */
   /* background: 'white'; */
